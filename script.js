@@ -157,3 +157,39 @@ if (menuIcon) {
     navbar.classList.toggle('active');
   };
 }
+
+function startTyping(el) {
+    const words = JSON.parse(el.dataset.words);
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.textContent = words[0];
+        return;
+    }
+
+    let w = 0;
+    let c = 0;
+    let deleting = false;
+
+    function tick() {
+        const word = words[w];
+        c += deleting ? -1 : 1;
+        el.textContent = word.slice(0, c);
+
+        let delay = deleting ? 40 : 90;
+
+        if (!deleting && c === word.length) {
+            deleting = true;
+            delay = 1400;
+        } else if (deleting && c === 0) {
+            deleting = false;
+            w = (w + 1) % words.length;
+            delay = 400;
+        }
+
+        setTimeout(tick, delay);
+    }
+
+    tick();
+}
+
+document.querySelectorAll(".typing-text").forEach(startTyping);

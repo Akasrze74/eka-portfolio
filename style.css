@@ -8,13 +8,51 @@
     scroll-behavior: smooth;
     font-family: "Poppins", sans-serif;
 }
-:root {
-    --bg-color: #fcfcfc;
-    --second-bg-color: #f8f8f8;
-    --text-color: black;
-    --main-color: #2815ff;
+
+:root{
+    /* Warna */
+    /* TINGGI (~60%): navy, dasar identitas */
+    --main-color: #14274E;
+    /* SEDANG (~30%): permukaan terang kebiruan + biru cerah untuk sorotan teks */
+    --bg-color: #F7F9FC;
+    --second-bg-color: #EEF2F8;
+    --card-color: #FFFFFF;
+    --border-color: #DCE3EF;
+    --accent-color: #2815ff;
+    /* RENDAH (~10%): champagne gold, hanya untuk detail kecil */
+    --gold-color: #4F7CFF;
+    /* Teks */
+    --text-color: #0B1426;
+    --muted-color: #5B6B85;
+    /* Isi progress bar */
+    --bar-fill: linear-gradient(90deg, var(--main-color), var(--accent-color));
+
+    /* ----- PANEL FOTO: ubah ukuran dan bentuk di sini ----- */
+    /* HOME */
+    --home-photo-width:  clamp(30rem, 26vw, 42rem);
+    --home-photo-ratio:  4 / 5;          /* 1 / 1 = bulat, 4 / 5 = oval tegak */
+    --home-photo-radius: 50%;
+    --home-photo-focus:  center top;     /* bagian foto yang ditampilkan */
+
+    /* ABOUT */
+    --about-photo-width:  clamp(30rem, 26vw, 42rem);
+    --about-photo-ratio:  4 / 5;
+    --about-photo-radius: 50%;
+    --about-photo-focus:  center top;
+
+    /* Bingkai (dipakai Home dan About) */
+    --photo-ring:   1rem;                /* tebal border biru */
+    --photo-gap:    0.8rem;              /* jarak putih border ke foto */
+    --photo-offset: 1.6rem;              /* geseran bayangan bentuk (desktop) */
+
+    /* Jarak foto ke teks di About (desktop) */
+    --about-gap: clamp(6rem, 15vw, 30rem);
 }
 
+
+/* =========================================================
+   2. DASAR
+========================================================= */
 html{
     font-size: 62.5%;
     overflow-x: hidden;
@@ -23,13 +61,39 @@ body{
     background: var(--bg-color);
     color: var(--text-color);
 }
+span{
+    color: var(--accent-color);
+}
+section{
+    min-height: 100vh;
+    padding: 10rem 9%;
+}
+.heading{
+    text-align: center;
+    font-size: clamp(4.5rem, 6vw, 8rem);
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--main-color);
+}
+::-webkit-scrollbar-track{
+    background-color: var(--second-bg-color);
+}
+
+
+/* =========================================================
+   3. HEADER & NAVBAR
+========================================================= */
 .header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 3rem 9%;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(247, 249, 252, 0.8);
     backdrop-filter: blur(20px);
     display: flex;
     align-items: center;
@@ -46,12 +110,9 @@ body{
 .logo:hover{
     transform: scale(1.1);
 }
-span{
-    color: var(--main-color);
-}
 .navbar a{
     font-size: 1.8rem;
-    color: black;
+    color: var(--text-color);
     margin-left: 4rem;
     font-weight: 500;
     transition: 0.3s ease;
@@ -60,7 +121,7 @@ span{
 .navbar a:hover,
 .navbar a:active{
     color: var(--main-color);
-    border-bottom: 3px solid var(--main-color);
+    border-bottom: 3px solid var(--gold-color);
 }
 #menu-icon{
     font-size: 3.6rem;
@@ -68,138 +129,28 @@ span{
     display: none;
 }
 
-section{
-    min-height: 100vh;
-    padding: 10rem 9% 10rem;
-}
 
-.home {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5rem;
-
-    padding: 12rem 9% 5rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.home-rectangle {
-    position: absolute;
-    background-color: var(--main-color);
-
-    width: 30%;
-    height: 100%;
-
-    top: 0;
-    right: 0;
-
-    border-radius: 4rem 0 0 4rem;
-    z-index: 0;
-}
-
-.home-content {
-    flex: 1;
-    position: relative;
-    z-index: 1;
-    max-width: 65rem;
-}
-
-.home-img {
-    position: relative;
-    z-index: 1;
-
-    flex: 0 0 clamp(260px, 29vw, 380px);
-
-    width: clamp(260px, 29vw, 380px);
-    aspect-ratio: 1 / 1;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-    border: 0.8rem solid var(--main-color);
-
-    padding: 0.6rem;
-    background: var(--bg-color);
-
-    box-shadow: 0 1rem 3rem rgba(40, 21, 255, 0.12);
-}
-
-.home-img img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center top;
-
-    border-radius: 50%;
-    border: 0.5rem solid white;
-
-    background: white;
-    cursor: pointer;
-
-    transition: transform 0.4s ease;
-}
-
-.home-img img:hover {
-    transform: scale(1.03);
-}
-
-.home-content h3 {
-    font-size: clamp(2rem, 2.5vw, 3rem);
-    font-weight: 600;
-    line-height: 1.5;
-}
-.home-content h1 {
-    font-size: clamp(4.5rem, 6vw, 7rem);
-    font-weight: 800;
-    line-height: 1.15;
-    margin: 0.5rem 0 1.5rem;
-}
-.home-content h1 span {
-    color: var(--main-color);
-}
-.home-content p {
+/* =========================================================
+   4. KOMPONEN UMUM (tombol, ikon sosial)
+========================================================= */
+.btn{
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--accent-color);
+    border-radius: 4rem;
     font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.9;
-    max-width: 62rem;
-    margin: 2rem 0;
+    color: white;
+    border: 2px solid transparent;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
 }
-.about-content {
-    max-width: 65rem;
-}
-.about-content .heading {
-    margin-bottom: 1.5rem;
-}
-.about-content h3 {
-    font-size: clamp(2.2rem, 3vw, 3.2rem);
-    font-weight: 700;
-    margin-bottom: 2rem;
-}
-.about-content p {
-    font-size: 1.55rem;
-    line-height: 1.9;
-    font-weight: 400;
-    margin-bottom: 2.5rem;
-    color: var(--text-color);
-}
-.services .heading {
-    margin-bottom: 5rem;
-}
-.services-box h3 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 1.5rem 0;
-}
-.services-box p {
-    font-size: 1.45rem;
-    line-height: 1.8;
-    font-weight: 400;
-    margin-bottom: 2rem;
+.btn:hover{
+    transform: scale(1.05);
+    background: var(--bg-color);
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
 }
 
 .social-icons a{
@@ -218,547 +169,508 @@ section{
 }
 .social-icons a:hover{
     color: white;
-    transform: scale(1.3)translateY(-5px);
+    transform: scale(1.3) translateY(-5px);
     background-color: var(--main-color);
 }
-.btn{
+
+
+/* =========================================================
+   5. TYPING (dipakai Home dan About)
+   Kata diatur lewat atribut data-words di HTML.
+========================================================= */
+.typing-line{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.7rem;
+
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.5;
+    min-height: 1.5em;                 /* cegah layout melompat saat mengetik */
+    margin: 0.4rem 0 1.2rem;
+}
+.typing-label{
+    color: var(--text-color);          /* tanpa ini ikut biru karena aturan span */
+    white-space: nowrap;
+}
+.typing-text{
+    color: var(--accent-color);
+    font-weight: 700;
+}
+.typing-text::after{
+    content: "";
     display: inline-block;
-    padding: 1rem 2.8rem;
-    background: var(--main-color);
-    border-radius: 4rem;
-    font-size: 1.6rem;
-    color: white;
-    border: 2px solid transparent;
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-    transition: 0.3s ease;
-    cursor: pointer;
+    width: 2px;
+    height: 1em;
+    margin-left: 0.3rem;
+    background: currentColor;          /* caret mengikuti warna kata */
+    vertical-align: text-bottom;
+    animation: caret-blink 0.8s steps(1) infinite;
 }
-.btn:hover{
-    transform: scale(1.05);
-    background: var(--bg-color);
-    color: var(--main-color);
-    border: 2px solid var(--main-color);
+@keyframes caret-blink{
+    50%{ opacity: 0; }
 }
-.text-animation{
-    font-size: 34px;
-    font-weight: 600;
-    min-width: 280px;
+
+.about-content .typing-line{
+    font-size: clamp(1.8rem, 2vw, 2.4rem);
+    min-height: 3em;
 }
-.text-animation span{
+
+
+/* =========================================================
+   6. FOTO (Home + About)
+   Ukuran, rasio, dan fokus dikendalikan variabel di :root.
+   Di layar kecil variabel diganti pada bagian Responsive.
+========================================================= */
+.home-img,
+.about-img{
     position: relative;
+    z-index: 1;
+    flex: none;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    height: auto;
+    aspect-ratio: var(--ratio);
+    padding: var(--photo-gap);
+    border: var(--photo-ring) solid var(--main-color);
+    border-radius: var(--radius);
+    background: var(--bg-color);
+    box-shadow: 0 1rem 3rem rgba(20, 39, 78, 0.12);
 }
-.text-animation span::before{
-    content: 'Web Developer';
-    color: var(--main-color);
-    animation: words 20s infinite;
+.home-img{
+    --ratio:  var(--home-photo-ratio);
+    --radius: var(--home-photo-radius);
+    --focus:  var(--home-photo-focus);
+    width: var(--home-photo-width);
 }
-.text-animation span::after{
-    content: '';
-    background-color: var(--bg-color);
-    position: absolute;
-    width: calc(100% + 8px);
+.about-img{
+    --ratio:  var(--about-photo-ratio);
+    --radius: var(--about-photo-radius);
+    --focus:  var(--about-photo-focus);
+    width: var(--about-photo-width);
+}
+
+.home-img img,
+.about-img img{
+    display: block;
+    width: 100%;
     height: 100%;
-    border-left: 2px solid #2815ff;
-    right: -8px;
-    animation: cursor 0.6s infinite, typing 20s steps(14)infinite;
+    object-fit: cover;
+    object-position: var(--focus);
+    border: 0.4rem solid white;
+    border-radius: inherit;
+    background: white;
+    cursor: pointer;
+    transition: transform 0.4s ease;
 }
-@keyframes typingCursor {
-    50% {
-        opacity: 0;
-    }
+.home-img img:hover,
+.about-img img:hover{
+    transform: scale(1.03);
 }
-@keyframes words{
-    0%,
-    20%{
-        content: 'UI/UX Designer';
-    }
-    21%,
-    40%{
-        content: 'Data Analyst';
-    }
-    41%,
-    60%{
-        content: 'Business Analyst ';
-    }
-    61%,
-    80%{
-        content: 'Software Engineer';
-    }
-    81%,
-    100%{
-        content: 'Web Developer';
-    }
+
+
+/* =========================================================
+   7. HOME
+========================================================= */
+.home{
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+    padding: 12rem 9% 5rem;
 }
-@keyframes typing{
-    10%,
-    15%,
-    30%,
-    35%,
-    50%,
-    55%,
-    70%,
-    75%,
-    90%,
-    95%{
-        width: 0;
-    }
-    5%,
-    20%,
-    25%,
-    40%,
-    45%,
-    60%,
-    65%,
-    80%,
-    85%{
-        width: calc(100% + 8px);
-    }
+.home-rectangle{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-color: var(--main-color);
+    border-radius: 4rem 0 0 4rem;
+    z-index: 0;
 }
+.home-content{
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    max-width: 65rem;
+}
+
+.home-greeting,
+.home-subtitle{
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+}
+.home-content h1{
+    font-size: clamp(4.5rem, 6vw, 7rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0.5rem 0 1.5rem;
+}
+.home-content p:not(.home-greeting){
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.9;
+    color: var(--muted-color);
+    max-width: 62rem;
+    margin: 2rem 0;
+}
+.home-content p:not(.home-greeting) + p:not(.home-greeting){
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   8. ABOUT
+========================================================= */
 .about{
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10rem;
+    gap: var(--about-gap);
     background: var(--second-bg-color);
 }
 .about-rectangle{
     position: absolute;
+    top: 0;
     left: 0;
+    width: 25%;
     height: 100%;
+    background-color: var(--main-color);
     border-top-right-radius: 10%;
     border-bottom-right-radius: 10%;
-    background-color: var(--main-color);
-    width: 25%;
+    z-index: 0;
 }
-.about-img{
-    border-radius: 50%;
+.about-visual{
+    position: relative;
+    z-index: 1;
+    flex: none;
     display: grid;
     place-items: center;
-    border: 10px solid var(--main-color);
 }
-.about-img img{
+.about-content{
     position: relative;
-    width: 30vw;
-    border-radius: 50%;
-    border: 25px solid white;
-    cursor: pointer;
+    z-index: 1;
+    flex: 1;
+    max-width: 60rem;
 }
-.heading{
-    text-align: center;
-    font-size: 8rem;
-}
-.about-content h2{
+.about-content .heading{
     text-align: left;
     line-height: 1.5;
-}
-.about-content h3{
-    font-size: 2.6 rem;
+    margin-bottom: 1.5rem;
 }
 .about-content p{
     font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.9;
+    color: var(--muted-color);
     margin: 2rem 0 3rem;
 }
-.about-content .text-animation span::before{
-    content: 'UI/UX Designer';
-    color: var(--main-color);
-    animation: words 20s infinite;
+
+.about-info{
+    list-style: none;
+    margin: 0 0 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.2rem;
 }
-.about-content .text-animation span::after{
-    content: '';
-    background-color: var(--second-bg-color);
-    position: absolute;
-    width: calc(100% + 8px);
-    height: 100%;
-    border-left: 2px solid #f1f1f1;
-    right: -8px;
-    animation: cursor 0.6s infinite, typing 20s steps(14)infinite;
+.about-info li{
+    text-align: left;
+    padding: 1.2rem 1.6rem;
+    background: var(--card-color);
+    border-left: 0.4rem solid var(--gold-color);
+    border-radius: 0.8rem;
+    box-shadow: 0 0.6rem 1.8rem rgba(20, 39, 78, 0.08);
 }
-.services {
+.about-info span{
+    display: block;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.65;
+}
+.about-info strong{
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Ornamen disembunyikan dulu, aktif di desktop (bagian 14) */
+.orn,
+.float-badge{
+    display: none;
+}
+
+
+/* =========================================================
+   9. SERVICES
+========================================================= */
+.services{
     padding: 8rem 8%;
 }
-.services h2 {
+.services h2{
     text-align: center;
     font-size: 5rem;
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
 }
-.services-wrapper {
+.services-wrapper{
     position: relative;
     max-width: 1300px;
     margin: 0 auto;
     display: flex;
     align-items: center;
 }
-.services-slider {
+.services-slider{
     width: 100%;
     overflow: hidden;
     padding: 1rem;
 }
-.service-track {
+.service-track{
     display: flex;
     gap: 2rem;
     transition: transform 0.5s ease;
 }
-.services-box {
+.services-box{
     flex: 0 0 calc((100% - 4rem) / 3);
     min-height: 380px;
     padding: 4rem 3rem;
-    background: #fff;
-    border: 0.2rem solid #e5e5e5;
+    background: var(--card-color);
+    border: 0.2rem solid var(--border-color);
     border-radius: 2rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.services-box:hover {
-    border-color: var(--main-color);
-    box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.08);
+.services-box:hover{
+    border-color: var(--gold-color);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
-.services-box i {
+.services-box i{
     font-size: 6rem;
-    color: var(--main-color);
+    color: var(--accent-color);
     margin-bottom: 1.5rem;
 }
-.services-box h3 {
+.services-box h3{
     font-size: 2.4rem;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 1.5rem 0 1rem;
 }
-.services-box p {
+.services-box p{
     font-size: 1.5rem;
+    font-weight: 400;
     line-height: 1.6;
-    color: #555;
+    color: var(--muted-color);
     margin-bottom: 2.5rem;
 }
-.services-box .btn {
+.services-box .btn{
     margin-top: auto;
 }
-.service-arrow {
+.service-arrow{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 5rem;
     height: 5rem;
-    border-radius: 50%;
-    border: 0.2rem solid var(--main-color);
-    background: #fff;
-    color: var(--main-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--card-color);
+    color: var(--main-color);
+    border: 0.2rem solid var(--main-color);
+    border-radius: 50%;
     cursor: pointer;
     z-index: 10;
     transition: 0.3s ease;
 }
-.service-arrow i {
+.service-arrow i{
     font-size: 3rem;
 }
-.service-arrow:hover {
+.service-arrow:hover{
     background: var(--main-color);
-
     color: white;
 }
-.service-arrow.prev {
-    left: -6rem;
-}
-.service-arrow.next {
-    right: -6rem;
-}
+.service-arrow.prev{ left: -6rem; }
+.service-arrow.next{ right: -6rem; }
 
-::-webkit-scrollbar{
-    width: 10px;
-}
-::-webkit-scrollbar-thumb{
-    background-color: var(--main-color);
-}
 
-::-webkit-scrollbar-track{
-    background-color: white;
-    width: 50px;
-}
-
-.projects {
+/* =========================================================
+   10. PROJECTS
+========================================================= */
+.projects{
     background: var(--second-bg-color);
 }
-
-/* Section Heading */
-
-.projects .heading {
+.projects .heading{
     margin-bottom: 2rem;
 }
-
-/* Section Subtitle */
-
-.projects-subtitle {
+.projects-subtitle{
     text-align: center;
     font-size: 1.5rem;
-    color: var(--text-color);
+    color: var(--muted-color);
     max-width: 65rem;
     margin: 0 auto 5rem;
     line-height: 1.7;
 }
-
-/* Project Grid */
-
-.projects-container {
+.projects-container{
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: stretch;
     gap: 2.5rem;
 }
 
-/* Project Card */
-
-.projects-container .projects-box {
+/* Kartu */
+.projects-container .projects-box{
     position: relative;
     height: 42rem;
-    border-radius: 1.8rem;
-    overflow: hidden;
     display: flex;
     isolation: isolate;
+    overflow: hidden;
+    border-radius: 1.8rem;
     background: var(--bg-color);
     box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.08);
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-
-/* Card Hover */
-
-.projects-box:hover {
+.projects-box:hover{
     transform: translateY(-0.7rem);
     box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.15);
 }
-
-/* Project Image */
-
-.projects-box img {
+.projects-box img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
     transition: transform 0.6s ease;
 }
-
-.projects-box:hover img {
+.projects-box:hover img{
     transform: scale(1.06);
 }
 
-/* Project Information Overlay */
-
-.projects-box .projects-info {
+/* Overlay informasi */
+.projects-box .projects-info{
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-
     text-align: left;
     padding: 2.5rem;
-
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.00) 15%,
-        rgba(0, 0, 0, 0.35) 45%,
-        rgba(0, 0, 0, 0.92) 100%
-    );
-
-    transition: background 0.4s ease;
     cursor: default;
-}
-
-/* Overlay Hover */
-
-.projects-box:hover .projects-info {
     background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.05) 10%,
-        rgba(0, 0, 0, 0.50) 45%,
-        rgba(0, 0, 0, 0.96) 100%
+        rgba(11, 20, 38, 0.00) 15%,
+        rgba(11, 20, 38, 0.40) 45%,
+        rgba(11, 20, 38, 0.94) 100%
+    );
+    transition: background 0.4s ease;
+}
+.projects-box:hover .projects-info{
+    background: linear-gradient(
+        to bottom,
+        rgba(11, 20, 38, 0.05) 10%,
+        rgba(11, 20, 38, 0.55) 45%,
+        rgba(11, 20, 38, 0.97) 100%
     );
 }
 
-/* Project Category */
-
-.project-category {
+.project-category{
     display: inline-block;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #fff;
     letter-spacing: 0.08rem;
     text-transform: uppercase;
-
     padding: 0.7rem 1.2rem;
     margin-bottom: 1.2rem;
-
     border-radius: 0.6rem;
-    background: var(--main-color);
+    background: var(--accent-color);
 }
-
-/* Project Title */
-
-.projects-info h4 {
+.projects-info h4{
     font-size: clamp(1.8rem, 2vw, 2.4rem);
-    color: #ffffff;
+    color: #fff;
     font-weight: 700;
     line-height: 1.35;
     margin-bottom: 1rem;
 }
-
-/* Project Description */
-
-.projects-info p {
+.projects-info p{
     font-size: 1.35rem;
-    margin: 0;
     font-weight: 400;
     line-height: 1.7;
+    margin: 0;
     color: rgba(255, 255, 255, 0.88);
 }
-
-/* Project Tools */
-
-.project-tools {
+.project-tools{
     display: flex;
     flex-wrap: wrap;
     gap: 0.7rem;
     margin-top: 1.5rem;
 }
-
-.project-tools span {
+.project-tools span{
     font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
     padding: 0.6rem 1rem;
     border-radius: 0.5rem;
-
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
-
-    color: #ffffff;
-    font-weight: 500;
     backdrop-filter: blur(5px);
 }
-
-/* Project Link */
-
-.projects-info a {
+.projects-info a{
     display: inline-flex;
     justify-content: center;
     align-items: center;
-
     width: 4.2rem;
     height: 4.2rem;
     margin-top: 1.8rem;
-
     color: var(--main-color);
-    background: #ffffff;
-
-    border: 2px solid #ffffff;
+    background: #fff;
+    border: 2px solid #fff;
     border-radius: 50%;
-
-    text-decoration: none;
     transition: all 0.3s ease;
 }
-
-.projects-info a i {
+.projects-info a i{
     font-size: 2.2rem;
     color: var(--main-color);
 }
-
-.projects-info a:hover {
+.projects-info a:hover{
     background: var(--main-color);
     border-color: var(--main-color);
     transform: translateY(-0.3rem);
 }
-
-.projects-info a:hover i {
-    color: #ffffff;
+.projects-info a:hover i{
+    color: #fff;
 }
-
-/* Keyboard Accessibility */
-
-.projects-info a:focus-visible {
-    outline: 3px solid #ffffff;
+.projects-info a:focus-visible{
+    outline: 3px solid #fff;
     outline-offset: 4px;
 }
 
 
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
-
-/* Tablet & Small Laptop */
-
-@media (max-width: 1100px) {
-
-    .projects-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 2rem;
-    }
-
-    .projects-container .projects-box {
-        height: 40rem;
-    }
-
-}
-
-/* Mobile */
-
-@media (max-width: 650px) {
-
-    .projects .heading {
-        margin-bottom: 1.5rem;
-    }
-
-    .projects-subtitle {
-        font-size: 1.3rem;
-        margin-bottom: 3rem;
-        padding: 0 1rem;
-    }
-
-    .projects-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .projects-container .projects-box {
-        height: 38rem;
-        border-radius: 1.5rem;
-    }
-
-    .projects-box .projects-info {
-        padding: 2rem;
-    }
-
-    .projects-info h4 {
-        font-size: 2rem;
-    }
-
-    .projects-info p {
-        font-size: 1.3rem;
-    }
-
-    .project-tools span {
-        font-size: 1rem;
-    }
-
-}
-
-.skills h2{
-    margin-bottom: 2rem;
-}
+/* =========================================================
+   11. SKILLS
+========================================================= */
 .skills{
     margin: 0 auto;
 }
+.skills h2{
+    margin-bottom: 2rem;
+}
 .skill-bars{
     padding: 25px 30px;
-    background: white;
+    background: var(--card-color);
     border: 5px solid var(--main-color);
     border-radius: 1rem;
     display: flex;
@@ -780,40 +692,28 @@ section{
     font-size: 17px;
 }
 .skill-bars .bar .progress-line{
+    position: relative;
     height: 10px;
     width: 100%;
-    background: white;
-    position: relative;
+    background: var(--border-color);
     border-radius: 10px;
 }
 .bar .progress-line span{
-    height: 100%;
     position: absolute;
+    height: 100%;
     border-radius: 10px;
-    background: white;
     cursor: pointer;
 }
+.bar .progress-line.javascript span{ width: 80%;  background: var(--bar-fill); }
+.bar .progress-line.react span{      width: 80%;  background: var(--bar-fill); }
+.bar .progress-line.mysql span{      width: 75%;  background: var(--bar-fill); }
+.bar .progress-line.html span{       width: 100%; background: var(--bar-fill); }
+.bar .progress-line.css span{        width: 100%; background: var(--bar-fill); }
 
-.bar .progress-line.javascript span{
-    width: 80%;
-    background-color: gold;
-}
-.bar .progress-line.react span{
-    width: 80%;
-    background-color: rgb(58, 58, 255);
-}
-.bar .progress-line.mysql span{
-    width: 75%;
-    background-color: greenyellow;
-}
-.bar .progress-line.html span{
-    width: 100%;
-    background-color: orangered;
-}
-.bar .progress-line.css span{
-    width: 100%;
-    background-color: blue;
-}
+
+/* =========================================================
+   12. CONTACT
+========================================================= */
 .contact{
     background-color: var(--second-bg-color);
 }
@@ -822,9 +722,8 @@ section{
 }
 .contact form{
     max-width: 70rem;
-    margin: 1rem auto;
+    margin: 1rem auto 3rem;
     text-align: center;
-    margin-bottom: 3rem;
 }
 .contact form .input-box{
     display: flex;
@@ -835,17 +734,22 @@ section{
 .contact form textarea{
     width: 100%;
     padding: 1.5rem;
+    margin: 1rem 0;
     font-size: 1.6rem;
     color: var(--text-color);
     background: var(--bg-color);
-    border-radius: 0.8rem;
     border: 2px solid var(--main-color);
-    margin: 1rem 0;
+    border-radius: 0.8rem;
     resize: none;
 }
 .contact form .btn{
     margin-top: 2rem;
 }
+
+
+/* =========================================================
+   13. FOOTER
+========================================================= */
 .footer{
     position: relative;
     bottom: 0;
@@ -859,41 +763,41 @@ section{
     color: white;
 }
 .footer .social a{
-    font-size: 25px;
-    color: white;
-    border: 2px solid white;
+    display: inline-block;
     width: 42px;
     height: 42px;
     line-height: 42px;
-    display: inline-block;
-    text-align: center;
-    border-radius: 50%;
     margin: 0 10px;
-    transition: 0.3 ease;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: 0.3s ease;
 }
 .footer .social a:hover{
-    transform: scale(1.2)translateY(-10px);
+    transform: scale(1.2) translateY(-10px);
+    border-color: var(--gold-color);
     background-color: white;
     color: var(--main-color);
 }
 .footer ul{
-    margin-top: 0;
     padding: 0;
+    margin: 0;
     font-size: 18px;
     line-height: 1.6;
-    margin-bottom: 0;
     text-align: center;
+}
+.footer ul li{
+    display: inline-block;
+    padding: 0 15px;
 }
 .footer ul li a{
     color: white;
     border-bottom: 3px solid transparent;
 }
 .footer ul li a:hover{
-    border-bottom: 3px solid white;
-}
-.footer ul li{
-    display: inline-block;
-    padding: 0 15px;
+    border-bottom: 3px solid var(--gold-color);
 }
 .footer .copyright{
     margin-top: 50px;
@@ -901,20 +805,159 @@ section{
     font-size: 16px;
     color: white;
 }
-@media(max-width:1200px){
+
+
+/* =========================================================
+   14. DESKTOP ≥ 992px: bentuk, ornamen, badge
+   (tidak mempengaruhi tablet dan mobile)
+========================================================= */
+@media (min-width: 992px){
+
+    /* Preset bentuk: ganti nama class di HTML
+       contoh: class="home-img shape-arch" */
+    .shape-circle{  --ratio: 1 / 1; --radius: 50%; }
+    .shape-oval{    --ratio: 4 / 5; --radius: 50%; }
+    .shape-arch{    --ratio: 4 / 5; --radius: 50% 50% 3rem 3rem / 38% 38% 3rem 3rem; }
+    .shape-rounded{ --ratio: 4 / 5; --radius: 3rem; }
+    .shape-blob{    --ratio: 4 / 5; --radius: 58% 42% 52% 48% / 50% 58% 42% 50%; }
+
+    /* ----- HOME ----- */
+    .home-img{
+        box-shadow:
+            var(--photo-offset) var(--photo-offset) 0 0 color-mix(in srgb, var(--main-color) 14%, transparent),
+            0 2rem 5rem color-mix(in srgb, var(--main-color) 22%, transparent);
+    }
+    .home-img::before{                 /* cincin kiri atas */
+        content: "";
+        position: absolute;
+        top: -2rem;
+        left: -3rem;
+        width: 8rem;
+        height: 8rem;
+        border: 0.6rem solid var(--gold-color);
+        border-radius: 50%;
+        opacity: 0.25;
+        z-index: -1;
+    }
+    .home-img::after{                  /* titik kiri bawah */
+        content: "";
+        position: absolute;
+        left: -4.5rem;
+        bottom: -3.5rem;
+        width: 11rem;
+        height: 11rem;
+        background-image: radial-gradient(var(--main-color) 2px, transparent 2.5px);
+        background-size: 1.6rem 1.6rem;
+        opacity: 0.35;
+        z-index: -1;
+    }
+
+    /* ----- ABOUT ----- */
+    .about-img{
+        box-shadow:
+            calc(var(--photo-offset) * -1) var(--photo-offset) 0 0 color-mix(in srgb, var(--main-color) 14%, transparent),
+            0 2rem 5rem color-mix(in srgb, var(--main-color) 22%, transparent);
+    }
+    .orn{
+        display: block;
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+    }
+    .orn-blob{                         /* cahaya lembut di belakang foto */
+        inset: -20%;
+        background: radial-gradient(circle, color-mix(in srgb, var(--main-color) 20%, transparent), transparent 68%);
+    }
+    .orn-dots{
+        right: -4rem;
+        bottom: -3rem;
+        width: 12rem;
+        height: 12rem;
+        background-image: radial-gradient(var(--main-color) 2px, transparent 2.5px);
+        background-size: 1.6rem 1.6rem;
+        opacity: 0.35;
+    }
+    .orn-ring{
+        top: -2.5rem;
+        right: -2.5rem;
+        width: 9rem;
+        height: 9rem;
+        border: 0.6rem solid var(--gold-color);
+        border-radius: 50%;
+        opacity: 0.22;
+    }
+
+    .float-badge{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        position: absolute;
+        z-index: 2;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        white-space: nowrap;
+        color: var(--text-color);
+        background: var(--card-color);
+        border: 2px solid var(--main-color);
+        border-radius: 99px;
+        box-shadow: 0 0.8rem 2rem rgba(20, 39, 78, 0.15);
+        animation: photo-float 5s ease-in-out infinite;
+    }
+    .float-badge::before{
+        content: "";
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 50%;
+        background: var(--gold-color);
+    }
+    .badge-1{ top: 10%;   left: -16%; }
+    .badge-2{ top: 46%;   right: -22%; animation-delay: 1.2s; }
+    .badge-3{ bottom: 8%; left: -10%;  animation-delay: 2.4s; }
+
+    /* Pola titik besar di sudut section About */
+    .about::after{
+        content: "";
+        position: absolute;
+        top: 9rem;
+        right: 4%;
+        width: 18rem;
+        height: 18rem;
+        background-image: radial-gradient(var(--main-color) 2px, transparent 2.5px);
+        background-size: 2rem 2rem;
+        opacity: 0.18;
+        pointer-events: none;
+    }
+}
+
+@keyframes photo-float{
+    0%, 100%{ transform: translateY(0); }
+    50%{      transform: translateY(-1rem); }
+}
+
+
+/* =========================================================
+   15. RESPONSIVE (urut dari besar ke kecil, jangan diacak)
+========================================================= */
+
+/* ---------- ≤ 1200px: laptop kecil ---------- */
+@media (max-width: 1200px){
     html{
         font-size: 55%;
     }
     .projects-container{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
         padding-bottom: 7rem;
-        grid-template-columns: repeat(1,1fr);
         margin: 0 5rem;
     }
-}
-@media(max-width:991px){
-    header{
-        padding: 2rem 3%;
+    .projects-container .projects-box{
+        height: 40rem;
     }
+}
+
+/* ---------- ≤ 991px: tablet ---------- */
+@media (max-width: 991px){
     section{
         padding: 10rem 3% 2rem;
     }
@@ -924,15 +967,37 @@ section{
     .footer{
         padding: 2rem 3%;
     }
+
+    /* Foto menjadi lingkaran */
+    :root{
+        --home-photo-width:  clamp(240px, 32vw, 300px);
+        --about-photo-width: clamp(240px, 32vw, 300px);
+        --home-photo-ratio:  1 / 1;
+        --about-photo-ratio: 1 / 1;
+        --photo-ring: 0.8rem;
+        --photo-gap:  0.6rem;
+    }
+
+    .home{
+        gap: 3rem;
+        padding: 12rem 5% 5rem;
+    }
+    .home-rectangle{
+        width: 27%;
+    }
 }
-@media(max-width:895px){
+
+/* ---------- ≤ 895px: navbar mobile + About bertumpuk ---------- */
+@media (max-width: 895px){
+
+    /* Navbar */
     #menu-icon{
-        display:block;
+        display: block;
     }
     .navbar{
         position: absolute;
         top: 100%;
-        right: 0%;
+        right: 0;
         width: 50%;
         padding: 1rem 3%;
         background: var(--second-bg-color);
@@ -949,121 +1014,161 @@ section{
         font-size: 2rem;
         margin: 3rem 0;
     }
-    .home{
-        flex-direction: column-reverse;
-        margin: 5rem 4rem;
+
+    /* Judul section */
+    .services h2,
+    .projects .heading{
+        margin-bottom: 3rem;
     }
-    .home-rectangle{
-        height: 70%;
-        width: 50%;
-        border-bottom-left-radius: 50%;
-    }
-    .home.img{
-        display: grid;
-        border: none;
-        border-radius: 50%;
-    }
-    .home-content h3{
-        font-size: 2.6 rem;
-    }
-    .home-content h1{
-        font-size: 5rem;
-    }
-    .home-img img{
-        width: 70vw;
-        margin-top: 4rem;
+
+    /* About: foto di atas, semua konten di tengah */
+    :root{
+        --about-photo-width: clamp(220px, 60vw, 280px);
     }
     .about{
-        flex-direction: column-reverse;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        gap: 2.5rem;
+        min-height: auto;
+        padding: 10rem 6% 5rem;
     }
     .about-rectangle{
         display: none;
     }
     .about-content{
-        margin: 1rem 4rem;
-    }
-    .about-img{
-        border: none;
-    }
-    .about img{
-        width: 70vw;
-        margin-top: 1rem;
-        border: none;
-        margin-bottom: 3rem;
-    }
-    .services h2{
-        margin-bottom: 3rem;
-    }
-    .projects h2{
-        margin-bottom: 3rem;
-    }
-}
-
-
-/* =========================================
-   HOME RESPONSIVE
-========================================= */
-
-@media (max-width: 991px) {
-
-    .home {
-        gap: 3rem;
-        padding: 12rem 5% 5rem;
-    }
-
-    .home-img {
-        flex-basis: clamp(240px, 32vw, 300px);
-        width: clamp(240px, 32vw, 300px);
-    }
-
-    .home-rectangle {
-        width: 27%;
-    }
-
-}
-
-@media (max-width: 768px) {
-
-    .home {
-        flex-direction: column-reverse;
-        justify-content: center;
-        text-align: center;
-        gap: 3rem;
-        padding: 13rem 5% 6rem;
-    }
-
-    .home-content {
-        max-width: 100%;
-    }
-
-    .home-content .text-animation {
-        justify-content: center;
-        min-height: 7rem;
-        font-size: 2rem;
-        gap: 0.5rem;
-    }
-
-    .home-img {
         flex: none;
-        width: clamp(220px, 55vw, 280px);
-        height: auto;
+        width: 100%;
+        max-width: 56rem;
+        margin: 0 auto;
+    }
+    .about-content .heading{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .about-content .typing-line{
+        justify-content: center;
+        font-size: 1.9rem;
+        min-height: 3em;
+        margin: 0.4rem 0 1.2rem;
+    }
+    .about-content p{
+        font-size: 1.5rem;
+        line-height: 1.8;
+        margin: 0 auto 1.5rem;
+    }
+    .about-content .btn{
+        margin-top: 1rem;
+    }
+    .about-info li{
+        text-align: center;
+        border-left: none;
+        border-top: 0.4rem solid var(--gold-color);
+    }
+}
+
+/* ---------- ≤ 768px: Home bertumpuk ---------- */
+@media (max-width: 768px){
+
+    :root{
+        --home-photo-width: clamp(220px, 60vw, 280px);
     }
 
-    .home-rectangle {
-        width: 100%;
-        height: 32%;
+    .home{
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        gap: 2.5rem;
+        min-height: auto;
+        padding: 11rem 6% 5rem;
+    }
+    /* Band biru full-width, tingginya mengikuti ukuran foto */
+    .home-rectangle{
         top: 0;
         right: 0;
-        border-radius: 0 0 35% 35%;
+        width: 100%;
+        height: calc(11rem + var(--home-photo-width) * 0.6);
+        border-radius: 0 0 4rem 4rem;
     }
-
-    .home-content p {
+    .home-content{
+        max-width: 100%;
+    }
+    .home-greeting,
+    .home-subtitle{
+        font-size: 2rem;
+    }
+    .home-content h1{
+        font-size: clamp(4rem, 12vw, 5rem);
+        margin: 0.3rem 0 1rem;
+    }
+    .home-content p:not(.home-greeting){
+        font-size: 1.5rem;
+        line-height: 1.8;
         margin-left: auto;
         margin-right: auto;
     }
-
-    .home-content .social-icons {
+    .home-content .typing-line{
         justify-content: center;
+        font-size: 1.9rem;
+        min-height: 3em;
+        margin: 0.6rem 0 1.2rem;
     }
+}
 
+/* ---------- ≤ 650px: Projects satu kolom ---------- */
+@media (max-width: 650px){
+    .projects .heading{
+        margin-bottom: 1.5rem;
+    }
+    .projects-subtitle{
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+    }
+    .projects-container{
+        grid-template-columns: 1fr;
+    }
+    .projects-container .projects-box{
+        height: 38rem;
+        border-radius: 1.5rem;
+    }
+    .projects-box .projects-info{
+        padding: 2rem;
+    }
+    .projects-info h4{
+        font-size: 2rem;
+    }
+    .projects-info p{
+        font-size: 1.3rem;
+    }
+    .project-tools span{
+        font-size: 1rem;
+    }
+}
+
+/* ---------- ≤ 400px: layar sangat kecil ---------- */
+@media (max-width: 400px){
+    :root{
+        --home-photo-width:  68vw;
+        --about-photo-width: 68vw;
+        --photo-ring: 0.6rem;
+        --photo-gap:  0.4rem;
+    }
+    .about{
+        padding: 9rem 5% 4rem;
+    }
+    .about-content .typing-line{
+        font-size: 1.7rem;
+    }
+}
+
+
+/* =========================================================
+   16. REDUCED MOTION
+========================================================= */
+@media (prefers-reduced-motion: reduce){
+    .float-badge{ animation: none; }
+    .typing-text::after{ animation: none; }
 }
