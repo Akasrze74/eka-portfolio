@@ -47,10 +47,10 @@
                 Information Systems Student
             </h3>
 
-            <h3 class="typing-line" aria-label="Interested in UI/UX Designer, Data Analytics, Business Intelligence, System Analysis, and Software Quality Assurance">
+            <h3 class="typing-line" aria-label="Interested in UI/UX Designer, Data Analyst, Business Intelligence, System Analyst, and Software Quality Assurance">
                 <span class="typing-label">Interested in</span>
                 <span class="typing-text" aria-hidden="true"
-                      data-words='["Data Analytics","Business Intelligence","System Analysis","Quality Assurance"]'></span>
+                      data-words='["UI/UX Designer, Data Analyst, Business Intelligence, System Analyst, and Software Quality Assurance"]'></span>
             </h3>
             <p><p>
                 Final-year Information Systems student at
@@ -131,10 +131,10 @@
                 About <span>Me</span>
             </h2>
     
-            <h3 class="typing-line" aria-label="Focused on Data Analytics, Business Intelligence, UI/UX Design, System Analysis, and Application Development">
+            <h3 class="typing-line" aria-label="Focused on Data Analytics, Business Intelligence, System Analysis, UI/UX Design and Application Development">
                 <span class="typing-label">Focused on</span>
                 <span class="typing-text" aria-hidden="true"
-                    data-words='["Data Analytics","Business Intelligence","UI/UX Design","System Analysis","Application Development"]'></span>
+                    data-words='["Data Analytics","Business Intelligence","System Analysis","UI/UX Design","Application Development"]'></span>
             </h3>
             <p><p>
             
@@ -386,57 +386,93 @@
 
 </section>
 
-    <section class="skills" id="skills">
-        <h2 class="heading">Skills</h2>
+<section class="skills" id="skills" aria-labelledby="skills-heading">
+    <h2 class="heading" id="skills-heading">My <span>Skills</span></h2>
+    <p class="projects-subtitle">
+        Lima bidang yang saya pelajari, dari mengolah data sampai memastikan
+        aplikasi berjalan benar. Grafik di kiri dihitung otomatis dari level di kanan.
+    </p>
 
-        <div class="skill-bars">
+    <div class="skills-layout">
 
-            <div class="bar">
-                <div class="info">
-                    <span>HTML</span>
-                </div>
-                <div class="progress-line html">
-                    <span></span>
-                </div>
-            </div>
+        <!-- Panel radar: isinya digambar oleh script.js -->
+        <figure class="skills-radar">
+            <svg id="radar" viewBox="0 0 400 400" role="img"
+                 aria-label="Radar chart of skill levels across five areas"></svg>
+            <figcaption>Keseimbangan keahlian</figcaption>
+        </figure>
 
-            <div class="bar">
-                <div class="info">
-                    <span>CSS</span>
-                </div>
-                <div class="progress-line css">
-                    <span></span>
-                </div>
-            </div>
+        <!-- Daftar keahlian: level 1-5 diatur lewat --level -->
+        <ul class="skills-list">
 
-            <div class="bar">
-                <div class="info">
-                    <span>Javascript</span>
+            <li class="skill-item" style="--level:4" data-short="Data">
+                <div class="skill-head">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <h3>Data Analytics</h3>
+                    <span class="skill-level"></span>
                 </div>
-                <div class="progress-line javascript">
-                    <span></span>
-                </div>
-            </div>
+                <div class="skill-meter" aria-hidden="true"></div>
+                <ul class="skill-tools">
+                    <li>MySQL</li><li>Excel</li><li>Data Cleaning</li>
+                </ul>
+            </li>
 
-            <div class="bar">
-                <div class="info">
-                    <span>React</span>
+            <li class="skill-item" style="--level:3" data-short="BI">
+                <div class="skill-head">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <h3>Business Intelligence</h3>
+                    <span class="skill-level"></span>
                 </div>
-                <div class="progress-line react">
-                    <span></span>
-                </div>
-            </div>
+                <div class="skill-meter" aria-hidden="true"></div>
+                <ul class="skill-tools">
+                    <li>Dashboard Design</li><li>KPI Reporting</li>
+                </ul>
+            </li>
 
-            <div class="bar">
-                <div class="info">
-                    <span>MySQL</span>
+            <li class="skill-item" style="--level:4" data-short="Systems">
+                <div class="skill-head">
+                    <i class='bx bx-sitemap'></i>
+                    <h3>System Analysis</h3>
+                    <span class="skill-level"></span>
                 </div>
-                <div class="progress-line mysql">
-                    <span></span>
+                <div class="skill-meter" aria-hidden="true"></div>
+                <ul class="skill-tools">
+                    <li>UML</li><li>Process Modeling</li><li>Requirements</li>
+                </ul>
+            </li>
+
+            <li class="skill-item" style="--level:3" data-short="Apps">
+                <div class="skill-head">
+                    <i class='bx bx-code-alt'></i>
+                    <h3>Application Development</h3>
+                    <span class="skill-level"></span>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="skill-meter" aria-hidden="true"></div>
+                <ul class="skill-tools">
+                    <li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li>
+                </ul>
+            </li>
+
+            <li class="skill-item" style="--level:3" data-short="QA">
+                <div class="skill-head">
+                    <i class='bx bx-check-shield'></i>
+                    <h3>Quality Assurance</h3>
+                    <span class="skill-level"></span>
+                </div>
+                <div class="skill-meter" aria-hidden="true"></div>
+                <ul class="skill-tools">
+                    <li>Test Cases</li><li>Bug Reporting</li><li>UAT</li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <!-- Alur kerja -->
+    <ol class="skills-flow" aria-label="Alur kerja saya">
+        <li>Collect</li><li>Analyze</li><li>Build</li><li>Validate</li>
+    </ol>
+</section>
 
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span></h2>
