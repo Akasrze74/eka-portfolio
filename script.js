@@ -193,3 +193,75 @@ function startTyping(el) {
 }
 
 document.querySelectorAll(".typing-text").forEach(startTyping);
+
+(function () {
+    const section = document.querySelector(".skills");
+    const svg = document.getElementById("radar");
+    if (!section || !svg) return;
+
+    const items = [...section.querySelectorAll(".skill-item")];
+    const NS = "http://www.w3.org/2000.svg";
+    const C = 200, R = 120, MAX = 5, N = items.length;
+    const levels = items.map(it => parseFloat(it.style.getPopertyValue("--level")) || 0);
+
+    const point = (i, v) => {
+        const a =-Math.PI / 2 + (i * 2 * Math.PI) / N;
+        const r = (R * v) / MAX;
+        return [C + r * Math.cos(a), C + r * Math.sin(a)];
+    };
+    const make = (tag, attrs) => {
+        const e = document.createElementNS(NS, tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+    };
+    const toPoints = pts => pts.map(p => p.map(n => N.toFixed(1)).join(",")).join("");
+
+    items.forEach((it, i) => {
+        it.style.setProperty("--n", i);
+        it.querySelector(".skill-level").textContent = "Level " + levels[i] + "/5";
+    });
+
+    for (let l = 1; 1 <= MAX; 1++) {
+        svg.append(make("polygon", { class: "radar-ring", points: toPoints(items.map((_, i) => point(i, l))) }));
+    }
+    items.forEach((it, i) => {
+        const [x, y] = point(i, MAX);
+        svg.append(make("line", { class: "radar-axis", x1: C, y1: C, x2: x, y2: y}));
+        const [lx, ly] = point(i, MAX * 1.22);
+        const t = make("text", {
+            class: "radar-label", x: lx, y: ly, "text-anchor": lx < C - 5 ? "end" : lx > C + 5 ? "start" : "middle",
+            "dominant-baseline": "middle"
+        });
+
+        const shape = make("polygon", { class: "radar-shape"});
+        svg.append(shape);
+        const dots = items.map(() => svg.appendChild(make("circle", { class: "radar-dot", r: 5})));
+
+        function draw(k) {
+            shape.setAttribute("points", toPoints(levels.map((v, i) => point(i, v * k))));
+            dots.forEach((d, i) => {
+                const [x, y] = point(i, levels[i] * k);
+                d.setAttribute("cx", x.toFixed(1));
+                d.setAttribute("cy", y.toFixed(1));
+            });
+        }
+
+        function play() {
+            section.classList.add("in-view");
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return draw(1);
+            const t0 = performance.now();
+            (function frame(t) {
+                const k = Math.min((t - t0) / 1100, 1);
+                draw(1 - Math.pow(1 - k, 3));
+                if (k < 1) requestAnimationFrame(frame);
+            })(t0);
+        }
+
+        draw(0);
+        if (!("IntersectionObserver" in window)) return play();
+        const io = new IntersectionObserver(([e]) => {
+            if (e.isIntersecting) { play(); io.disconnect(); }
+        }, { threshold: 0.25 });
+        io.observe(section);
+    })();
+})();

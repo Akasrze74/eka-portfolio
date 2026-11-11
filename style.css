@@ -663,54 +663,215 @@ section{
    11. SKILLS
 ========================================================= */
 .skills{
+    min-height: auto;
+    background: var(--bg-color);
+}
+.skills-layout{
+    max-width: 120rem;
     margin: 0 auto;
-}
-.skills h2{
-    margin-bottom: 2rem;
-}
-.skill-bars{
-    padding: 25px 30px;
-    background: var(--card-color);
-    border: 5px solid var(--main-color);
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
     gap: 3rem;
+    align-items: stretch;
 }
-.skill-bars .bar{
-    margin: 20px 0;
-}
-.skill-bars .bar:first-child{
-    margin-top: 0;
-}
-.skill-bars .bar .info{
-    margin-bottom: 5px;
-}
-.skill-bars .bar .info span{
-    color: var(--text-color);
-    font-weight: 500;
-    font-size: 17px;
-}
-.skill-bars .bar .progress-line{
+
+.skills-radar{
     position: relative;
-    height: 10px;
-    width: 100%;
-    background: var(--border-color);
-    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 1rem;
+    padding: 2.5rem;
+    background: var(--main-color);
+    border-radius: 2rem;
+    box-shadow: 0 2rem 5rem rgba(20, 39, 78, 0.25);
 }
-.bar .progress-line span{
+.skills-radar::before{
+    content: "";
     position: absolute;
-    height: 100%;
-    border-radius: 10px;
-    cursor: pointer;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.5px, transparent 2px);
+    background-size: 2.2rem 2.2rem;
+    -webkit-mask: radial-gradient(circle at center, #000, transparent 75%);
+    mask: radial-gradient(circle at center, #000, transparent 75%);
 }
-.bar .progress-line.javascript span{ width: 80%;  background: var(--bar-fill); }
-.bar .progress-line.react span{      width: 80%;  background: var(--bar-fill); }
-.bar .progress-line.mysql span{      width: 75%;  background: var(--bar-fill); }
-.bar .progress-line.html span{       width: 100%; background: var(--bar-fill); }
-.bar .progress-line.css span{        width: 100%; background: var(--bar-fill); }
+.skills-radar svg{
+    position: relative;
+    width: 100%;
+    max-width: 46rem;
+    height: auto;
+}
+.skills-radar figcaption{
+    position: relative;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+.radar-ring,
+.radar-axis{
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.16);
+    stroke-width: 1;
+}
+.radar-label{
+    fill: #E8EDF5;
+    font-size: 13px;
+    font-weight: 600;
+}
+.radar-shape{
+    fill: color-mix(in srgb, var(--accent-color) 45%, transparent);
+    stroke: color-mix(in srgb, var(--accent-color) 60%, white);
+    stroke-width: 2;
+    stroke-linejoin: round;
+}
+.radar-dot{
+    fill: var(--gold-color);
+    stroke: var(--main-color);
+    stroke-width: 2;
+}
 
+.skills-list{
+    list-style: none;
+    display: grid;
+    gap: 1.4rem;
+}
+.skill-item{
+    display: grid;
+    gap: 1rem;
+    padding: 1.8rem 2.2rem;
+    background: var(--card-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1.4rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.skill-item:hover{
+    border-color: var(--gold-color);
+    transform: translateX(0.4rem);
+}
+.skill-head{
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+.skill-head i{
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2.2rem;
+    color: var(--main-color);
+    background: var(--second-bg-color);
+    border-radius: 1rem;
+}
+.skill-head h3{
+    flex: 1;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+.skill-level{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--muted-color);
+}
 
+.skill-meter{
+    position: relative;
+    height: 0.8rem;
+    overflow: hidden;
+    background: var(--border-color);
+    -webkit-mask: repeating-linear-gradient(90deg, #000 0 calc(20% - 0.4rem), transparent 0 20%);
+    mask: repeating-linear-gradient(90deg, #000 0 calc(20% - 0.4rem), transparent 0 20%);
+}
+.skill-meter::before{
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: calc(var(--level) * 20%);
+    background: var(--bar-fill);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition-delay: calc(var(--n, 0) * 0.12s);
+}
+.skills.in-view .skill-meter::before{
+    transform: scaleX(1);
+}
+
+.skill-tools{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+.skill-tools li{
+    padding: 0.4rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--main-color);
+    background: var(--second-bg-color);
+    border-radius: 99px;
+}
+
+.skills-flow{
+    position: relative;
+    max-width: 120rem;
+    margin: 4rem auto 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.skills-flow::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 0.2rem;
+    background: repeating-linear-gradient(90deg, var(--border-color) 0 0.8rem, transparent 0 1.4rem);
+}
+.skills-flow li{
+    position: relative;
+    padding: 0.9rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--main-color);
+    background: var(--card-color);
+    border: 0.2rem solid var(--main-color);
+    border-radius: 99px;
+}
+.skills-flow li:last-child{
+    border-color: var(--gold-color);
+}
+
+@media (max-width: 991px){
+    .skills-layout{
+        grid-template-columns: 1fr;
+    }
+    .skills-radar{
+        max-width: 56rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 650px){
+    .skill-item{
+        padding: 1.5rem 1.6rem;
+    }
+    .skill-item:hover{
+        transform: none;
+    }
+    .skills-flow li{
+        padding: 0.7rem 1.2rem;
+        font-size: 1.2rem;
+    }
+}
+@media(prefers-reduced-motion: reduce){
+    .skill-meter::before{
+        transition: none;
+        transform: none;
+    }
+}
 /* =========================================================
    12. CONTACT
 ========================================================= */
@@ -1163,11 +1324,6 @@ section{
         font-size: 1.7rem;
     }
 }
-
-
-/* =========================================================
-   16. REDUCED MOTION
-========================================================= */
 @media (prefers-reduced-motion: reduce){
     .float-badge{ animation: none; }
     .typing-text::after{ animation: none; }
