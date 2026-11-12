@@ -473,26 +473,75 @@
     </ol>
 </section>
 
-    <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me</span></h2>
+    <section class="Contact" id="Contact" aria-labelledby="contact-heading">
+        <h2 class="heading" id="contact-heading">Contact <span>Me</span></h2>
+        <p class="projects-subtitle">
+            Got a data project, system idea, or collaboration opportunity? Pick a topic, write a short message, and i'll get back to you as soon as possible.
+        </p>
 
-        <form action="#">
+        <div class="contact-layout">
 
-            <div class="input-box">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email">
-            </div>
-            <div class="input-box">
-                <input type="number"
-                placeholder="Phone Number">
-                <input type="text"
-                placeholder="Subject">
-            </div>
+            <aside class="contact-info">
+                <p class="contact-status">Open to Internships &amp; project work</p>
+                <h3>Let&rsquo;s turn your idea into something that works.</h3>
+                <p>
+                    From organizing data to designing and testing apps,
+                    Tell us ypur needs and we'll figure out the first steps together.
+                </p>
 
-            <textarea name="" id="" cols="30"
-            rows="10" placeholder="Your Message"> </textarea>
-            <input type="submit" value="Send Message" class="btn">
-        </form>
+                <ul class="contact-list">
+                    <li>
+                        <a href="ekaekasaputra731@gmail.com">
+                            <i class='bx bx-envelope'></i>
+                            <div><small>Email</small><strong>ekaekasaputra731@gmail.com</strong></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact">
+                            <i class='bx bx-map'></i>
+                            <div><small>Location</small><strong>Tangerang, Indonesia</strong></div>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="contact-social">
+                    <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                    <a href="#" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                    <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                </div>
+            </aside>
+
+            <form class="contact-form" action="#" method="post">
+
+                <fieldset class="topic-group">
+                    <legend>what is this about?</legend>
+                    <div class="topic-chips">
+                        <label class="chip"><input type="radio" name="topic" value="Data & BI" required><span>Data &amp; BI</span></label>
+                        <label class="chip"><input type="radio" name="topic" value="System Analysis" required><span>Data &amp; BI</span></label>
+                        <label class="chip"><input type="radio" name="topic" value="Development" required><span>Data &amp; BI</span></label>
+                        <label class="chip"><input type="radio" name="topic" value="QA" required><span>Data &amp; BI</span></label>
+                        <label class="chip"><input type="radio" name="topic" value="Other" required><span>Data &amp; BI</span></label>
+                    </div>
+                </fieldset>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="c-name">Name</label>
+                        <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="field">
+                        <label for="c-message">Message</label>
+                        <textarea id="c-message" name="message" maxlength="500" placeholder="Describe your needs or requirements" required></textarea>
+                        <p class="field-count"><output id="msg-count">0</output>/500</p>
+                    </div>
+
+                    <div class="form-footer">
+                        <p>I will reply as quickly as possible.</p>
+                        <button type="submit" class="btn">Send Message <i class='bx bx-send'></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </section>
 
     <footer class="footer">

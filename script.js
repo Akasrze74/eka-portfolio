@@ -272,3 +272,12 @@ document.querySelectorAll(".typing-text").forEach(startTyping);
     }, { threshold: 0.25 });
     io.observe(section);
 })();
+
+(function () {
+    const area = document.querySelector(".contact-form textarea");
+    const out = document.getElementById("msg-count");
+    if (!area || !out) return;
+    const update = () => { out.textContent = area.value.length; };
+    area.addEventListener("input", update);
+    update();
+})();
