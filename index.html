@@ -473,76 +473,122 @@
     </ol>
 </section>
 
-    <section class="Contact" id="Contact" aria-labelledby="contact-heading">
-        <h2 class="heading" id="contact-heading">Contact <span>Me</span></h2>
-        <p class="projects-subtitle">
-            Got a data project, system idea, or collaboration opportunity? Pick a topic, write a short message, and i'll get back to you as soon as possible.
-        </p>
+<!-- Ganti seluruh <section class="contact"> dengan ini.
+     Form: isi action/method (mis. Formspree) ATAU tambahkan data-endpoint="https://formspree.io/f/ID_ANDA" pada <form>. -->
+        <section class="contact" id="contact" aria-labelledby="contact-heading">
 
-        <div class="contact-layout">
-
-            <aside class="contact-info">
-                <p class="contact-status">Open to Internships &amp; project work</p>
-                <h3>Let&rsquo;s turn your idea into something that works.</h3>
-                <p>
-                    From organizing data to designing and testing apps,
-                    Tell us ypur needs and we'll figure out the first steps together.
+            <div class="contact-head">
+                <h2 class="heading" id="contact-heading">Let&rsquo;s Work <span>Together</span></h2>
+                <p class="projects-subtitle">
+                    Have a project in mind or looking for a professional connection?
+                    Feel free to reach out. I&rsquo;d be happy to connect.
                 </p>
-
-                <ul class="contact-list">
-                    <li>
-                        <a href="ekaekasaputra731@gmail.com">
-                            <i class='bx bx-envelope'></i>
-                            <div><small>Email</small><strong>ekaekasaputra731@gmail.com</strong></div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#contact">
-                            <i class='bx bx-map'></i>
-                            <div><small>Location</small><strong>Tangerang, Indonesia</strong></div>
-                        </a>
-                    </li>
-                </ul>
-
-                <div class="contact-social">
-                    <a href="#" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-                    <a href="#" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-                    <a href="#" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
-                </div>
-            </aside>
-
-            <form class="contact-form" action="#" method="post">
-
-                <fieldset class="topic-group">
-                    <legend>what is this about?</legend>
-                    <div class="topic-chips">
-                        <label class="chip"><input type="radio" name="topic" value="Data & BI" required><span>Data &amp; BI</span></label>
-                        <label class="chip"><input type="radio" name="topic" value="System Analysis" required><span>System Analysis</span></label>
-                        <label class="chip"><input type="radio" name="topic" value="Development" required><span>Development</span></label>
-                        <label class="chip"><input type="radio" name="topic" value="QA" required><span>QA</span></label>
-                        <label class="chip"><input type="radio" name="topic" value="Other" required><span>Other</span></label>
+            </div>
+        
+            <div class="contact-layout">
+        
+                <!-- Panel informasi -->
+                <aside class="contact-info">
+                    <div class="info-top">
+                        <div class="contact-status">Open to Opportunities</div>
+                        <h3>Get in Touch!</h3>
+                        <p>
+                            I&rsquo;m open to internship opportunities, professional connections,
+                            and meaningful collaborations in technology and business.
+                        </p>
+                        <ul class="info-tags" aria-label="Best for">
+                            <li>Internships</li>
+                            <li>Professional connections</li>
+                            <li>Collaboration</li>
+                        </ul>
                     </div>
-                </fieldset>
-
-                <div class="field-row">
-                    <div class="field">
-                        <label for="c-name">Name</label>
-                        <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Your Name" required>
+        
+                    <div class="info-bottom">
+                        <ul class="contact-list">
+                            <li class="contact-row">
+                                <a class="row-link" href="mailto:ekaekasaputra731@gmail.com">
+                                    <i class='bx bx-envelope'></i>
+                                    <span class="row-text"><small>Email</small><strong>ekaekasaputra731@gmail.com</strong></span>
+                                </a>
+                                <button type="button" class="copy-btn" data-copy="ekaekasaputra731@gmail.com"
+                                        aria-label="Copy email address" title="Copy email">
+                                    <i class='bx bx-copy'></i>
+                                </button>
+                            </li>
+                            <li class="contact-row">
+                                <div class="row-link">
+                                    <i class='bx bx-map'></i>
+                                    <span class="row-text"><small>Location</small><strong>Tangerang, Indonesia</strong></span>
+                                </div>
+                            </li>
+                        </ul>
+        
+                        <div class="social-block">
+                            <p class="social-label">Find me on</p>
+                            <div class="contact-social">
+                                <a href="https://www.linkedin.com/in/eka-saputra-75152b347" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                                <a href="https://github.com/Akasrze74" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                                <a href="https://www.instagram.com/sptrakaa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                            </div>
+                        </div>
                     </div>
+                </aside>
+        
+                <!-- Formulir -->
+                <form class="contact-form" id="contactForm" action="#" method="post">
+        
+                    <div class="form-heading">
+                        <span class="form-label">Contact Form</span>
+                        <h3>Send Me a Message</h3>
+                        <p>Fill in the details below and I&rsquo;ll get back to you.</p>
+                    </div>
+        
+                    <div class="fp" aria-live="polite">
+                        <div class="fp-steps" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                        <p class="fp-text"><strong id="fp-count">0/4 completed</strong><em id="fp-text">Fill in the form to begin</em></p>
+                    </div>
+        
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="c-name">Full Name</label>
+                            <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+                        </div>
+                        <div class="field">
+                            <label for="c-email">Email</label>
+                            <input id="c-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+                        </div>
+                    </div>
+        
                     <div class="field">
-                        <label for="c-message">Message</label>
-                        <textarea id="c-message" name="message" maxlength="500" placeholder="Describe your needs or requirements" required></textarea>
+                        <label for="c-topic">Subject</label>
+                        <select id="c-topic" name="topic" required>
+                            <option value="" disabled selected>Select a topic</option>
+                            <option value="Data Analytics & BI">Data Analytics &amp; BI</option>
+                            <option value="UI/UX & Development">UI/UX &amp; Development</option>
+                            <option value="System Analysis">System Analysis</option>
+                            <option value="Software Quality Assurance">Software Quality Assurance</option>
+                            <option value="Internship Opportunity">Internship Opportunity</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+        
+                    <div class="field field-message">
+                        <label for="c-message">Your Message</label>
+                        <textarea id="c-message" name="message" maxlength="500"
+                                  placeholder="Tell me a little about your inquiry..." required></textarea>
                         <p class="field-count"><output id="msg-count">0</output>/500</p>
                     </div>
-
+        
                     <div class="form-footer">
-                        <p>I will reply as quickly as possible.</p>
-                        <button type="submit" class="btn">Send Message <i class='bx bx-send'></i></button>
+                        <div class="form-note">
+                            <p><i class="bx bx-shield-quarter"></i>Your information will be kept confidential.</p>
+                            <p class="form-status" role="status" aria-live="polite"></p>
+                        </div>
+                        <button type="submit" class="btn">Send Message <i class="bx bx-send"></i></button>
                     </div>
-                </div>
-            </form>
-        </div>
-    </section>
+                </form>
+            </div>
+        </section>
 
     <footer class="footer">
 

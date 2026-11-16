@@ -1,200 +1,132 @@
-const track = document.querySelector(".service-track");
+(function () {
+    const track = document.querySelector(".service-track");
+    const nextBtn = document.getElementById("nextService");
+    const prevBtn = document.getElementById("prevService");
+    if (!track || !nextBtn || !prevBtn) return;
 
-const originalCards = Array.from(
-    document.querySelectorAll(".service-track .services-box")
-);
+    const visibleCards = 3;
+    const originalCards = Array.from(track.querySelectorAll(".services-box"));
+    const totalCards = originalCards.length;
+    if (totalCards === 0) return;
 
-const nextBtn = document.getElementById("nextService");
-const prevBtn = document.getElementById("prevService");
+    originalCards.slice(0, visibleCards)
+        .map(card => card.cloneNode(true))
+        .forEach(card => track.appendChild(card));
 
+    originalCards.slice(-visibleCards)
+        .map(card => card.cloneNode(true))
+        .reverse()
+        .forEach(card => track.prepend(card));
 
-const visibleCards = 3;
+    let currentIndex = visibleCards;
+    let isMoving = false;
 
-const totalCards = originalCards.length;
-
-const firstClones = originalCards
-    .slice(0, visibleCards)
-    .map(card => card.cloneNode(true));
-
-
-const lastClones = originalCards
-    .slice(-visibleCards)
-    .map(card => card.cloneNode(true));
-
-lastClones.reverse().forEach(card => {
-
-    track.prepend(card);
-
-});
-
-firstClones.forEach(card => {
-
-    track.appendChild(card);
-
-});
-
-let currentIndex = visibleCards;
-
-let isMoving = false;
-
-
-function getMoveAmount() {
-
-    const card =
-        track.querySelector(".services-box");
-
-    const style =
-        window.getComputedStyle(track);
-
-    const gap =
-        parseFloat(style.gap) || 0;
-
-    return card.offsetWidth + gap;
-}
-
-
-function updateSlider(animation = true) {
-
-    const moveAmount = getMoveAmount();
-
-    if (animation) {
-
-        track.style.transition =
-            "transform 0.5s ease";
-
-    } else {
-
-        track.style.transition = "none";
-
+    function getMoveAmount() {
+        const card = track.querySelector(".services-box");
+        const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+        return card.offsetWidth + gap;
     }
 
-    track.style.transform =
-        `translateX(-${currentIndex * moveAmount}px)`;
-}
-
-updateSlider(false);
-
-nextBtn.addEventListener("click", () => {
-
-    if (isMoving) return;
-
-    isMoving = true;
-
-    currentIndex++;
-
-    updateSlider(true);
-
-});
-
-prevBtn.addEventListener("click", () => {
-
-    if (isMoving) return;
-
-    isMoving = true;
-
-    currentIndex--;
-
-    updateSlider(true);
-
-});
-
-track.addEventListener("transitionend", () => {
-
-    if (
-        currentIndex >=
-        totalCards + visibleCards
-    ) {
-
-        currentIndex = visibleCards;
-
-        updateSlider(false);
+    function updateSlider(animation = true) {
+        track.style.transition = animation ? "transform 0.5s ease" : "none";
+        track.style.transform = `translateX(-${currentIndex * getMoveAmount()}px)`;
     }
 
-    if (currentIndex <= 0) {
-
-        currentIndex = totalCards;
-
-        updateSlider(false);
+    function move(step) {
+        if (isMoving) return;
+        isMoving = true;
+        currentIndex += step;
+        updateSlider(true);
     }
-
-
-    isMoving = false;
-
-});
-
-window.addEventListener("resize", () => {
 
     updateSlider(false);
+    nextBtn.addEventListener("click", () => move(1));
+    prevBtn.addEventListener("click", () => move(-1));
 
-});
+    track.addEventListener("transitionend", e => {
+        // abaikan transisi anak (mis. hover kartu) yang ikut "menggelembung" ke track
+        if (e.target !== track) return;
 
-const menuIcon = document.querySelector('#menu-icon');
-const navbar   = document.querySelector('.navbar');
+        if (currentIndex >= totalCards + visibleCards) {
+            currentIndex = visibleCards;
+            updateSlider(false);
+        }
+        if (currentIndex <= 0) {
+            currentIndex = totalCards;
+            updateSlider(false);
+        }
+        isMoving = false;
+    });
 
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('header nav a');
+    window.addEventListener("resize", () => updateSlider(false));
+})();
 
-window.addEventListener('scroll', () => {
-  const top = window.scrollY; 
+/* 2. Menu mobile + penanda menu aktif saat scroll */
+(function () {
+    const menuIcon = document.querySelector("#menu-icon");
+    const navbar = document.querySelector(".navbar");
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("header nav a");
 
-  sections.forEach(sec => {
-    const offset = sec.offsetTop - 150;  
-    const height = sec.offsetHeight;     
-    const id     = sec.getAttribute('id');
+    window.addEventListener("scroll", () => {
+        const top = window.scrollY;
+        sections.forEach(sec => {
+            const offset = sec.offsetTop - 150;
+            const id = sec.getAttribute("id");
+            if (top >= offset && top < offset + sec.offsetHeight) {
+                navLinks.forEach(link => link.classList.remove("active"));
+                const activeLink = document.querySelector(`header nav a[href="#${id}"]`);
+                if (activeLink) activeLink.classList.add("active");
+            }
+        });
+    });
 
-    if (top >= offset && top < offset + height) {
-      navLinks.forEach(link => link.classList.remove('active'));
-
-      const activeLink = document.querySelector(`header nav a[href="#${id}"]`);
-      if (activeLink) activeLink.classList.add('active');
+    if (menuIcon && navbar) {
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle("bx-x");
+            navbar.classList.toggle("active");
+        };
     }
-  });
-});
+})();
 
-if (menuIcon) {
-  menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');   
-    navbar.classList.toggle('active');
-  };
-}
+/* 3. Efek typing (kata diatur lewat data-words di HTML) */
+(function () {
+    function startTyping(el) {
+        if (!el.dataset.words) return;
+        const words = JSON.parse(el.dataset.words);
 
-function startTyping(el) {
-    const words = JSON.parse(el.dataset.words);
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        el.textContent = words[0];
-        return;
-    }
-
-    let w = 0;
-    let c = 0;
-    let deleting = false;
-
-    function tick() {
-        const word = words[w];
-        c += deleting ? -1 : 1;
-        el.textContent = word.slice(0, c);
-
-        let delay = deleting ? 40 : 90;
-
-        if (!deleting && c === word.length) {
-            deleting = true;
-            delay = 1400;
-        } else if (deleting && c === 0) {
-            deleting = false;
-            w = (w + 1) % words.length;
-            delay = 400;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            el.textContent = words[0];
+            return;
         }
 
-        setTimeout(tick, delay);
+        let w = 0;
+        let c = 0;
+        let deleting = false;
+
+        function tick() {
+            const word = words[w];
+            c += deleting ? -1 : 1;
+            el.textContent = word.slice(0, c);
+
+            let delay = deleting ? 40 : 90;
+            if (!deleting && c === word.length) {
+                deleting = true;
+                delay = 1400;
+            } else if (deleting && c === 0) {
+                deleting = false;
+                w = (w + 1) % words.length;
+                delay = 400;
+            }
+            setTimeout(tick, delay);
+        }
+        tick();
     }
 
-    tick();
-}
+    document.querySelectorAll(".typing-text").forEach(startTyping);
+})();
 
-document.querySelectorAll(".typing-text").forEach(startTyping);
-
-/* Tempel di script.js. Radar dihitung dari --level pada setiap .skill-item. */
+/* 4. Skills: radar dihitung dari --level pada setiap .skill-item */
 (function () {
     const section = document.querySelector(".skills");
     const svg = document.getElementById("radar");
@@ -217,13 +149,11 @@ document.querySelectorAll(".typing-text").forEach(startTyping);
     };
     const toPoints = pts => pts.map(p => p.map(n => n.toFixed(1)).join(",")).join(" ");
 
-    // Teks level dan jeda animasi bertahap
     items.forEach((it, i) => {
         it.style.setProperty("--n", i);
         it.querySelector(".skill-level").textContent = "Level " + levels[i] + "/5";
     });
 
-    // Cincin, sumbu, dan label
     for (let l = 1; l <= MAX; l++) {
         svg.append(make("polygon", { class: "radar-ring", points: toPoints(items.map((_, i) => point(i, l))) }));
     }
@@ -240,7 +170,6 @@ document.querySelectorAll(".typing-text").forEach(startTyping);
         svg.append(t);
     });
 
-    // Bentuk data dan titik
     const shape = make("polygon", { class: "radar-shape" });
     svg.append(shape);
     const dots = items.map(() => svg.appendChild(make("circle", { class: "radar-dot", r: 5 })));
@@ -273,11 +202,82 @@ document.querySelectorAll(".typing-text").forEach(startTyping);
     io.observe(section);
 })();
 
+/* 5. Contact: salin email, progres 4 langkah, penghitung karakter, kirim opsional */
 (function () {
-    const area = document.querySelector(".contact-form textarea");
-    const out = document.getElementById("msg-count");
-    if (!area || !out) return;
-    const update = () => { out.textContent = area.value.length; };
-    area.addEventListener("input", update);
+    document.querySelectorAll("[data-copy]").forEach(function (btn) {
+        const icon = btn.querySelector("i");
+        btn.addEventListener("click", async function () {
+            try {
+                await navigator.clipboard.writeText(btn.dataset.copy);
+            } catch (err) {
+                window.location.href = "mailto:" + btn.dataset.copy;   // cadangan jika clipboard diblokir
+                return;
+            }
+            icon.className = "bx bx-check";
+            btn.classList.add("is-copied");
+            btn.title = "Copied!";
+            setTimeout(function () {
+                icon.className = "bx bx-copy";
+                btn.classList.remove("is-copied");
+                btn.title = "Copy email";
+            }, 1800);
+        });
+    });
+
+    const form = document.getElementById("contactForm");
+    if (!form) return;
+
+    const segments = form.querySelectorAll(".fp-steps span");
+    const countEl = document.getElementById("fp-count");
+    const textEl = document.getElementById("fp-text");
+    const charEl = document.getElementById("msg-count");
+    const field = n => form.querySelector('[name="' + n + '"]');
+    const messages = ["Fill in the form to begin", "Good start", "Halfway there", "Almost done", "Ready to send"];
+    const checks = [
+        () => field("name").value.trim() !== "",
+        () => field("email").value.trim() !== "" && field("email").validity.valid,
+        () => field("topic").value !== "",
+        () => field("message").value.trim() !== ""
+    ];
+
+    function update() {
+        const done = checks.filter(fn => fn()).length;
+        segments.forEach((s, i) => s.classList.toggle("is-done", i < done));
+        countEl.textContent = done + "/" + checks.length + " completed";
+        textEl.textContent = messages[done];
+        form.classList.toggle("is-ready", done === checks.length);
+        charEl.textContent = field("message").value.length;
+    }
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
     update();
+
+    // Kirim tanpa pindah halaman, HANYA jika <form> punya data-endpoint
+    const status = form.querySelector(".form-status");
+    form.addEventListener("submit", async function (e) {
+        const url = form.dataset.endpoint;
+        if (!url) return;                       // tanpa endpoint: kirim biasa (action)
+        e.preventDefault();
+        const send = form.querySelector('button[type="submit"]');
+        send.disabled = true;
+        status.className = "form-status";
+        status.textContent = "Sending...";
+        try {
+            const res = await fetch(url, {
+                method: "POST",
+                body: new FormData(form),
+                headers: { Accept: "application/json" }
+            });
+            if (!res.ok) throw new Error("bad response");
+            form.reset();
+            update();
+            status.classList.add("is-ok");
+            status.textContent = "Thanks! Your message has been sent.";
+        } catch (err) {
+            status.classList.add("is-error");
+            status.textContent = "Something went wrong. Please try again or email me directly.";
+        } finally {
+            send.disabled = false;
+        }
+    });
 })();
