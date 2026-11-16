@@ -473,8 +473,6 @@
     </ol>
 </section>
 
-<!-- Ganti seluruh <section class="contact"> dengan ini.
-     Form: isi action/method (mis. Formspree) ATAU tambahkan data-endpoint="https://formspree.io/f/ID_ANDA" pada <form>. -->
         <section class="contact" id="contact" aria-labelledby="contact-heading">
 
             <div class="contact-head">
@@ -590,34 +588,61 @@
             </div>
         </section>
 
-    <footer class="footer">
+     <footer class="ft" aria-label="Site footer">
 
-        <div class="social">
-            <a href="#"><i class='bx bxl-linkedin'></i></a>
-            <a href="#"><i class='bx bxl-instagram'></i></a>
-            <a href="#"><i class='bx bxl-github'></i></a>
+        <div class="ft-inner">
+    
+            <!-- Brand -->
+            <div class="ft-brand">
+                <a href="#home" class="ft-logo" aria-label="Eka Saputra, back to top">Eka <span>Saputra</span></a>
+                <p>
+                    Information Systems student at Universitas Bakrie, focused on
+                    data analytics, business intelligence, and quality software.
+                </p>
+                <div class="ft-social">
+                    <a href="https://www.linkedin.com/in/eka-saputra-75152b347" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://github.com/Akasrze74" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.instagram.com/sptrakaa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                </div>
+            </div>
+    
+            <!-- Navigasi -->
+            <nav class="ft-nav" aria-label="Footer navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+    
+            <!-- Kontak -->
+            <div class="ft-contact">
+                <h3>Get in touch</h3>
+                <ul>
+                    <li>
+                        <i class='bx bx-envelope'></i>
+                        <a href="mailto:ekaekasaputra731@gmail.com">ekaekasaputra731@gmail.com</a>
+                    </li>
+                    <li>
+                        <i class='bx bx-map'></i>
+                        <span>Tangerang, Indonesia</span>
+                    </li>
+                </ul>
+                <p class="ft-status">Open to opportunities</p>
+            </div>
         </div>
-
-        <ul class="list">
-            <li>
-                <a href="#">FAQ</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">About Me</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-            <li>
-                <a href="#">Privacy Policy</a>
-            </li>
-        </ul>
-        <p class="copyright">
-            @ Eka Saputra | All Rights Reserved
-        </p>
+    
+        <div class="ft-mark" aria-hidden="true">Eka Saputra</div>
+    
+        <div class="ft-bottom">
+            <p>&copy; <span id="ft-year">2026</span> Eka Saputra. All rights reserved.</p>
+            <p>Built with HTML, CSS &amp; JavaScript</p>
+            <a href="#home" class="ft-top" aria-label="Back to top"><i class='bx bx-up-arrow-alt'></i></a>
+        </div>
     </footer>
 
     <script src="script.js"></script>

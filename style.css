@@ -1359,10 +1359,630 @@ section{
 .contact-form.is-ready .btn{
     box-shadow: 0 0 0 0.4rem color-mix(in srgb, var(--gold-color) 40%, transparent);
 }
+
+/* =========================================================
+   13. FOOTER
+========================================================= */
+.ft{
+    position: relative;
+    overflow: hidden;
+    padding: 0 9%;
+    color: #E8EDF5;
+    background: var(--main-color, #14274E);
+}
+.ft::before{                           
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.3rem;
+    background: linear-gradient(90deg, transparent, var(--gold-color, #C9A96E), transparent);
+    opacity: 0.7;
+}
+.ft::after{                            
+    content: "";
+    position: absolute;
+    right: -10rem;
+    bottom: -12rem;
+    width: 30rem;
+    height: 30rem;
+    border: 0.6rem solid var(--gold-color, #C9A96E);
+    border-radius: 50%;
+    opacity: 0.08;
+    pointer-events: none;
+}
+.ft > *{
+    position: relative;
+    z-index: 1;
+}
+:where(.ft a){                         
+    color: inherit;
+}
+.ft-mark{                              
+    position: absolute;
+    left: 50%;
+    bottom: 7rem;
+    z-index: 0;
+    max-width: 100%;
+    font-size: clamp(6rem, 15vw, 24rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.09);
+    transform: translateX(-50%);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ----- Tiga kolom ----- */
+.ft-inner{
+    max-width: 132rem;
+    margin: 0 auto;
+    padding: 7rem 0 4.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: 4rem;
+}
+.ft h3{
+    margin-bottom: 1.8rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Brand */
+.ft-logo{
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+.ft-logo span{
+    color: var(--gold-color, #C9A96E);
+}
+.ft-logo:hover{
+    transform: scale(1.04);
+}
+.ft-brand p{
+    max-width: 38rem;
+    margin: 1.4rem 0 2.4rem;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+}
+.ft-social{
+    display: flex;
+    gap: 1.2rem;
+}
+.ft-social a{
+    display: grid;
+    place-items: center;
+    width: max(4.4rem, 44px);
+    height: max(4.4rem, 44px);
+    font-size: 2.1rem;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+.ft-social a:hover{
+    color: var(--main-color, #14274E);
+    background: var(--gold-color, #C9A96E);
+    border-color: var(--gold-color, #C9A96E);
+    transform: translateY(-0.3rem);
+}
+
+/* Navigasi dan kontak */
+.ft-nav ul,
+.ft-contact ul{
+    list-style: none;
+    display: grid;
+    gap: 1.2rem;
+}
+.ft-nav a{
+    position: relative;
+    display: inline-block;
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.3s ease;
+}
+.ft-nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.3rem;
+    width: 0;
+    height: 0.2rem;
+    background: var(--gold-color, #C9A96E);
+    transition: width 0.3s ease;
+}
+.ft-nav a:hover{
+    color: #fff;
+}
+.ft-nav a:hover::after{
+    width: 100%;
+}
+.ft-contact li{
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+}
+.ft-contact li span{
+    color: inherit;
+}
+.ft-contact i{
+    flex: none;
+    font-size: 2rem;
+    color: var(--gold-color, #C9A96E);
+}
+.ft-contact a{
+    color: inherit;
+    overflow-wrap: anywhere;
+    transition: color 0.3s ease;
+}
+.ft-contact a:hover{
+    color: #fff;
+}
+.ft-status{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 99px;
+}
+.ft-status::before{
+    content: "";
+    flex: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: var(--gold-color, #C9A96E);
+}
+
+.ft a:focus-visible{
+    outline: 2px solid var(--gold-color, #C9A96E);
+    outline-offset: 3px;
+}
+
+/* ----- Bar bawah ----- */
+.ft-bottom{
+    max-width: 132rem;
+    margin: 0 auto;
+    padding: 2.4rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.ft-bottom p{
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+.ft-bottom p span{
+    color: inherit;
+}
+.ft-top{
+    display: grid;
+    place-items: center;
+    width: max(4.4rem, 44px);
+    height: max(4.4rem, 44px);
+    font-size: 2.4rem;
+    color: var(--main-color, #14274E);
+    background: var(--gold-color, #C9A96E);
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ft-top:hover{
+    transform: translateY(-0.3rem);
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 992px){
+
+    .shape-circle{  --ratio: 1 / 1; --radius: 50%; }
+    .shape-oval{    --ratio: 4 / 5; --radius: 50%; }
+    .shape-arch{    --ratio: 4 / 5; --radius: 50% 50% 3rem 3rem / 38% 38% 3rem 3rem; }
+    .shape-rounded{ --ratio: 4 / 5; --radius: 3rem; }
+    .shape-blob{    --ratio: 4 / 5; --radius: 58% 42% 52% 48% / 50% 58% 42% 50%; }
+
+    /* ----- HOME ----- */
+    .home-img{
+        box-shadow:
+            var(--photo-offset) var(--photo-offset) 0 0 color-mix(in srgb, var(--main-color) 14%, transparent),
+            0 2rem 5rem color-mix(in srgb, var(--main-color) 22%, transparent);
+    }
+    .home-img::before{                 
+        content: "";
+        position: absolute;
+        top: -2rem;
+        left: -3rem;
+        width: 8rem;
+        height: 8rem;
+        border: 0.6rem solid var(--gold-color);
+        border-radius: 50%;
+        opacity: 0.25;
+        z-index: -1;
+    }
+    .home-img::after{                 
+        content: "";
+        position: absolute;
+        left: -4.5rem;
+        bottom: -3.5rem;
+        width: 11rem;
+        height: 11rem;
+        background-image: radial-gradient(var(--main-color) 2px, transparent 2.5px);
+        background-size: 1.6rem 1.6rem;
+        opacity: 0.35;
+        z-index: -1;
+    }
+
+    /* ----- ABOUT ----- */
+    .about-img{
+        box-shadow:
+            calc(var(--photo-offset) * -1) var(--photo-offset) 0 0 color-mix(in srgb, var(--main-color) 14%, transparent),
+            0 2rem 5rem color-mix(in srgb, var(--main-color) 22%, transparent);
+    }
+    .orn{
+        display: block;
+        position: absolute;
+        pointer-events: none;
+        z-index: 0;
+    }
+    .orn-blob{                        
+        inset: -20%;
+        background: radial-gradient(circle, color-mix(in srgb, var(--main-color) 20%, transparent), transparent 68%);
+    }
+    .orn-dots{
+        right: -4rem;
+        bottom: -3rem;
+        width: 12rem;
+        height: 12rem;
+        background-image: radial-gradient(var(--main-color) 2px, transparent 2.5px);
+        background-size: 1.6rem 1.6rem;
+        opacity: 0.35;
+    }
+    .orn-ring{
+        top: -2.5rem;
+        right: -2.5rem;
+        width: 9rem;
+        height: 9rem;
+        border: 0.6rem solid var(--gold-color);
+        border-radius: 50%;
+        opacity: 0.22;
+    }
+
+    .float-badge{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        position: absolute;
+        z-index: 2;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        white-space: nowrap;
+        color: var(--text-color);
+        background: var(--card-color);
+        border: 2px solid var(--main-color);
+        border-radius: 99px;
+        box-shadow: 0 0.8rem 2rem rgba(20, 39, 78, 0.15);
+        animation: photo-float 5s ease-in-out infinite;
+    }
+    .float-badge::before{
+        content: "";
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 50%;
+        background: var(--gold-color);
+    }
+    .badge-1{ top: 10%;   left: -16%; }
+    .badge-2{ top: 46%;   right: -22%; animation-delay: 1.2s; }
+    .badge-3{ bottom: 8%; left: -10%;  animation-delay: 2.4s; }
+
+    /* Pola titik besar di sudut section About */
+    .about::after{
+        content: "";
+        position: absolute;
+        top: 9rem;
+        right: 4%;
+        width: 18rem;
+        height: 18rem;
+        background-image: radial-gradient(var(--main-color) 2px, transparent 2.5px);
+        background-size: 2rem 2rem;
+        opacity: 0.18;
+        pointer-events: none;
+    }
+}
+
+@keyframes photo-float{
+    0%, 100%{ transform: translateY(0); }
+    50%{      transform: translateY(-1rem); }
+}
  
 /* ==================================================
    RESPONSIVE
 ================================================== */
+/* =========================================================
+   15. RESPONSIVE (urut dari besar ke kecil, jangan diacak)
+========================================================= */
+
+/* ---------- ≤ 1200px: laptop kecil ---------- */
+@media (max-width: 1200px){
+    html{
+        font-size: 55%;
+    }
+    .projects-container{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+        padding-bottom: 7rem;
+        margin: 0 5rem;
+    }
+    .projects-container .projects-box{
+        height: 40rem;
+    }
+}
+
+/* ---------- ≤ 991px: tablet ---------- */
+@media (max-width: 991px){
+    section{
+        padding: 10rem 3% 2rem;
+    }
+    .services{
+        padding-bottom: 7rem;
+    }
+
+    /* Foto menjadi lingkaran */
+    :root{
+        --home-photo-width:  clamp(240px, 32vw, 300px);
+        --about-photo-width: clamp(240px, 32vw, 300px);
+        --home-photo-ratio:  1 / 1;
+        --about-photo-ratio: 1 / 1;
+        --photo-ring: 0.8rem;
+        --photo-gap:  0.6rem;
+    }
+
+    .home{
+        gap: 3rem;
+        padding: 12rem 5% 5rem;
+    }
+    .home-rectangle{
+        width: 27%;
+    }
+}
+
+/* ---------- ≤ 895px: navbar mobile + About bertumpuk ---------- */
+@media (max-width: 895px){
+
+    /* Navbar */
+    #menu-icon{
+        display: block;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 50%;
+        padding: 1rem 3%;
+        background: var(--second-bg-color);
+        border-left: 2px solid var(--main-color);
+        border-bottom: 2px solid var(--main-color);
+        border-bottom-left-radius: 2rem;
+        display: none;
+    }
+    .navbar.active{
+        display: block;
+    }
+    .navbar a{
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+    }
+
+    /* Judul section */
+    .services h2,
+    .projects .heading{
+        margin-bottom: 3rem;
+    }
+
+    /* About: foto di atas, semua konten di tengah */
+    :root{
+        --about-photo-width: clamp(220px, 60vw, 280px);
+    }
+    .about{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        gap: 2.5rem;
+        min-height: auto;
+        padding: 10rem 6% 5rem;
+    }
+    .about-rectangle{
+        display: none;
+    }
+    .about-content{
+        flex: none;
+        width: 100%;
+        max-width: 56rem;
+        margin: 0 auto;
+    }
+    .about-content .heading{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .about-content .typing-line{
+        justify-content: center;
+        font-size: 1.9rem;
+        min-height: 3em;
+        margin: 0.4rem 0 1.2rem;
+    }
+    .about-content p{
+        font-size: 1.5rem;
+        line-height: 1.8;
+        margin: 0 auto 1.5rem;
+    }
+    .about-content .btn{
+        margin-top: 1rem;
+    }
+    .about-info li{
+        text-align: center;
+        border-left: none;
+        border-top: 0.4rem solid var(--gold-color);
+    }
+}
+
+/* ---------- ≤ 768px: Home bertumpuk ---------- */
+@media (max-width: 768px){
+
+    :root{
+        --home-photo-width: clamp(220px, 60vw, 280px);
+    }
+
+    .home{
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        gap: 2.5rem;
+        min-height: auto;
+        padding: 11rem 6% 5rem;
+    }
+    /* Band biru full-width, tingginya mengikuti ukuran foto */
+    .home-rectangle{
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: calc(11rem + var(--home-photo-width) * 0.6);
+        border-radius: 0 0 4rem 4rem;
+    }
+    .home-content{
+        max-width: 100%;
+    }
+    .home-greeting,
+    .home-subtitle{
+        font-size: 2rem;
+    }
+    .home-content h1{
+        font-size: clamp(4rem, 12vw, 5rem);
+        margin: 0.3rem 0 1rem;
+    }
+    .home-content p:not(.home-greeting){
+        font-size: 1.5rem;
+        line-height: 1.8;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .home-content .typing-line{
+        justify-content: center;
+        font-size: 1.9rem;
+        min-height: 3em;
+        margin: 0.6rem 0 1.2rem;
+    }
+}
+
+/* ---------- ≤ 650px: Projects satu kolom ---------- */
+@media (max-width: 650px){
+    .projects .heading{
+        margin-bottom: 1.5rem;
+    }
+    .projects-subtitle{
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+    }
+    .projects-container{
+        grid-template-columns: 1fr;
+    }
+    .projects-container .projects-box{
+        height: 38rem;
+        border-radius: 1.5rem;
+    }
+    .projects-box .projects-info{
+        padding: 2rem;
+    }
+    .projects-info h4{
+        font-size: 2rem;
+    }
+    .projects-info p{
+        font-size: 1.3rem;
+    }
+    .project-tools span{
+        font-size: 1rem;
+    }
+}
+
+/* ---------- ≤ 400px: layar sangat kecil ---------- */
+@media (max-width: 400px){
+    :root{
+        --home-photo-width:  68vw;
+        --about-photo-width: 68vw;
+        --photo-ring: 0.6rem;
+        --photo-gap:  0.4rem;
+    }
+    .about{
+        padding: 9rem 5% 4rem;
+    }
+    .about-content .typing-line{
+        font-size: 1.7rem;
+    }
+}
+
+
+
+/* ===== Responsive: Skills ===== */
+/* ----- Responsive ----- */
+@media (max-width: 991px){
+    .skills-layout{
+        grid-template-columns: 1fr;
+    }
+    .skills-radar{
+        max-width: 56rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 650px){
+    .skill-item{
+        padding: 1.5rem 1.6rem;
+    }
+    .skill-item:hover{
+        transform: none;
+    }
+    .skills-flow li{
+        padding: 0.7rem 1.2rem;
+        font-size: 1.2rem;
+    }
+}
+@media (prefers-reduced-motion: reduce){
+    .skill-meter::before{
+        transition: none;
+        transform: none;
+    }
+}
+
+/* ===== Responsive: Contact ===== */
+/* ==================================================
+   CONTACT RESPONSIVE (ganti seluruh blok RESPONSIVE lama)
+   Urutan wajib dari layar besar ke kecil.
+================================================== */
+
+/* ---------- Laptop kecil (1101-1300px): rapatkan baris kontak ---------- */
 @media (max-width: 1300px){
     .contact-row{
         gap: 0.8rem;
@@ -1384,7 +2004,7 @@ section{
         height: 3.6rem;
     }
 }
- 
+
 /* ---------- Tablet dan di bawahnya (<= 1100px): satu kolom ---------- */
 @media (max-width: 1100px){
     .contact{
@@ -1406,7 +2026,7 @@ section{
         max-width: none;
     }
 }
- 
+
 /* ---------- Mobile (<= 650px) ---------- */
 @media (max-width: 650px){
     .contact{
@@ -1431,7 +2051,7 @@ section{
     .contact-layout{
         gap: 2rem;
     }
- 
+
     /* Panel */
     .contact-info{
         gap: 2.4rem;
@@ -1467,7 +2087,7 @@ section{
         width: max(4.2rem, 44px);
         height: max(4.2rem, 44px);
     }
- 
+
     /* Form */
     .contact-form{
         gap: 1.8rem;
@@ -1506,7 +2126,7 @@ section{
         width: 100%;
     }
 }
- 
+
 /* ---------- Layar sangat kecil (<= 400px) ---------- */
 @media (max-width: 400px){
     .contact{
@@ -1528,7 +2148,7 @@ section{
         gap: 1rem;
     }
 }
- 
+
 /* ---------- Layar sentuh: matikan efek hover yang "menempel" ---------- */
 @media (hover: none){
     .contact-social a:hover{
@@ -1538,7 +2158,7 @@ section{
         transform: none;
     }
 }
- 
+
 @media (prefers-reduced-motion: reduce){
     .contact-status::before{
         animation: none;
@@ -1553,4 +2173,67 @@ section{
     .form-footer .btn i{
         transition: none;
     }
+}
+
+/* ===== Responsive: Footer ===== */
+/* ==================================================
+   FOOTER RESPONSIVE (besar ke kecil)
+================================================== */
+@media (max-width: 1100px){
+    .ft-inner{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3.6rem 4rem;
+        padding: 6rem 0 4rem;
+    }
+    .ft-brand{
+        grid-column: 1 / -1;
+    }
+    .ft-brand p{
+        max-width: 56rem;
+    }
+}
+@media (max-width: 650px){
+    .ft{
+        padding: 0 2rem;
+    }
+    .ft-inner{
+        grid-template-columns: minmax(0, 1fr);
+        gap: 3.2rem;
+        padding: 5rem 0 3.5rem;
+    }
+    .ft-nav ul{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.4rem 2rem;
+    }
+    .ft-bottom{
+        flex-direction: column;
+        gap: 1.2rem;
+        padding: 2.4rem 0 3rem;
+        text-align: center;
+    }
+}
+@media (hover: none){
+    .ft-social a:hover,
+    .ft-top:hover,
+    .ft-logo:hover{
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: reduce){
+    .ft-logo,
+    .ft-social a,
+    .ft-nav a,
+    .ft-nav a::after,
+    .ft-contact a,
+    .ft-top{
+        transition: none;
+    }
+}
+
+/* =========================================================
+   16. REDUCED MOTION
+========================================================= */
+@media (prefers-reduced-motion: reduce){
+    .float-badge{ animation: none; }
+    .typing-text::after{ animation: none; }
 }

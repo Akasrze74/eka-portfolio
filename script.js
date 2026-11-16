@@ -1,3 +1,11 @@
+/* =========================================================
+   SCRIPT.JS (rapi): tiap fitur dibungkus fungsi sendiri dan
+   berhenti diam-diam jika elemennya tidak ada di halaman,
+   sehingga satu error tidak mematikan fitur lain.
+   JANGAN ada baris require(...) atau import di file ini.
+========================================================= */
+
+/* 1. Services slider (loop tanpa putus) */
 (function () {
     const track = document.querySelector(".service-track");
     const nextBtn = document.getElementById("nextService");
@@ -280,4 +288,10 @@
             send.disabled = false;
         }
     });
+})();
+
+/* 6. Footer: tahun otomatis */
+(function () {
+    const year = document.getElementById("ft-year");
+    if (year) year.textContent = new Date().getFullYear();
 })();
