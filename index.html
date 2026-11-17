@@ -66,71 +66,96 @@
     </header>
 
     <section class="home" id="home" aria-labelledby="home-heading">
-        <div class="home-rectangle" aria-hidden="true"></div>
 
-        <div class="home-content">
-
-            <h3>Hello, I'm</h3>
-        
-            <h1 id="home-heading">Eka <span>Saputra</span></h1>
-        
-            <h3 class="home-subtitle">
-                Information Systems Student
-            </h3>
-
-            <h3 class="typing-line" aria-label="Interested in UI/UX Designer, Data Analytics, Business Intelligence, System Analysis, and Software Quality Assurance">
-                <span class="typing-label">Interested in</span>
-                <span class="typing-text" aria-hidden="true"
-                      data-words='["Data Analyst","Business Intelligence","Business Analyst", "System Analyst","UI/UX Designer","Quality Assurance"]'></span>
-            </h3>
-            <p>
-                Final-year Information Systems student at Universitas Bakrie, with a strong interest in Data Analytics, Business Intelligence, and technology-driven business solutions.    
-            </p>  
-            <p>
-                I combine analytical thinking, structured problem-solving, and an understanding of business processes to transform information into meaningful insights and practical solutions.
-            </p>
-
-            <div class="social-icons">
-
-                <a href="https://www.linkedin.com/in/eka-saputra-75152b347"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="LinkedIn">
-                    <i class='bx bxl-linkedin'></i>
-                </a>
-        
-                <a href="https://www.instagram.com/sptrakaa/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Instagram">
-                    <i class='bx bxl-instagram'></i>
-                </a>
-        
-                <a href="https://github.com/Akasrze74"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="GitHub">
-                    <i class='bx bxl-github'></i>
-                </a>
-        
-            </div>
-        
-            <a href="assets/CV_Eka_Saputra.pdf"
-               class="btn"
-               target="_blank"
-               rel="noopener noreferrer">
-                Download CV
-            </a>
+        <!-- Layer Ornamen Background -->
+        <div class="home-layer" aria-hidden="true">
+            <span class="orn-big-text">PORTFOLIO</span>
+            <span class="orn-grid"></span>
+            <span class="orn-blob orn-blob--1"></span>
+            <span class="orn-blob orn-blob--2"></span>
         </div>
-        
-        <div class="home-img shape-oval">
-            <img
-                src="assets/home-eka.jpg"
-                alt="Eka Saputra - Information Systems Student"
-                width="380"
-                height="380"
-                decoding="async"
-            >
+    
+        <div class="home-wrapper">
+            <!-- KIRI: Teks & CTA -->
+            <div class="home-content">
+                <!-- Badge -->
+                <div class="hello-badge">
+                    <span class="corner tl"></span>
+                    <span class="corner tr"></span>
+                    <span class="corner bl"></span>
+                    <span class="corner br"></span>
+                    <span class="dot"></span> Hello There!
+                </div>
+    
+                <h1 id="home-heading">
+                    I'm <em>Eka Saputra,</em><br>
+                    Information Systems<br>
+                    Student.
+                </h1>
+    
+                <p class="home-desc">
+                    Final-year student at Universitas Bakrie, with a strong interest in Data Analytics, Business Intelligence, and technology-driven business solutions.
+                </p>
+    
+                <div class="home-cta">
+                    <a href="#projects" class="btn btn-primary">
+                        View My Project <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
+                    </a>
+                    <a href="assets/CV_Eka_Saputra.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        Download CV
+                    </a>
+                </div>
+            </div>
+    
+            <!-- KANAN: Foto & Ornamen Melayang -->
+            <div class="home-visual">
+                <!-- Bentuk Geometris di belakang foto -->
+                <div class="abstract-blob"></div>
+                <div class="abstract-ring"></div>
+                <div class="abstract-dots"></div>
+                
+                <!-- Foto Utama -->
+                <div class="visual-img">
+                    <img src="assets/image.jpg" alt="Eka Saputra" decoding="async">
+                </div>
+    
+                <!-- Rotating Text -->
+                <div class="rotating-badge">
+                    <svg viewBox="0 0 100 100" width="120" height="120">
+                        <path id="curve" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent" />
+                        <text>
+                            <textPath href="#curve" startOffset="0%">
+                                DATA ANALYTICS • UI/UX • SYSTEM ANALYSIS • BI •
+                            </textPath>
+                        </text>
+                    </svg>
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                </div>
+    
+                <!-- Floating Tags -->
+                <div class="float-tag tag-1">UI/UX Designer</div>
+                <div class="float-tag tag-2">Data Analyst</div>
+                
+                <!-- Cursor Icon (Opsional) -->
+                <i class="bx bx-pointer cursor-icon" aria-hidden="true"></i>
+            </div>
+        </div>
+    
+        <!-- BAWAH: Marquee (Teks Berjalan) -->
+        <div class="home-marquee">
+            <div class="marquee-track">
+                <span>Data Analytics</span> <i class="bx bx-star"></i>
+                <span>Business Intelligence</span> <i class="bx bx-star"></i>
+                <span>System Analysis</span> <i class="bx bx-star"></i>
+                <span>UI/UX Design</span> <i class="bx bx-star"></i>
+                <span>Quality Assurance</span> <i class="bx bx-star"></i>
+                <!-- Duplikasi untuk looping seamless -->
+                <span>Data Analytics</span> <i class="bx bx-star"></i>
+                <span>Business Intelligence</span> <i class="bx bx-star"></i>
+                <span>System Analysis</span> <i class="bx bx-star"></i>
+                <span>UI/UX Design</span> <i class="bx bx-star"></i>
+                <span>Quality Assurance</span> <i class="bx bx-star"></i>
+            </div>
         </div>
     </section>
 

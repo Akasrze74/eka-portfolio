@@ -281,60 +281,225 @@ section{
 
 
 /* =========================================================
-   7. HOME
+   7. HOME — PLAYFUL EDITORIAL (Enhanced Abstract Visual)
 ========================================================= */
+
 .home{
     position: relative;
     overflow: hidden;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5rem;
-    padding: 12rem 9% 5rem;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10rem 5% 0; /* Padding bawah 0 agar marquee menempel ke About */
+    background: var(--bg-color);
+    isolation: isolate;
 }
-.home-rectangle{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: var(--home-band-width);
-    height: 100%;
-    background-color: var(--main-color);
-    border-radius: 4rem 0 0 4rem;
-    z-index: 0;
+
+.home-rectangle{ display: none; }
+
+/* --- Layer Ornamen Background --- */
+.home-layer{ position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.orn-big-text{
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: clamp(15rem, 30vw, 35rem); font-weight: 800; color: transparent;
+    -webkit-text-stroke: 2px rgba(20, 39, 78, 0.03); white-space: nowrap; z-index: -1;
+    letter-spacing: -0.05em;
 }
-.home-content{
+.orn-grid{
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(20,39,78,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(20,39,78,0.03) 1px, transparent 1px);
+    background-size: 6rem 6rem;
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 20%, transparent 75%);
+            mask-image: radial-gradient(circle at 50% 50%, #000 20%, transparent 75%);
+}
+.orn-blob{ position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5; z-index: -1; }
+.orn-blob--1{ top: 10%; left: 0; width: 40rem; height: 40rem; background: radial-gradient(circle, color-mix(in srgb, var(--accent-color) 25%, transparent), transparent 70%); }
+.orn-blob--2{ bottom: 20%; right: 0; width: 45rem; height: 45rem; background: radial-gradient(circle, color-mix(in srgb, var(--gold-color) 30%, transparent), transparent 70%); }
+
+/* --- Wrapper Utama --- */
+.home-wrapper{
     position: relative;
-    z-index: 1;
-    flex: 1;
-    max-width: 65rem;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 4rem;
+    flex: 1; 
+    padding-bottom: 2rem;
 }
 
-.home-greeting,
-.home-subtitle{
-    font-size: clamp(2rem, 2.5vw, 3rem);
-    font-weight: 600;
-    line-height: 1.5;
-    margin: 0;
+/* --- KIRI: Konten Teks --- */
+.hello-badge{
+    position: relative; display: inline-flex; align-items: center; gap: 0.8rem;
+    padding: 0.8rem 1.6rem; font-size: 1.4rem; font-weight: 600;
+    color: var(--main-color); margin-bottom: 3rem;
 }
+.hello-badge .dot{ width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--accent-color); }
+.hello-badge .corner{ position: absolute; width: 0.8rem; height: 0.8rem; border: 2px solid var(--main-color); }
+.hello-badge .tl{ top: 0; left: 0; border-right: none; border-bottom: none; }
+.hello-badge .tr{ top: 0; right: 0; border-left: none; border-bottom: none; }
+.hello-badge .bl{ bottom: 0; left: 0; border-right: none; border-top: none; }
+.hello-badge .br{ bottom: 0; right: 0; border-left: none; border-top: none; }
+
 .home-content h1{
-    font-size: clamp(4.5rem, 6vw, 7rem);
-    font-weight: 800;
-    line-height: 1.15;
-    margin: 0.5rem 0 1.5rem;
+    font-size: clamp(4rem, 5.5vw, 6.5rem); font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em; color: var(--text-color); margin-bottom: 2rem;
 }
-.home-content p:not(.home-greeting){
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.9;
-    color: var(--muted-color);
-    max-width: 62rem;
-    margin: 2rem 0;
+.home-content h1 em{
+    font-style: italic; font-family: Georgia, serif; font-weight: 400; color: var(--accent-color);
 }
-.home-content p:not(.home-greeting) + p:not(.home-greeting){
-    margin-top: 0;
+.home-desc{
+    font-size: clamp(1.5rem, 1.6vw, 1.8rem); line-height: 1.7;
+    color: var(--muted-color); max-width: 50rem; margin-bottom: 4rem;
 }
 
+/* --- KONSEP BARU: TOMBOL CTA --- */
+.home-cta{ display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.btn-primary{
+    display: inline-flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 2.4rem 1.2rem 3rem; font-size: 1.6rem; font-weight: 600;
+    background: var(--main-color); color: #fff; border-radius: 99px;
+    border: 2px solid var(--main-color); transition: 0.4s ease;
+}
+.btn-primary:hover{
+    background: var(--accent-color); border-color: var(--accent-color);
+    transform: translateY(-3px); box-shadow: 0 15px 25px rgba(40, 21, 255, 0.2);
+}
+.btn-primary i{
+    background: var(--gold-color); color: var(--main-color);
+    border-radius: 50%; width: 3.2rem; height: 3.2rem;
+    display: flex; align-items: center; justify-content: center; font-size: 2rem;
+    transition: 0.4s ease;
+}
+.btn-primary:hover i{ background: #fff; color: var(--accent-color); transform: rotate(-45deg); }
+
+.btn-outline{
+    padding: 1.4rem 2.8rem; font-size: 1.6rem; font-weight: 600;
+    color: var(--main-color); background: #fff;
+    border: 2px solid var(--border-color); border-radius: 99px;
+    transition: 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+.btn-outline:hover{
+    border-color: var(--main-color); background: var(--second-bg-color); transform: translateY(-2px);
+}
+
+/* --- KANAN: Visual / Foto (Lebih Besar & Abstrak) --- */
+.home-visual{
+    position: relative; display: flex; justify-content: center; align-items: center;
+    height: 100%; min-height: 55rem;
+}
+
+/* Ornamen Abstrak Belakang */
+.abstract-blob{
+    position: absolute; width: 42rem; height: 45rem; background: var(--gold-color);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Bentuk organik */
+    z-index: 1; animation: morph 8s ease-in-out infinite;
+    box-shadow: inset 0 0 50px rgba(255,255,255,0.3);
+}
+@keyframes morph {
+    0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+    67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+}
+.abstract-ring{
+    position: absolute; width: 46rem; height: 46rem; border: 2px dashed var(--main-color);
+    border-radius: 50%; z-index: 0; opacity: 0.3; animation: spin 30s linear infinite;
+}
+.abstract-dots{
+    position: absolute; top: 5%; left: 0; width: 15rem; height: 15rem;
+    background-image: radial-gradient(var(--accent-color) 2px, transparent 2.5px);
+    background-size: 1.5rem 1.5rem; opacity: 0.2; z-index: 0;
+}
+
+/* Foto Utama (Diperbesar) */
+.visual-img{
+    position: relative; z-index: 2; width: min(38rem, 100%); height: min(52rem, 110%);
+    border-radius: 20rem 20rem 2rem 2rem; overflow: hidden; border: 6px solid #fff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+.visual-img img{ width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: 0.5s ease; }
+.visual-img:hover img{ transform: scale(1.05); }
+
+/* Floating Tags */
+.float-tag{
+    position: absolute; z-index: 3; padding: 1rem 2rem; font-size: 1.3rem; font-weight: 700;
+    color: #fff; background: var(--main-color); border-radius: 99px;
+    box-shadow: 0 10px 20px rgba(20,39,78,0.2); animation: float-up 4s ease-in-out infinite;
+}
+.tag-1{ top: 30%; right: -8%; background: var(--accent-color); }
+.tag-2{ bottom: 20%; left: -8%; animation-delay: 2s; }
+
+/* Cursor Icon */
+.cursor-icon{
+    position: absolute; bottom: 15%; left: 10%; font-size: 3.5rem;
+    color: var(--main-color); z-index: 3; transform: rotate(-15deg);
+    animation: float-up 3s ease-in-out infinite alternate;
+}
+
+/* Rotating Badge (Keahlian) */
+.rotating-badge{
+    position: absolute; top: 10%; right: -5%; z-index: 3;
+    width: 12rem; height: 12rem; background: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+.rotating-badge svg{ position: absolute; inset: 0; width: 100%; height: 100%; animation: spin 15s linear infinite; }
+.rotating-badge text{ font-size: 10px; font-weight: 800; letter-spacing: 1.5px; fill: var(--main-color); }
+.rotating-badge i{ font-size: 3.5rem; color: var(--accent-color); }
+
+@keyframes spin{ 100% { transform: rotate(360deg); } }
+@keyframes float-up{ 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+/* --- BAWAH: Marquee (Menyambung ke About) --- */
+.home-marquee{
+    position: relative; z-index: 5; width: 100vw; margin-left: calc(-50vw + 50%);
+    background: var(--gold-color); padding: 2.2rem 0; overflow: hidden;
+    transform: rotate(-2deg) scale(1.05); /* Lebih tegas dan miring */
+    margin-bottom: -2rem; /* Trik agar menembus/menyambung ke section About */
+    border-top: 3px solid var(--main-color); border-bottom: 3px solid var(--main-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.marquee-track{
+    display: flex; align-items: center; gap: 3rem; width: max-content;
+    animation: scroll-marquee 30s linear infinite;
+}
+.marquee-track span{
+    font-size: clamp(2rem, 2.5vw, 3rem); font-weight: 800;
+    color: var(--main-color); text-transform: uppercase; letter-spacing: 0.05em;
+}
+.marquee-track i{ font-size: 2.5rem; color: #fff; }
+@keyframes scroll-marquee{ 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* --- Responsive --- */
+@media (max-width: 1100px){
+    .home-wrapper{ grid-template-columns: 1fr; gap: 8rem; text-align: center; padding-top: 4rem; padding-bottom: 8rem; }
+    .hello-badge{ margin: 0 auto 2rem; }
+    .home-desc{ margin: 0 auto 3rem; }
+    .home-cta{ justify-content: center; }
+    .home-visual{ min-height: 50rem; }
+    .rotating-badge{ top: 0; right: 10%; }
+    .tag-1{ right: 0; }
+    .tag-2{ left: 0; }
+}
+
+@media (max-width: 768px){
+    .home-content h1{ font-size: 4rem; }
+    .home-cta{ flex-direction: column; width: 100%; }
+    .btn-primary, .btn-outline{ width: 100%; justify-content: center; }
+    .abstract-blob{ width: 32rem; height: 35rem; }
+    .visual-img{ width: 30rem; height: 40rem; }
+    .abstract-ring{ width: 36rem; height: 36rem; }
+    .float-tag{ padding: 0.8rem 1.5rem; font-size: 1.1rem; }
+    .rotating-badge{ width: 9rem; height: 9rem; right: 0; }
+    .rotating-badge i{ font-size: 2.5rem; }
+    .cursor-icon{ display: none; }
+    .home-marquee{ transform: rotate(0deg); margin-bottom: 0; border-bottom: none; }
+}
 
 /* =========================================================
    8. ABOUT
@@ -677,6 +842,42 @@ section{
     min-height: auto;
     background: var(--bg-color);
 }
+.skills .heading{
+    margin-bottom: 1.4rem;
+}
+
+.skills .projects-subtitle{
+    max-width: 55rem;
+    margin: 0 auto 2.2rem;
+    padding: 0.1rem;
+    font-size: 1.55rem;
+    line-height: 1.7rem;
+    color: var(--muted-color);
+}
+
+.skills-note{
+    position: relative;
+    max-width: 58rem;
+    margin: 0 auto 5rem;
+    padding: 1.8rem 0 0;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--muted-color);
+    border-top: 1px solid var(--border-color);
+}
+.skills-note::before{
+    content: "Note";
+    display: inline-block;
+    margin-right: 0.6rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-color);
+    vertical-align: middle;
+}
+
 .skills-layout{
     max-width: 120rem;
     margin: 0 auto;
@@ -1163,14 +1364,14 @@ section{
     font-weight: 700;
     letter-spacing: 0.15rem;
     text-transform: uppercase;
-    color: var(--accent-color);
+    color: var(--main-color);
 }
 .form-heading h3{
     margin-bottom: 0.6rem;
     font-size: 2.8rem;
     font-weight: 800;
     line-height: 1.3;
-    color: var(--text-color);
+    color: var(--accent-color);
 }
 .form-heading p{
     font-size: 1.4rem;
@@ -1358,11 +1559,6 @@ section{
 
 /* =========================================================
    13. FOOTER
-========================================================= */
-/* =========================================================
-   FOOTER (mandiri, class "ft-")
-   Tempel di PALING BAWAH style.css (setelah CSS Contact).
-   CSS footer lama (.footer ...) boleh dihapus.
 ========================================================= */
 .ft{
     position: relative;
@@ -1598,50 +1794,14 @@ section{
 
 /* =========================================================
    14. DESKTOP ≥ 992px: bentuk, ornamen, badge
-   (tidak mempengaruhi tablet dan mobile)
 ========================================================= */
 @media (min-width: 992px){
 
-    /* Preset bentuk: ganti nama class di HTML
-       contoh: class="home-img shape-arch" */
     .shape-circle{  --ratio: 1 / 1; --radius: 50%; }
     .shape-oval{    --ratio: 4 / 5; --radius: 50%; }
     .shape-arch{    --ratio: 4 / 5; --radius: 50% 50% 3rem 3rem / 38% 38% 3rem 3rem; }
     .shape-rounded{ --ratio: 4 / 5; --radius: 3rem; }
     .shape-blob{    --ratio: 4 / 5; --radius: 58% 42% 52% 48% / 50% 58% 42% 50%; }
-
-    /* ----- HOME ----- */
-    .home-img{
-        align-self: var(--home-photo-align);
-        transform: translate(var(--home-photo-shift-x), var(--home-photo-shift-y));
-        box-shadow:
-            var(--photo-offset) var(--photo-offset) 0 0 color-mix(in srgb, var(--main-color) 14%, transparent),
-            0 2rem 5rem color-mix(in srgb, var(--main-color) 22%, transparent);
-    }
-    .home-img::before{                 /* cincin kiri atas */
-        content: "";
-        position: absolute;
-        top: -2rem;
-        left: -3rem;
-        width: 8rem;
-        height: 8rem;
-        border: 0.6rem solid var(--gold-color);
-        border-radius: 50%;
-        opacity: 0.25;
-        z-index: -1;
-    }
-    .home-img::after{                  /* titik kiri bawah */
-        content: "";
-        position: absolute;
-        left: -4.5rem;
-        bottom: -3.5rem;
-        width: 11rem;
-        height: 11rem;
-        background-image: radial-gradient(var(--main-color) 2px, transparent 2.5px);
-        background-size: 1.6rem 1.6rem;
-        opacity: 0.35;
-        z-index: -1;
-    }
 
     /* ----- ABOUT ----- */
     .about-img{
@@ -1907,6 +2067,23 @@ section{
 
 /* ---------- ≤ 650px: Projects satu kolom ---------- */
 @media (max-width: 650px){
+    .skills .heading{
+        margin-bottom: 1rem;
+    }
+    .skills .projects-subtitle{
+        font-size: 1.4rem;
+        margin-bottom: 1.8rem;
+    }
+    .skills-note{
+        margin-bottom: 4rem;
+        padding: 1rem 1.3rem;
+        font-size: 1.2rem;
+    }
+    .skills-note::before{
+        margin-right: 0.55rem;
+        padding: 0.2rem 0.6rem;
+        font-size: 1rem;
+    }
     .projects .heading{
         margin-bottom: 1.5rem;
     }
@@ -1952,8 +2129,6 @@ section{
     }
 }
 
-
-
 /* ===== Responsive: Skills ===== */
 /* ----- Responsive ----- */
 @media (max-width: 991px){
@@ -1984,12 +2159,6 @@ section{
         transform: none;
     }
 }
-
-/* ===== Responsive: Contact ===== */
-/* ==================================================
-   CONTACT RESPONSIVE (ganti seluruh blok RESPONSIVE lama)
-   Urutan wajib dari layar besar ke kecil.
-================================================== */
 
 /* ---------- Laptop kecil (1101-1300px): rapatkan baris kontak ---------- */
 @media (max-width: 1300px){
@@ -2023,7 +2192,7 @@ section{
         margin-bottom: 3.5rem;
     }
     .contact-layout{
-        grid-template-columns: minmax(0, 1fr);   /* minmax(0,...) mencegah isi melebar keluar layar */
+        grid-template-columns: minmax(0, 1fr);  
         max-width: 72rem;
         gap: 2.5rem;
     }
@@ -2039,7 +2208,7 @@ section{
 /* ---------- Mobile (<= 650px) ---------- */
 @media (max-width: 650px){
     .contact{
-        padding: 12rem 2rem 5rem;              /* 12rem agar judul tidak tertutup header tetap */
+        padding: 12rem 2rem 5rem;              
     }
     .contact::before{
         top: 16rem;
@@ -2089,7 +2258,7 @@ section{
         font-size: 1.3rem;
     }
     .copy-btn{
-        width: max(3.6rem, 44px);               /* area sentuh minimal 44px */
+        width: max(3.6rem, 44px);               
         height: max(3.6rem, 44px);
     }
     .contact-social a{
@@ -2118,7 +2287,7 @@ section{
     .field select,
     .field textarea{
         padding: 1.4rem;
-        font-size: 16px;                         /* di bawah 16px, iOS memperbesar layar saat input difokuskan */
+        font-size: 16px;                         
     }
     .field select{
         padding-right: 4rem;
@@ -2151,7 +2320,7 @@ section{
         gap: 1rem;
     }
     .row-text strong{
-        overflow-wrap: anywhere;                 /* email boleh turun baris, tidak boleh keluar kotak */
+        overflow-wrap: anywhere;                 
     }
     .contact-social{
         gap: 1rem;
