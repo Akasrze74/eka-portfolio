@@ -11,6 +11,14 @@
     <meta name="author" content="Eka Saputra">
     <meta name="theme-color" content="#fcfcfc">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="Eka Saputra | Information Systems Portfolio">
+    <meta property="og:description" content="Portfolio of projects in Data Analytics, Business Intelligence, System Analysis, UI/UX, and QA.">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +46,7 @@
 
         <button
             type="button"
-            class="menu-toogle"
+            class="menu-toggle"
             id="menu-icon"
             aria-label="Open navigation menu"
             aria-expanded="false"
@@ -47,11 +55,7 @@
             <i class="bx bx-menu" aria-hidden="true"></i>
         </button>
 
-        <nav
-            class="navbar"
-            id="primary-navigation"
-            aria-label="Main Navigation"
-        >
+        <nav class="navbar" id="primary-navigation" aria-label="Main Navigation">
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
@@ -61,14 +65,14 @@
         </nav>
     </header>
 
-    <section class="home" id="home">
-        <div class="home-rectangle"></div>
+    <section class="home" id="home" aria-labelledby="home-heading">
+        <div class="home-rectangle" aria-hidden="true"></div>
 
         <div class="home-content">
 
             <h3>Hello, I'm</h3>
         
-            <h1>Eka <span>Saputra</span></h1>
+            <h1 id="home-heading">Eka <span>Saputra</span></h1>
         
             <h3 class="home-subtitle">
                 Information Systems Student
@@ -81,9 +85,8 @@
             </h3>
             <p>
                 Final-year Information Systems student at Universitas Bakrie, with a strong interest in Data Analytics, Business Intelligence, and technology-driven business solutions.    
-            </p>
-                
-            </p>
+            </p>  
+            <p>
                 I combine analytical thinking, structured problem-solving, and an understanding of business processes to transform information into meaningful insights and practical solutions.
             </p>
 
@@ -118,7 +121,6 @@
                rel="noopener noreferrer">
                 Download CV
             </a>
-        
         </div>
         
         <div class="home-img shape-oval">
@@ -127,30 +129,30 @@
                 alt="Eka Saputra - Information Systems Student"
                 width="380"
                 height="380"
+                decoding="async"
             >
         </div>
     </section>
 
-    <section class="about" id="about">
+    <section class="about" id="about" aria-labelledby="about-heading">
+        <div class="about-rectangle" aria-hidden="true"></div>
 
-        <div class="about-rectangle"></div>
         <div class="about-visual">
             <span class="orn orn-blob" aria-hidden="true"></span>
             <span class="orn orn-dots" aria-hidden="true"></span>
             <span class="orn orn-ring" aria-hidden="true"></span>
         
             <div class="about-img shape-oval">
-                <img src="assets/image2.jpg" alt="Foto Eka Saputra" width="400" height="500" loading="lazy">
+                <img src="assets/image2.jpg" alt="Photo of Eka Saputra" width="400" height="500" loading="lazy" decoding="async">
             </div>
         
             <span class="float-badge badge-1" aria-hidden="true">Designer</span>
-            <span class="float-badge badge-2" aria-hidden="true">Data & Business</span>
+            <span class="float-badge badge-2" aria-hidden="true">Data &amp; Business</span>
             <span class="float-badge badge-3" aria-hidden="true">Software Engineer</span>
         </div>
 
         <div class="about-content">
-
-            <h2 class="heading">
+            <h2 class="heading" id="about-heading">
                 About <span>Me</span>
             </h2>
     
@@ -159,6 +161,7 @@
                 <span class="typing-text" aria-hidden="true"
                     data-words='["Data Analytics","Business Intelligence","UI/UX Designer","System Analysis","Software Development"]'></span>
             </h3>
+
             <p>
                 My experience through academic and independent
                 projects has enabled me to explore data
@@ -172,8 +175,8 @@
         </div>
     </section>
 
-    <section class="services" id="services">
-        <h2 class="heading">
+    <section class="services" id="services" aria-labelledby="services-heading">
+        <h2 class="heading" id="services-heading">
             Areas of <span>Expertise</span>
         </h2>
     
@@ -181,14 +184,14 @@
             <button class="service-arrow prev"
                     id="prevService"
                     aria-label="Previous service">
-                <i class='bx bx-chevron-left'></i>
+                <i class='bx bx-chevron-left' aria-hidden="true"></i>
             </button>
     
             <div class="services-slider">
                 <div class="service-track">
                     <div class="services-box">
-                        <i class='bx bx-palette'></i>
-                        <h3>UI/UX & Application Development</h3>
+                        <i class='bx bx-palette' aria-hidden="true"></i>
+                        <h3>UI/UX &amp; Application Development</h3>
                         <p>
                             Designing intuitive interfaces and developing functional applications based on user needs and system requirements.
                         </p>
@@ -198,8 +201,8 @@
                     </div>
 
                     <div class="services-box">
-                        <i class='bx bx-bar-chart-alt-2'></i>
-                        <h3>Data Analytics & BI</h3>
+                        <i class='bx bx-bar-chart-alt-2' aria-hidden="true"></i>
+                        <h3>Data Analytics &amp; BI</h3>
                         <p>
                             Transforming raw data into actionable insights through data preparation, analysis, visualization, and KPI monitoring.
                         </p>
@@ -209,7 +212,7 @@
                     </div>
     
                     <div class="services-box">
-                        <i class='bx bx-sitemap'></i>
+                        <i class='bx bx-sitemap' aria-hidden="true"></i>
                         <h3>Business & System Analysis</h3>
                         <p>
                             Translating business requirements into structured workflows, process models, and system specifications.
@@ -220,7 +223,7 @@
                     </div>
     
                     <div class="services-box">
-                        <i class='bx bx-check-shield'></i>
+                        <i class='bx bx-check-shield' aria-hidden="true"></i>
                         <h3>Software Quality Assurance</h3>
                         <p>
                             Evaluating functionality, performance, and security through structured testing and technical documentation.
@@ -231,17 +234,17 @@
                     </div>
                 </div>
             </div>
+
             <button class="service-arrow next"
                     id="nextService"
                     aria-label="Next service">
-                <i class='bx bx-chevron-right'></i>
+                <i class='bx bx-chevron-right' aria-hidden="true"></i>
             </button>
         </div>
     </section>
 
-    <section class="projects" id="projects">
-
-        <h2 class="heading">
+    <section class="projects" id="projects" aria-labelledby="projects-heading">
+        <h2 class="heading" id="projects-heading">
             Selected <span>Projects</span>
         </h2>
 
@@ -254,23 +257,16 @@
 
             <!-- PROJECT 01: CRM SALES ANALYSIS -->
             <div class="projects-box">
-
-                <img
-                    src="assets/1.jpg"
-                    alt="CRM Sales Pipeline and Opportunity Analysis Dashboard"
-                    loading="lazy"
-                >
-
+                <img src="assets/1.jpg"
+                     alt="CRM Sales Pipeline and Opportunity Analysis Dashboard"
+                     loading="lazy" decoding="async">
                 <div class="projects-info">
-
                     <span class="project-category">
                         Business Intelligence
                     </span>
-
                     <h4>
                         CRM Sales Pipeline & Opportunity Analysis
                     </h4>
-
                     <p>
                         Developed an interactive Power BI dashboard
                         to analyze CRM sales opportunities, monitor
@@ -278,45 +274,34 @@
                         insights through data visualization and
                         DAX-based KPIs.
                     </p>
-
                     <div class="project-tools">
                         <span>Power BI</span>
                         <span>DAX</span>
                         <span>Excel</span>
                     </div>
-
                     <a
                         href="https://drive.google.com/file/d/1T3dt57-0-uI47mW2-9OQ_MjrAdohA7Kv/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="View CRM Sales Analysis Project"
-                    >
-                        <i class="bx bx-link-external"></i>
+                        aria-label="View CRM Sales Analysis Project">
+                        <i class="bx bx-link-external" aria-hidden="true"></i>
                     </a>
-
                 </div>
             </div>
 
 
             <!-- PROJECT 02: LINK-IN-BIO QA -->
             <div class="projects-box">
-
-                <img
-                    src="assets/3.jpg"
-                    alt="Link-in-bio Platform Quality Assurance Project"
-                    loading="lazy"
-                >
-
+                <img src="assets/3.jpg"
+                     alt="Link-in-bio Platform Quality Assurance Project"
+                     loading="lazy" decoding="async">
                 <div class="projects-info">
-
                     <span class="project-category">
                         Quality Assurance
                     </span>
-
                     <h4>
                         Link-in-bio Platform - Quality Assurance
                     </h4>
-
                     <p>
                         Conducted a quality assurance evaluation
                         of a link-in-bio platform to assess its
@@ -324,45 +309,34 @@
                         and overall consistency through
                         structured testing and documentation.
                     </p>
-
                     <div class="project-tools">
                         <span>Software Testing</span>
                         <span>QA</span>
                         <span>Documentation</span>
                     </div>
-
                     <a
                         href="https://www.figma.com/proto/B64SsN9uE8pr8Kolgce4Su?node-id=0-1&t=Hryf6EyOutoTaLJv-6"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="View Link-in-bio QA Project"
-                    >
-                        <i class="bx bx-link-external"></i>
+                        aria-label="View Link-in-bio QA Project">
+                        <i class="bx bx-link-external" aria-hidden="true"></i>
                     </a>
-
                 </div>
             </div>
 
 
             <!-- PROJECT 03: LAUNDRYKU -->
             <div class="projects-box">
-
-                <img
-                    src="assets/2.jpg"
-                    alt="Laundryku Mobile Application UI UX Redesign"
-                    loading="lazy"
-                >
-
+                <img src="assets/2.jpg"
+                     alt="Laundryku Mobile Application UI UX Redesign"
+                     loading="lazy" decoding="async">
                 <div class="projects-info">
-
                     <span class="project-category">
                         UI/UX Design
                     </span>
-
                     <h4>
                         Laundryku - Mobile Application Redesign
                     </h4>
-
                     <p>
                         Redesigned a premium laundry service
                         application with a focus on intuitive
@@ -370,27 +344,22 @@
                         a convenient pickup-and-delivery
                         experience for customers.
                     </p>
-
                     <div class="project-tools">
                         <span>Figma</span>
                         <span>UI Design</span>
                         <span>Prototyping</span>
                     </div>
-
                     <a
                         href="https://www.figma.com/proto/1zxsva5Q5hV5t8wdQXgQtd?node-id=0-1&t=Hryf6EyOutoTaLJv-6"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="View Laundryku Design Project"
-                    >
-                        <i class="bx bx-link-external"></i>
+                        aria-label="View Laundryku Design Project">
+                        <i class="bx bx-link-external" aria-hidden="true"></i>
                     </a>
-
                 </div>
             </div>
 
         </div>
-
     </section>
 
     <section class="skills" id="skills" aria-labelledby="skills-heading">
@@ -403,7 +372,6 @@
         </p>
 
         <div class="skills-layout">
-
             <!-- Panel radar: isinya digambar oleh script.js -->
             <figure class="skills-radar">
                 <svg id="radar" viewBox="0 0 400 400" role="img"
@@ -413,10 +381,9 @@
 
             <!-- Daftar keahlian: level 1-5 diatur lewat --level -->
             <ul class="skills-list">
-
                 <li class="skill-item" style="--level:4" data-short="Data">
                     <div class="skill-head">
-                        <i class='bx bx-bar-chart-alt-2'></i>
+                        <i class='bx bx-bar-chart-alt-2' aria-hidden="true"></i>
                         <h3>Data Analytics</h3>
                         <span class="skill-level"></span>
                     </div>
@@ -428,7 +395,7 @@
 
                 <li class="skill-item" style="--level:3" data-short="BI">
                     <div class="skill-head">
-                        <i class='bx bx-pie-chart-alt-2'></i>
+                        <i class='bx bx-pie-chart-alt-2' aria-hidden="true"></i>
                         <h3>Business Intelligence</h3>
                         <span class="skill-level"></span>
                     </div>
@@ -440,7 +407,7 @@
 
                 <li class="skill-item" style="--level:4" data-short="Systems">
                     <div class="skill-head">
-                        <i class='bx bx-sitemap'></i>
+                        <i class='bx bx-sitemap' aria-hidden="true"></i>
                         <h3>System Analysis</h3>
                         <span class="skill-level"></span>
                     </div>
@@ -452,7 +419,7 @@
 
                 <li class="skill-item" style="--level:3" data-short="Apps">
                     <div class="skill-head">
-                        <i class='bx bx-code-alt'></i>
+                        <i class='bx bx-code-alt' aria-hidden="true"></i>
                         <h3>Application Development</h3>
                         <span class="skill-level"></span>
                     </div>
@@ -464,7 +431,7 @@
 
                 <li class="skill-item" style="--level:3" data-short="QA">
                     <div class="skill-head">
-                        <i class='bx bx-check-shield'></i>
+                        <i class='bx bx-check-shield' aria-hidden="true"></i>
                         <h3>Quality Assurance</h3>
                         <span class="skill-level"></span>
                     </div>
@@ -473,7 +440,6 @@
                         <li>JMeter</li><li>OWASP ZAP</li><li>SonarQube</li>
                     </ul>
                 </li>
-
             </ul>
         </div>
 
@@ -483,136 +449,140 @@
         </ol>
     </section>
 
-        <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
 
-            <div class="contact-head">
-                <h2 class="heading" id="contact-heading">Let&rsquo;s Work <span>Together</span></h2>
-                <p class="projects-subtitle">
-                    Have a project in mind or looking for a professional connection?
-                    Feel free to reach out. I&rsquo;d be happy to connect.
-                </p>
-            </div>
+        <div class="contact-head">
+            <h2 class="heading" id="contact-heading">Let&rsquo;s Work <span>Together</span></h2>
+            <p class="projects-subtitle">
+                Have a project in mind or looking for a professional connection?
+                Feel free to reach out. I&rsquo;d be happy to connect.
+            </p>
+        </div>
         
-            <div class="contact-layout">
+        <div class="contact-layout">
+            <!-- Panel informasi -->
+            <aside class="contact-info">
+                <div class="info-top">
+                    <div class="contact-status">Open to Opportunities</div>   
+                     <h3>Get in Touch!</h3>
+                     <p>
+                        I&rsquo;m open to internship opportunities, professional connections,
+                        and meaningful collaborations in technology and business.
+                    </p>
+                    <ul class="info-tags" aria-label="Best for">
+                        <li>Internships</li>
+                        <li>Professional connections</li>
+                        <li>Collaboration</li>
+                    </ul>
+                </div>
         
-                <!-- Panel informasi -->
-                <aside class="contact-info">
-                    <div class="info-top">
-                        <div class="contact-status">Open to Opportunities</div>
-                        <h3>Get in Touch!</h3>
-                        <p>
-                            I&rsquo;m open to internship opportunities, professional connections,
-                            and meaningful collaborations in technology and business.
-                        </p>
-                        <ul class="info-tags" aria-label="Best for">
-                            <li>Internships</li>
-                            <li>Professional connections</li>
-                            <li>Collaboration</li>
-                        </ul>
-                    </div>
-        
-                    <div class="info-bottom">
-                        <ul class="contact-list">
-                            <li class="contact-row">
-                                <a class="row-link" href="mailto:ekaekasaputra731@gmail.com">
-                                    <i class='bx bx-envelope'></i>
-                                    <span class="row-text"><small>Email</small><strong>ekaekasaputra731@gmail.com</strong></span>
-                                </a>
-                                <button type="button" class="copy-btn" data-copy="ekaekasaputra731@gmail.com"
-                                        aria-label="Copy email address" title="Copy email">
-                                    <i class='bx bx-copy'></i>
-                                </button>
-                            </li>
-                            <li class="contact-row">
-                                <div class="row-link">
-                                    <i class='bx bx-map'></i>
-                                    <span class="row-text"><small>Location</small><strong>Tangerang, Indonesia</strong></span>
-                                </div>
-                            </li>
-                        </ul>
-        
-                        <div class="social-block">
-                            <p class="social-label">Find me on</p>
-                            <div class="contact-social">
-                                <a href="https://www.linkedin.com/in/eka-saputra-75152b347" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-                                <a href="https://github.com/Akasrze74" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-                                <a href="https://www.instagram.com/sptrakaa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                <div class="info-bottom">
+                    <ul class="contact-list">
+                        <li class="contact-row">
+                            <a class="row-link" href="mailto:ekaekasaputra731@gmail.com">
+                                <i class='bx bx-envelope' aria-hidden="true"></i>
+                                <span class="row-text">
+                                    <small>Email</small>
+                                    <strong>ekaekasaputra731@gmail.com</strong>
+                                </span>
+                            </a>
+                            <button type="button" class="copy-btn" data-copy="ekaekasaputra731@gmail.com"
+                                    aria-label="Copy email address" title="Copy email">
+                                <i class='bx bx-copy' aria-hidden="true"></i>
+                            </button>
+                        </li>
+                        <li class="contact-row">
+                            <div class="row-link">
+                                <i class='bx bx-map' aria-hidden="true"></i>
+                                <span class="row-text">
+                                    <small>Location</small>
+                                    <strong>Tangerang, Indonesia</strong></span>
                             </div>
+                        </li>
+                    </ul>
+        
+                    <div class="social-block">
+                        <p class="social-label">Find me on</p>
+                        <div class="contact-social">
+                            <a href="https://www.linkedin.com/in/eka-saputra-75152b347" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                            <a href="https://github.com/Akasrze74" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                            <a href="https://www.instagram.com/sptrakaa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
                         </div>
                     </div>
-                </aside>
+                </div>
+            </aside>
         
-                <!-- Formulir -->
-                <form class="contact-form" id="contactForm" action="#" method="post">
+            <!-- Formulir -->
+            <form class="contact-form" id="contactForm" action="#" method="post">
+                <div class="form-heading">
+                    <span class="form-label">Contact Form</span>
+                    <h3>Send Me a Message</h3>
+                    <p>Fill in the details below and I&rsquo;ll get back to you.</p>
+                </div>
         
-                    <div class="form-heading">
-                        <span class="form-label">Contact Form</span>
-                        <h3>Send Me a Message</h3>
-                        <p>Fill in the details below and I&rsquo;ll get back to you.</p>
-                    </div>
+                <div class="fp" aria-live="polite">
+                    <div class="fp-steps" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                    <p class="fp-text"><strong id="fp-count">0/4 completed</strong><em id="fp-text">Fill in the form to begin</em></p>
+                </div>
         
-                    <div class="fp" aria-live="polite">
-                        <div class="fp-steps" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-                        <p class="fp-text"><strong id="fp-count">0/4 completed</strong><em id="fp-text">Fill in the form to begin</em></p>
-                    </div>
-        
-                    <div class="field-row">
-                        <div class="field">
-                            <label for="c-name">Full Name</label>
-                            <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
-                        </div>
-                        <div class="field">
-                            <label for="c-email">Email</label>
-                            <input id="c-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
-                        </div>
-                    </div>
-        
+                <div class="field-row">
                     <div class="field">
-                        <label for="c-topic">Subject</label>
-                        <select id="c-topic" name="topic" required>
-                            <option value="" disabled selected>Select a topic</option>
-                            <option value="Data Analytics & BI">Data Analytics &amp; BI</option>
-                            <option value="UI/UX & Development">UI/UX &amp; Development</option>
-                            <option value="System Analysis">System Analysis</option>
-                            <option value="Software Quality Assurance">Software Quality Assurance</option>
-                            <option value="Internship Opportunity">Internship Opportunity</option>
-                            <option value="Other">Other</option>
-                        </select>
+                        <label for="c-name">Full Name</label>
+                        <input id="c-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
                     </div>
+                    <div class="field">
+                        <label for="c-email">Email</label>
+                        <input id="c-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+                    </div>
+                </div>
         
-                    <div class="field field-message">
-                        <label for="c-message">Your Message</label>
-                        <textarea id="c-message" name="message" maxlength="500"
+                <div class="field">
+                    <label for="c-topic">Subject</label>
+                    <select id="c-topic" name="topic" required>
+                        <option value="" disabled selected>Select a topic</option>
+                        <option value="Data Analytics & BI">Data Analytics &amp; BI</option>
+                        <option value="UI/UX & Development">UI/UX &amp; Development</option>
+                        <option value="System Analysis">System Analysis</option>
+                        <option value="Software Quality Assurance">Software Quality Assurance</option>
+                        <option value="Internship Opportunity">Internship Opportunity</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+        
+                <div class="field field-message">
+                    <label for="c-message">Your Message</label>
+                    <textarea id="c-message" name="message" maxlength="500"
                                   placeholder="Tell me a little about your inquiry..." required></textarea>
-                        <p class="field-count"><output id="msg-count">0</output>/500</p>
-                    </div>
+                    <p class="field-count"><output id="msg-count">0</output>/500</p>
+                </div>
         
-                    <div class="form-footer">
+                <div class="form-footer">
                         <div class="form-note">
-                            <p><i class="bx bx-shield-quarter"></i>Your information will be kept confidential.</p>
+                            <p><i class="bx bx-shield-quarter" aria-hidden="true"></i>Your information will be kept confidential.</p>
                             <p class="form-status" role="status" aria-live="polite"></p>
                         </div>
-                        <button type="submit" class="btn">Send Message <i class="bx bx-send"></i></button>
+                        <button type="submit" class="btn">
+                            Send Message <i class="bx bx-send" aria-hidden="true"></i>
+                        </button>
                     </div>
                 </form>
             </div>
         </section>
 
-     <footer class="ft" aria-label="Site footer">
+        <footer class="ft" aria-label="Site footer">
 
-        <div class="ft-inner">
-    
-            <!-- Brand -->
-            <div class="ft-brand">
-                <a href="#home" class="ft-logo" aria-label="Eka Saputra, back to top">Eka <span>Saputra</span></a>
-                <p>
-                    Information Systems student at Universitas Bakrie, focused on
-                    data analytics, business intelligence, and quality software.
-                </p>
+            <div class="ft-inner">
+                <!-- Brand -->
+                <div class="ft-brand">
+                    <a href="#home" class="ft-logo" aria-label="Eka Saputra, back to top">Eka <span>Saputra</span></a>
+                    <p>
+                        Information Systems student at Universitas Bakrie, focused on
+                        data analytics, business intelligence, and quality software.
+                    </p>
                 <div class="ft-social">
-                    <a href="https://www.linkedin.com/in/eka-saputra-75152b347" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://github.com/Akasrze74" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class='bx bxl-github'></i></a>
-                    <a href="https://www.instagram.com/sptrakaa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://www.linkedin.com/in/eka-saputra-75152b347" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class='bx bxl-linkedin' aria-hidden="true"></i></a>
+                    <a href="https://github.com/Akasrze74" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class='bx bxl-github' aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/sptrakaa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class='bx bxl-instagram' aria-hidden="true"></i></a>
                 </div>
             </div>
     
@@ -634,11 +604,11 @@
                 <h3>Get in touch</h3>
                 <ul>
                     <li>
-                        <i class='bx bx-envelope'></i>
+                        <i class='bx bx-envelope' aria-hidden="true"></i>
                         <a href="mailto:ekaekasaputra731@gmail.com">ekaekasaputra731@gmail.com</a>
                     </li>
                     <li>
-                        <i class='bx bx-map'></i>
+                        <i class='bx bx-map' aria-hidden="true"></i>
                         <span>Tangerang, Indonesia</span>
                     </li>
                 </ul>
@@ -651,7 +621,9 @@
         <div class="ft-bottom">
             <p>&copy; <span id="ft-year"></span> Eka Saputra. All rights reserved.</p>
             <p>Built with HTML, CSS &amp; JavaScript</p>
-            <a href="#home" class="ft-top" aria-label="Back to top"><i class='bx bx-up-arrow-alt'></i></a>
+            <a href="#home" class="ft-top" aria-label="Back to top">
+                <i class='bx bx-up-arrow-alt'></i>
+            </a>
         </div>
     </footer>
 
