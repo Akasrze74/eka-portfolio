@@ -291,7 +291,5 @@
 })();
 
 /* 6. Footer: tahun otomatis */
-(function () {
-    const year = document.getElementById("ft-year");
-    if (year) year.textContent = new Date().getFullYear();
-})();
+document.getElementById("ft-year").textContent =
+    new Date().getFullYear();
