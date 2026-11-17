@@ -1,3 +1,6 @@
+/* =========================================================
+   1. RESET & VARIABEL
+========================================================= */
 *{
     margin: 0;
     padding: 0;
@@ -10,29 +13,30 @@
 }
 
 :root{
-    /* Warna */
-    /* TINGGI (~60%): navy, dasar identitas */
     --main-color: #14274E;
-    /* SEDANG (~30%): permukaan terang kebiruan + biru cerah untuk sorotan teks */
+    
     --bg-color: #F7F9FC;
     --second-bg-color: #EEF2F8;
     --card-color: #FFFFFF;
     --border-color: #DCE3EF;
     --accent-color: #2815ff;
-    /* RENDAH (~10%): champagne gold, hanya untuk detail kecil */
+    
     --gold-color: #4F7CFF;
-    /* Teks */
+    
     --text-color: #0B1426;
     --muted-color: #5B6B85;
-    /* Isi progress bar */
+    
     --bar-fill: linear-gradient(90deg, var(--main-color), var(--accent-color));
 
-    /* ----- PANEL FOTO: ubah ukuran dan bentuk di sini ----- */
     /* HOME */
     --home-photo-width:  clamp(30rem, 26vw, 42rem);
-    --home-photo-ratio:  4 / 5;          /* 1 / 1 = bulat, 4 / 5 = oval tegak */
+    --home-photo-ratio:  4 / 5;          
     --home-photo-radius: 50%;
-    --home-photo-focus:  center top;     /* bagian foto yang ditampilkan */
+    --home-photo-focus:  center top;     
+    --home-photo-shift-x: 0rem;          
+    --home-photo-shift-y: 0rem;          
+    --home-photo-align:   center;        
+    --home-band-width:    30%;           
 
     /* ABOUT */
     --about-photo-width:  clamp(30rem, 26vw, 42rem);
@@ -41,12 +45,16 @@
     --about-photo-focus:  center top;
 
     /* Bingkai (dipakai Home dan About) */
-    --photo-ring:   1rem;                /* tebal border biru */
-    --photo-gap:    0.8rem;              /* jarak putih border ke foto */
-    --photo-offset: 1.6rem;              /* geseran bayangan bentuk (desktop) */
+    --photo-ring:   1rem;                
+    --photo-gap:    0.8rem;              
+    --photo-offset: 1.6rem;              
 
     /* Jarak foto ke teks di About (desktop) */
     --about-gap: clamp(6rem, 15vw, 30rem);
+
+    /* About: jarak judul -> baris typing -> paragraf */
+    --about-title-gap: 0.8rem;           
+    --about-sub-gap:   1rem;            
 }
 
 
@@ -63,6 +71,9 @@ body{
 }
 span{
     color: var(--accent-color);
+}
+a{
+    color: inherit;                   
 }
 section{
     min-height: 100vh;
@@ -176,7 +187,6 @@ section{
 
 /* =========================================================
    5. TYPING (dipakai Home dan About)
-   Kata diatur lewat atribut data-words di HTML.
 ========================================================= */
 .typing-line{
     display: flex;
@@ -187,11 +197,11 @@ section{
     font-size: clamp(2rem, 2.5vw, 3rem);
     font-weight: 600;
     line-height: 1.5;
-    min-height: 1.5em;                 /* cegah layout melompat saat mengetik */
+    min-height: 1.5em;                 
     margin: 0.4rem 0 1.2rem;
 }
 .typing-label{
-    color: var(--text-color);          /* tanpa ini ikut biru karena aturan span */
+    color: var(--text-color);          
     white-space: nowrap;
 }
 .typing-text{
@@ -204,7 +214,7 @@ section{
     width: 2px;
     height: 1em;
     margin-left: 0.3rem;
-    background: currentColor;          /* caret mengikuti warna kata */
+    background: currentColor;         
     vertical-align: text-bottom;
     animation: caret-blink 0.8s steps(1) infinite;
 }
@@ -214,14 +224,13 @@ section{
 
 .about-content .typing-line{
     font-size: clamp(1.8rem, 2vw, 2.4rem);
-    min-height: 3em;
+    min-height: 1.5em;                   
+    margin: 0 0 var(--about-sub-gap);
 }
 
 
 /* =========================================================
    6. FOTO (Home + About)
-   Ukuran, rasio, dan fokus dikendalikan variabel di :root.
-   Di layar kecil variabel diganti pada bagian Responsive.
 ========================================================= */
 .home-img,
 .about-img{
@@ -288,7 +297,7 @@ section{
     position: absolute;
     top: 0;
     right: 0;
-    width: 30%;
+    width: var(--home-band-width);
     height: 100%;
     background-color: var(--main-color);
     border-radius: 4rem 0 0 4rem;
@@ -365,15 +374,18 @@ section{
 }
 .about-content .heading{
     text-align: left;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
+    line-height: 1.1;                    
+    margin-bottom: var(--about-title-gap);
 }
 .about-content p{
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 1.9;
     color: var(--muted-color);
-    margin: 2rem 0 3rem;
+    margin: 0 0 1.4rem;
+}
+.about-content p:last-of-type{
+    margin-bottom: 2.4rem;
 }
 
 .about-info{
@@ -406,7 +418,6 @@ section{
     font-weight: 600;
 }
 
-/* Ornamen disembunyikan dulu, aktif di desktop (bagian 14) */
 .orn,
 .float-badge{
     display: none;
@@ -675,6 +686,7 @@ section{
     align-items: stretch;
 }
 
+/* ----- Panel radar (navy, elemen paling menonjol) ----- */
 .skills-radar{
     position: relative;
     overflow: hidden;
@@ -687,14 +699,14 @@ section{
     border-radius: 2rem;
     box-shadow: 0 2rem 5rem rgba(20, 39, 78, 0.25);
 }
-.skills-radar::before{
+.skills-radar::before{         
     content: "";
     position: absolute;
     inset: 0;
     background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1.5px, transparent 2px);
     background-size: 2.2rem 2.2rem;
     -webkit-mask: radial-gradient(circle at center, #000, transparent 75%);
-    mask: radial-gradient(circle at center, #000, transparent 75%);
+            mask: radial-gradient(circle at center, #000, transparent 75%);
 }
 .skills-radar svg{
     position: relative;
@@ -730,6 +742,7 @@ section{
     stroke-width: 2;
 }
 
+/* ----- Daftar keahlian ----- */
 .skills-list{
     list-style: none;
     display: grid;
@@ -774,13 +787,14 @@ section{
     color: var(--muted-color);
 }
 
+/* Meter 5 segmen: lebar isi = --level x 20% */
 .skill-meter{
     position: relative;
     height: 0.8rem;
     overflow: hidden;
     background: var(--border-color);
     -webkit-mask: repeating-linear-gradient(90deg, #000 0 calc(20% - 0.4rem), transparent 0 20%);
-    mask: repeating-linear-gradient(90deg, #000 0 calc(20% - 0.4rem), transparent 0 20%);
+            mask: repeating-linear-gradient(90deg, #000 0 calc(20% - 0.4rem), transparent 0 20%);
 }
 .skill-meter::before{
     content: "";
@@ -790,6 +804,7 @@ section{
     background: var(--bar-fill);
     transform: scaleX(0);
     transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
     transition-delay: calc(var(--n, 0) * 0.12s);
 }
 .skills.in-view .skill-meter::before{
@@ -811,6 +826,7 @@ section{
     border-radius: 99px;
 }
 
+/* ----- Alur: Collect > Analyze > Build > Validate ----- */
 .skills-flow{
     position: relative;
     max-width: 120rem;
@@ -844,46 +860,18 @@ section{
     border-color: var(--gold-color);
 }
 
-@media (max-width: 991px){
-    .skills-layout{
-        grid-template-columns: 1fr;
-    }
-    .skills-radar{
-        max-width: 56rem;
-        width: 100%;
-        margin: 0 auto;
-    }
-}
-@media (max-width: 650px){
-    .skill-item{
-        padding: 1.5rem 1.6rem;
-    }
-    .skill-item:hover{
-        transform: none;
-    }
-    .skills-flow li{
-        padding: 0.7rem 1.2rem;
-        font-size: 1.2rem;
-    }
-}
-@media(prefers-reduced-motion: reduce){
-    .skill-meter::before{
-        transition: none;
-        transform: none;
-    }
-}
+
 /* =========================================================
    12. CONTACT
 ========================================================= */
-
-.contact {
+.contact{
     position: relative;
     overflow: hidden;
     min-height: auto;
     padding: 12rem 9% 8rem;
     background: var(--second-bg-color);
 }
-.contact::before{
+.contact::before{                     
     content: "";
     position: absolute;
     top: 10rem;
@@ -895,7 +883,7 @@ section{
     opacity: 0.35;
     pointer-events: none;
 }
-.contact::after{
+.contact::after{                       
     content: "";
     position: absolute;
     left: -18rem;
@@ -910,21 +898,24 @@ section{
     position: relative;
     z-index: 1;
 }
+:where(.contact a){
+    color: inherit;
+}
 
+/* ----- Judul ----- */
 .contact-head{
     max-width: 132rem;
     margin: 0 auto 4.5rem;
     text-align: center;
 }
-.contact-head .heading {
+.contact-head .heading{
     margin-bottom: 1.4rem;
     font-size: clamp(4rem, 5vw, 6.5rem);
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.15rem;
 }
-
-.contact-head .projects-subtitle {
+.contact-head .projects-subtitle{
     max-width: 62rem;
     margin: 0 auto;
     padding: 0;
@@ -933,18 +924,18 @@ section{
     color: var(--muted-color);
 }
 
-.contact-layout {
+/* ----- Layout dua kolom, tinggi sama ----- */
+.contact-layout{
     max-width: 132rem;
     margin: 0 auto;
     display: grid;
-    grid-template-columns:
-        minmax(0, 0.85fr)
-        minmax(0, 1.15fr);
-    align-items: stretch;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: 3rem;
+    align-items: stretch;
 }
 
-.contact-info {
+/* ----- Panel navy ----- */
+.contact-info{
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -952,12 +943,14 @@ section{
     flex-direction: column;
     gap: 3rem;
     padding: 4.5rem 3.8rem;
-    color: #FFF;
-    background: radial-gradient(circle at 88% 6%, color-mix(in srgb, var(--accent-color) 38%, transparent), transparent 46%), var(--main-color);
+    color: #fff;
+    background:
+        radial-gradient(circle at 88% 6%, color-mix(in srgb, var(--accent-color) 38%, transparent), transparent 46%),
+        var(--main-color);
     border-radius: 2.4rem 1.2rem 2.4rem 1.2rem;
     box-shadow: 0 2rem 4rem rgba(20, 39, 78, 0.2);
 }
-.contact-info::before{
+.contact-info::before{                 
     content: "";
     position: absolute;
     top: -9rem;
@@ -966,9 +959,9 @@ section{
     height: 26rem;
     border: 0.2rem solid rgba(255, 255, 255, 0.14);
     border-radius: 50%;
-    z-index: 1;
+    z-index: -1;
 }
-.contact-info::after{
+.contact-info::after{                  
     content: "";
     position: absolute;
     left: -9rem;
@@ -989,10 +982,10 @@ section{
     font-size: 1.3rem;
     font-weight: 600;
     line-height: 1;
-    color: #FFF;
+    color: #fff;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 99px; 
+    border-radius: 99px;
 }
 .contact-status::before{
     content: "";
@@ -1004,8 +997,8 @@ section{
     animation: status-pulse 2s ease-out infinite;
 }
 @keyframes status-pulse{
-    0%{ box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.6);}
-    100%{   box-shadow: 0 0 0 0.9rem rgba(201, 169, 110, 0);}
+    0%{   box-shadow: 0 0 0 0 rgba(201, 169, 110, 0.6); }
+    100%{ box-shadow: 0 0 0 0.9rem rgba(201, 169, 110, 0); }
 }
 
 .contact-info h3{
@@ -1013,7 +1006,7 @@ section{
     font-size: clamp(2.8rem, 3vw, 3.6rem);
     font-weight: 800;
     line-height: 1.2;
-    color: #FFF;
+    color: #fff;
 }
 .contact-info p{
     max-width: 42rem;
@@ -1032,13 +1025,14 @@ section{
     padding: 0.6rem 1.3rem;
     font-size: 1.25rem;
     font-weight: 500;
-    color: #FFF;
+    color: #fff;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 99px;
 }
 
-.info-bottomz{
+/* Bagian bawah panel didorong ke dasar agar sejajar dengan form */
+.info-bottom{
     margin-top: auto;
     display: grid;
     gap: 2.6rem;
@@ -1068,7 +1062,7 @@ section{
     display: flex;
     align-items: center;
     gap: 1.4rem;
-    color: #FFF;
+    color: #fff;
 }
 .row-link i{
     flex: none;
@@ -1084,7 +1078,7 @@ section{
 .row-text{
     display: block;
     min-width: 0;
-    color: #FFF;
+    color: #fff;
 }
 .row-text small{
     display: block;
@@ -1104,7 +1098,7 @@ section{
     width: 4rem;
     height: 4rem;
     font-size: 2rem;
-    color: fff;
+    color: #fff;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 1rem;
     cursor: pointer;
@@ -1137,7 +1131,7 @@ section{
     width: 4.5rem;
     height: 4.5rem;
     font-size: 2.1rem;
-    color: fff;
+    color: #fff;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
@@ -1150,6 +1144,7 @@ section{
     transform: translateY(-0.3rem);
 }
 
+/* ----- Kartu form ----- */
 .contact-form{
     display: flex;
     flex-direction: column;
@@ -1182,7 +1177,7 @@ section{
     line-height: 1.7;
     color: var(--muted-color);
 }
- 
+
 /* Progres 4 segmen (mirip meter di Skills) */
 .fp-steps{
     display: grid;
@@ -1215,7 +1210,7 @@ section{
 .fp-text em{
     font-style: normal;
 }
- 
+
 /* Kolom */
 .field-row{
     display: grid;
@@ -1265,7 +1260,7 @@ section{
 .field textarea:not(:placeholder-shown):invalid{
     border-color: #C0392B;
 }
- 
+
 /* Select: panah sendiri dan warna placeholder */
 .field select{
     -webkit-appearance: none;
@@ -1282,7 +1277,7 @@ section{
 .field select option{
     color: var(--text-color);
 }
- 
+
 /* Pesan mengisi sisa tinggi agar dasar form sejajar dengan panel */
 .field-message{
     flex: 1;
@@ -1305,7 +1300,7 @@ section{
     font-weight: 600;
     color: var(--main-color);
 }
- 
+
 /* Footer form */
 .form-footer{
     display: flex;
@@ -1336,7 +1331,7 @@ section{
 }
 .form-note .form-status.is-ok{    color: #1E8E5A; }
 .form-note .form-status.is-error{ color: #C0392B; }
- 
+
 .form-footer .btn{
     min-height: 4.8rem;
     padding: 1.3rem 2.5rem;
@@ -1360,8 +1355,14 @@ section{
     box-shadow: 0 0 0 0.4rem color-mix(in srgb, var(--gold-color) 40%, transparent);
 }
 
+
 /* =========================================================
    13. FOOTER
+========================================================= */
+/* =========================================================
+   FOOTER (mandiri, class "ft-")
+   Tempel di PALING BAWAH style.css (setelah CSS Contact).
+   CSS footer lama (.footer ...) boleh dihapus.
 ========================================================= */
 .ft{
     position: relative;
@@ -1370,7 +1371,8 @@ section{
     color: #E8EDF5;
     background: var(--main-color, #14274E);
 }
-.ft::before{                           
+.ft::before{                           /* garis emas tipis di tepi atas */
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -1379,7 +1381,7 @@ section{
     background: linear-gradient(90deg, transparent, var(--gold-color, #C9A96E), transparent);
     opacity: 0.7;
 }
-.ft::after{                            
+.ft::after{                            /* cincin emas samar */
     content: "";
     position: absolute;
     right: -10rem;
@@ -1395,10 +1397,10 @@ section{
     position: relative;
     z-index: 1;
 }
-:where(.ft a){                         
+:where(.ft a){                         /* tautan tidak pernah jatuh ke warna biru/ungu bawaan browser */
     color: inherit;
 }
-.ft-mark{                              
+.ft-mark{                              /* tulisan besar samar sebagai watermark */
     position: absolute;
     left: 50%;
     bottom: 7rem;
@@ -1593,8 +1595,15 @@ section{
     box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.25);
 }
 
+
+/* =========================================================
+   14. DESKTOP ≥ 992px: bentuk, ornamen, badge
+   (tidak mempengaruhi tablet dan mobile)
+========================================================= */
 @media (min-width: 992px){
 
+    /* Preset bentuk: ganti nama class di HTML
+       contoh: class="home-img shape-arch" */
     .shape-circle{  --ratio: 1 / 1; --radius: 50%; }
     .shape-oval{    --ratio: 4 / 5; --radius: 50%; }
     .shape-arch{    --ratio: 4 / 5; --radius: 50% 50% 3rem 3rem / 38% 38% 3rem 3rem; }
@@ -1603,11 +1612,13 @@ section{
 
     /* ----- HOME ----- */
     .home-img{
+        align-self: var(--home-photo-align);
+        transform: translate(var(--home-photo-shift-x), var(--home-photo-shift-y));
         box-shadow:
             var(--photo-offset) var(--photo-offset) 0 0 color-mix(in srgb, var(--main-color) 14%, transparent),
             0 2rem 5rem color-mix(in srgb, var(--main-color) 22%, transparent);
     }
-    .home-img::before{                 
+    .home-img::before{                 /* cincin kiri atas */
         content: "";
         position: absolute;
         top: -2rem;
@@ -1619,7 +1630,7 @@ section{
         opacity: 0.25;
         z-index: -1;
     }
-    .home-img::after{                 
+    .home-img::after{                  /* titik kiri bawah */
         content: "";
         position: absolute;
         left: -4.5rem;
@@ -1644,7 +1655,7 @@ section{
         pointer-events: none;
         z-index: 0;
     }
-    .orn-blob{                        
+    .orn-blob{                         /* cahaya lembut di belakang foto */
         inset: -20%;
         background: radial-gradient(circle, color-mix(in srgb, var(--main-color) 20%, transparent), transparent 68%);
     }
@@ -1714,10 +1725,8 @@ section{
     0%, 100%{ transform: translateY(0); }
     50%{      transform: translateY(-1rem); }
 }
- 
-/* ==================================================
-   RESPONSIVE
-================================================== */
+
+
 /* =========================================================
    15. RESPONSIVE (urut dari besar ke kecil, jangan diacak)
 ========================================================= */
@@ -1824,18 +1833,18 @@ section{
     }
     .about-content .heading{
         text-align: center;
-        margin-bottom: 1rem;
     }
     .about-content .typing-line{
         justify-content: center;
         font-size: 1.9rem;
-        min-height: 3em;
-        margin: 0.4rem 0 1.2rem;
     }
     .about-content p{
         font-size: 1.5rem;
         line-height: 1.8;
-        margin: 0 auto 1.5rem;
+        margin: 0 auto 1.4rem;
+    }
+    .about-content p:last-of-type{
+        margin-bottom: 2rem;
     }
     .about-content .btn{
         margin-top: 1rem;
