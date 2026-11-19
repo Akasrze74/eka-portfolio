@@ -28,6 +28,12 @@
         rel="stylesheet"
     >
 
+    <!-- Lenis Scrolling -->
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script> 
+    <!-- GSAP & ScrollTrigger untuk Animasi -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <!-- Boxicons -->
     <link
         href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -67,138 +73,210 @@
 
     <section class="home" id="home" aria-labelledby="home-heading">
 
-        <!-- Layer Ornamen Background -->
         <div class="home-layer" aria-hidden="true">
             <span class="orn-big-text">PORTFOLIO</span>
             <span class="orn-grid"></span>
             <span class="orn-blob orn-blob--1"></span>
             <span class="orn-blob orn-blob--2"></span>
         </div>
-    
+
         <div class="home-wrapper">
-            <!-- KIRI: Teks & CTA -->
+
+            <!-- KIRI: teks dan CTA -->
             <div class="home-content">
-                <!-- Badge -->
                 <div class="hello-badge">
                     <span class="corner tl"></span>
                     <span class="corner tr"></span>
                     <span class="corner bl"></span>
                     <span class="corner br"></span>
-                    <span class="dot"></span> Hello There!
+                    <span class="dot"></span>Hello There!
                 </div>
-    
+
                 <h1 id="home-heading">
-                    I'm <em>Eka Saputra,</em><br>
-                    Information Systems<br>
-                    Student.
+                    I'm <em class="highlight-name">Eka Saputra</em>,
+                    <br>Information Systems<br>
+                    student.
                 </h1>
-    
+
                 <p class="home-desc">
-                    Final-year student at Universitas Bakrie, with a strong interest in Data Analytics, Business Intelligence, and technology-driven business solutions.
+                    Final-year student at Universitas Bakrie, specializing in Data Analytics, Business Intelligence, and UI/UX Design to create impactful digital solutions.
                 </p>
-    
+
                 <div class="home-cta">
-                    <a href="#projects" class="btn btn-primary">
-                        View My Project <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
+                    <a href="#projects" class="btn-primary">
+                        View My Projects <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                     </a>
-                    <a href="assets/CV_Eka_Saputra.pdf" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                    <a href="assets/CV_Eka_Saputra.pdf" class="btn-outline" download="CV_Eka_Saputra.pdf">
                         Download CV
                     </a>
                 </div>
             </div>
-    
-            <!-- KANAN: Foto & Ornamen Melayang -->
+
+            <!-- KANAN: foto dan ornamen -->
             <div class="home-visual">
-                <!-- Bentuk Geometris di belakang foto -->
-                <div class="abstract-blob"></div>
-                <div class="abstract-ring"></div>
-                <div class="abstract-dots"></div>
-                
-                <!-- Foto Utama -->
+                <div class="abstract-blob" aria-hidden="true"></div>
+
                 <div class="visual-img">
-                    <img src="assets/home-eka.jpg" alt="Eka Saputra" decoding="async">
+                    <img src="assets/home-eka.jpg" alt="Eka Saputra" width="720" height="900"
+                        fetchpriority="high" decoding="async">
                 </div>
-    
-                <!-- Rotating Text -->
-                <div class="rotating-badge">
-                    <svg viewBox="0 0 100 100" width="120" height="120">
-                        <path id="curve" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent" />
-                        <text>
-                            <textPath href="#curve" startOffset="0%">
-                                DATA ANALYTICS • UI/UX • SYSTEM ANALYSIS • BI •
-                            </textPath>
-                        </text>
-                    </svg>
-                    <i class='bx bx-bar-chart-alt-2'></i>
+
+                <div class="visual-socials">
+                    <a href="https://www.linkedin.com/in/eka-saputra-75152b347" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bx bxl-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/sptrakaa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bx bxl-instagram" aria-hidden="true"></i></a>
+                    <a href="https://github.com/Akasrze74" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bx bxl-github" aria-hidden="true"></i></a>
                 </div>
-    
-                <!-- Floating Tags -->
-                <div class="float-tag tag-1">UI/UX Designer</div>
-                <div class="float-tag tag-2">Data Analyst</div>
-                
-                <!-- Cursor Icon (Opsional) -->
-                <i class="bx bx-pointer cursor-icon" aria-hidden="true"></i>
+
+                <div class="float-tag tag-1" aria-hidden="true">UI/UX Designer</div>
+                <div class="float-tag tag-2" aria-hidden="true">Data Analyst</div>
             </div>
         </div>
-    
-        <!-- BAWAH: Marquee (Teks Berjalan) -->
-        <div class="home-marquee">
-            <div class="marquee-track">
-                <span>Data Analytics</span> <i class="bx bx-star"></i>
-                <span>Business Intelligence</span> <i class="bx bx-star"></i>
-                <span>System Analysis</span> <i class="bx bx-star"></i>
-                <span>UI/UX Design</span> <i class="bx bx-star"></i>
-                <span>Quality Assurance</span> <i class="bx bx-star"></i>
-                <!-- Duplikasi untuk looping seamless -->
-                <span>Data Analytics</span> <i class="bx bx-star"></i>
-                <span>Business Intelligence</span> <i class="bx bx-star"></i>
-                <span>System Analysis</span> <i class="bx bx-star"></i>
-                <span>UI/UX Design</span> <i class="bx bx-star"></i>
-                <span>Quality Assurance</span> <i class="bx bx-star"></i>
-            </div>
-        </div>
+        <!-- /home-wrapper -->
     </section>
+
+    <!-- RUNNING TEXT MARQUEE (Menyambung Home ke About) -->
+    <div class="marquee-divider" aria-hidden="true">
+        <div class="marquee-content">
+            <span>Data Analytics</span> <i class="bx bx-star"></i>
+            <span>Business Intelligence</span> <i class="bx bx-star"></i>
+            <span>System Analysis</span> <i class="bx bx-star"></i>
+            <span>UI/UX Design</span> <i class="bx bx-star"></i>
+            <span>Quality Assurance</span> <i class="bx bx-star"></i>
+            <!-- Duplikasi untuk looping mulus -->
+            <span>Data Analytics</span> <i class="bx bx-star"></i>
+            <span>Business Intelligence</span> <i class="bx bx-star"></i>
+            <span>System Analysis</span> <i class="bx bx-star"></i>
+            <span>UI/UX Design</span> <i class="bx bx-star"></i>
+            <span>Quality Assurance</span> <i class="bx bx-star"></i>
+        </div>
+    </div>
 
     <section class="about" id="about" aria-labelledby="about-heading">
-        <div class="about-rectangle" aria-hidden="true"></div>
-
-        <div class="about-visual">
-            <span class="orn orn-blob" aria-hidden="true"></span>
-            <span class="orn orn-dots" aria-hidden="true"></span>
-            <span class="orn orn-ring" aria-hidden="true"></span>
         
-            <div class="about-img shape-oval">
-                <img src="assets/about-eka.jpg" alt="Photo of Eka Saputra" width="400" height="500" loading="lazy" decoding="async">
+        <!-- Ornamen Background -->
+        <div class="about-bg-grid" aria-hidden="true"></div>
+        <span class="about-watermark" aria-hidden="true">PROFILE</span>
+
+        <div class="about-grid">
+            
+            <!-- KOLOM KIRI: Teks & Stats -->
+            <div class="about-col-left">
+                <div class="about-label">
+                    <span class="line"></span> GET TO KNOW ME
+                </div>
+                
+                <!-- Teks judul dirapikan -->
+                <h2 class="heading" id="about-heading">
+                    Bridging <em>data</em> &<br>digital <em>experience</em>.
+                </h2>
+
+                <p class="about-desc">
+                    I am a final-year Information Systems student with an interest
+                    in connecting business needs with technology-driven solutions.
+                    Through academic and collaborative projects, I explore data
+                    analytics, system analysis, software development, and UI/UX
+                    design to build structured, practical, and user-oriented
+                    digital experiences.
+                </p>
+
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <h3>7<span>+</span></h3>
+                        <p>Major Projects</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>1</h3>
+                        <p>Domains</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>10<span>+</span></h3>
+                        <p>Tools</p>
+                    </div>
+                </div>
             </div>
-        
-            <span class="float-badge badge-1" aria-hidden="true">Designer</span>
-            <span class="float-badge badge-2" aria-hidden="true">Data &amp; Business</span>
-            <span class="float-badge badge-3" aria-hidden="true">Software Engineer</span>
-        </div>
 
-        <div class="about-content">
-            <h2 class="heading" id="about-heading">
-                About <span>Me</span>
-            </h2>
-    
-            <h3 class="typing-line" aria-label="Focused on Data Analytics, Business Intelligence, UI/UX Design, System Analysis, and Application Development">
-                <span class="typing-label">Focused on</span>
-                <span class="typing-text" aria-hidden="true"
-                    data-words='["Data Analytics","Business Intelligence","UI/UX Designer","System Analysis","Software Development"]'></span>
-            </h3>
+            <!-- KOLOM TENGAH: Portrait Frame -->
+            <div class="about-col-center">
+                <div class="core-visual">
 
-            <p>
-                My experience through academic and independent
-                projects has enabled me to explore data
-                analytics, business intelligence, system
-                analysis, application development, and
-                software quality assurance.
-            </p>
-            <a href="#projects" class="btn">
-                Explore My Projects
-            </a>
+                    <!-- Background glow -->
+                    <div class="core-glow"></div>
+
+                    <!-- Decorative accents -->
+                    <div class="visual-accent accent-one"></div>
+                    <div class="visual-accent accent-two"></div>
+
+                    <!-- Portrait frame -->
+                    <div class="portrait-frame">
+                        <img
+                            src="assets/about-eka.jpg"
+                            alt="Photo of Eka Saputra"
+                            class="cutout-img"
+                            loading="lazy"
+                        />
+                    </div>
+
+                    <!-- Floating badge -->
+                    <div class="core-badge">
+                        <i class="bx bx-code-alt"></i>
+                        <span>System Analyst</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- KOLOM KANAN: Kartu Interaktif -->
+            <div class="about-col-right">
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="icon-box"><i class="bx bx-bulb"></i></div>
+                        <h4>My Philosophy</h4>
+                    </div>
+                    <p>Blending logical thinking with modern technology to create intuitive, high-performance digital experiences.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="card-header">
+                        <div class="icon-box"><i class="bx bx-target-lock"></i></div>
+                        <h4>The Mission</h4>
+                    </div>
+                    <p>Transforming complex data into clean, pixel-perfect interfaces that empower users and drive business value.</p>
+                </div>
+                
+                <div class="info-card accent-card">
+                    <div class="card-header">
+                        <div class="icon-box"><i class="bx bx-check-shield"></i></div>
+                        <h4>Current Status</h4>
+                    </div>
+                    <p>Available for Internship opportunities and professional collaborations in tech and business.</p>
+                    <span class="status-pill">Open to Internships</span>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- RUNNING TEXT MARQUEE (Menyambung About ke Services) -->
+    <div class="marquee-divider marquee-tools" aria-hidden="true">
+        <div class="marquee-content marquee-content-reverse">
+            <span>PowerBI</span> <i class="bx bx-bar-chart-alt-2"></i>
+            <span>Tableau</span> <i class="bx bx-bar-chart-alt-2"></i>
+            <span>Figma</span> <i class="bx bx-palette"></i>
+            <span>Python</span> <i class="bx bx-code-alt"></i>
+            <span>JavaScript</span> <i class="bx bx-code-alt"></i>
+            <span>MySQL</span> <i class="bx bx-data"></i>
+            <span>Flutter</span> <i class="bx bx-code-alt"></i>
+            <span>Apache Meter</span> <i class="bx bx-test-tube"></i>
+            <!-- Duplikasi untuk looping mulus -->
+            <span>PowerBI</span> <i class="bx bx-bar-chart-alt-2"></i>
+            <span>Tableau</span> <i class="bx bx-bar-chart-alt-2"></i>
+            <span>Figma</span> <i class="bx bx-palette"></i>
+            <span>Python</span> <i class="bx bx-code-alt"></i>
+            <span>JavaScript</span> <i class="bx bx-code-alt"></i>
+            <span>MySQL</span> <i class="bx bx-data"></i>
+            <span>Flutter</span> <i class="bx bx-code-alt"></i>
+            <span>Apache Meter</span> <i class="bx bx-test-tube"></i>
+        </div>
+    </div>
 
     <section class="services" id="services" aria-labelledby="services-heading">
         <h2 class="heading" id="services-heading">

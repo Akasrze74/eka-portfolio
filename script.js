@@ -1,10 +1,3 @@
-/* =========================================================
-   SCRIPT.JS (rapi): tiap fitur dibungkus fungsi sendiri dan
-   berhenti diam-diam jika elemennya tidak ada di halaman,
-   sehingga satu error tidak mematikan fitur lain.
-   JANGAN ada baris require(...) atau import di file ini.
-========================================================= */
-
 /* 1. Services slider (loop tanpa putus) */
 (function () {
     const track = document.querySelector(".service-track");
@@ -69,30 +62,35 @@
     window.addEventListener("resize", () => updateSlider(false));
 })();
 
-/* 2. Menu mobile + penanda menu aktif saat scroll */
+/* 2. Menu mobile + penanda menu aktif (IntersectionObserver: tanpa baca layout di setiap scroll) */
 (function () {
     const menuIcon = document.querySelector("#menu-icon");
     const navbar = document.querySelector(".navbar");
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("header nav a");
+    const links = Array.from(document.querySelectorAll("header nav a"));
+    const sections = Array.from(document.querySelectorAll("section[id]"));
 
-    window.addEventListener("scroll", () => {
-        const top = window.scrollY;
-        sections.forEach(sec => {
-            const offset = sec.offsetTop - 150;
-            const id = sec.getAttribute("id");
-            if (top >= offset && top < offset + sec.offsetHeight) {
-                navLinks.forEach(link => link.classList.remove("active"));
-                const activeLink = document.querySelector(`header nav a[href="#${id}"]`);
-                if (activeLink) activeLink.classList.add("active");
-            }
-        });
-    });
+    if ("IntersectionObserver" in window && sections.length) {
+        // pita tipis di sekitar 40-45% tinggi layar: section yang melintasinya dianggap aktif
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                links.forEach(link => {
+                    link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+                });
+            });
+        }, { rootMargin: "-40% 0px -55% 0px" });
+        sections.forEach(sec => io.observe(sec));
+    }
 
     if (menuIcon && navbar) {
         menuIcon.onclick = () => {
-            menuIcon.classList.toggle("bx-x");
-            navbar.classList.toggle("active");
+            const open = navbar.classList.toggle("active");
+            const icon = menuIcon.querySelector("i");
+            if (icon) {
+                icon.classList.toggle("bx-menu", !open);
+                icon.classList.toggle("bx-x", open);
+            }
+            menuIcon.setAttribute("aria-expanded", open);
         };
     }
 })();
@@ -291,5 +289,7 @@
 })();
 
 /* 6. Footer: tahun otomatis */
-document.getElementById("ft-year").textContent =
-    new Date().getFullYear();
+(function () {
+    const year = document.getElementById("ft-year");
+    if (year) year.textContent = new Date().getFullYear();
+})();
