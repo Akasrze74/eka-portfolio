@@ -1083,7 +1083,7 @@ section{
 }
 .accent-card:hover { transform: translateX(-10px) translateY(-5px); }
 .accent-card .icon-box { background: rgba(255, 255, 255, 0.1); color: var(--gold-color); }
-.accent-card:hover .icon-box { background: var(--gold-color); color: var(--main-color); }
+.accent-card:hover .icon-box { background: var(--accent-color); color: #fff; }
 .accent-card h4 { color: #fff; }
 .accent-card p { color: rgba(255, 255, 255, 0.75); }
 
@@ -1168,108 +1168,281 @@ section{
 }
 
 /* =========================================================
-   9. SERVICES
-========================================================= */
-.services{
+   9. SERVICES — HORIZONTAL SLIDER (CLEAN MODERN)
+   ========================================================= */
+.services {
     position: relative;
-    width: 100%;
-    min-height: 100vh;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 9rem 6% 6rem;
+    padding: 14rem 4% 12rem;
+    background: var(--bg-color);
     overflow: hidden;
 }
-.services h2{
+
+.services-header {
     text-align: center;
-    font-size: clamp(3.5rem, 4vw, 4.8rem);
-    line-height: 1.2;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
 }
-.services-wrapper{
+
+.services-header .heading {
+    margin-bottom: 1.5rem;
+    font-size: clamp(4rem, 5vw, 6rem);
+}
+
+.services-header .projects-subtitle {
+    text-align: center;
+    max-width: 70rem;
+    margin: 0 auto;
+    font-size: 1.7rem;
+}
+
+/* --- Wrapper & Slider Area --- */
+.services-wrapper {
     position: relative;
-    width: 100%;
-    max-width: 1300px;
+    max-width: 1600px;
     margin: 0 auto;
     display: flex;
     align-items: center;
+    padding: 0 4rem; 
 }
-.services-slider{
+
+.services-slider {
     width: 100%;
     overflow: hidden;
-    padding: 1rem;
+    padding: 2.5rem 1rem; 
 }
-.service-track{
+
+.service-track {
     display: flex;
-    gap: 2rem;
-    transition: transform 0.5s ease;
+    gap: 3.5rem;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.services-box{
-    flex: 0 0 calc((100% - 4rem) / 3);
-    min-height: 350px;
-    padding: 3.5rem 2.5rem;
+
+/* --- Desain Kartu --- */
+.services-box {
+    flex: 0 0 calc((100% - 7rem) / 3); 
     background: var(--card-color);
-    border: 0.2rem solid var(--border-color);
-    border-radius: 2rem;
-    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 2.5rem;
+    padding: 4.5rem 4rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    transition: border-color 0.3s ease, 
-                box-shadow 0.3s ease;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    box-shadow: 0 15px 40px rgba(20, 39, 78, 0.04);
 }
-.services-box:hover{
-    border-color: var(--gold-color);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+
+/* Efek Hover Kartu */
+.services-box:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(20, 39, 78, 0.12);
+    border-color: var(--accent-color);
 }
-.services-box i{
-    font-size: 6rem;
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-}
-.services-box h3{
-    font-size: 2.4rem;
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 1.5rem 0 1rem;
-}
-.services-box p{
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--muted-color);
+
+/* Top Area (Ikon & Nomor) */
+.box-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 2.5rem;
 }
-.services-box .btn{
-    margin-top: auto;
+
+.box-icon {
+    width: 7rem;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--second-bg-color);
+    color: var(--accent-color);
+    font-size: 3.6rem;
+    border-radius: 2rem;
+    transition: 0.4s ease;
 }
-.service-arrow{
+
+.services-box:hover .box-icon {
+    background: var(--accent-color);
+    color: #fff;
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.box-num {
+    font-family: Georgia, serif;
+    font-size: 6rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--border-color);
+    transition: -webkit-text-stroke-color 0.4s ease;
+}
+.services-box:hover .box-num {
+    -webkit-text-stroke-color: var(--accent-color);
+}
+
+/* Stage Label (Collect, Analyze, dll) */
+.box-stage {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-color);
+    margin-bottom: 1rem;
+}
+
+/* Judul & Deskripsi */
+.services-box h3 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+}
+.services-box h3 em {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent-color);
+}
+
+.services-box p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--muted-color);
+    margin-bottom: 2.5rem;
+    flex: 1; 
+}
+
+/* Tags */
+.box-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    margin-bottom: 3rem;
+}
+.box-tags li {
+    padding: 0.6rem 1.6rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--main-color);
+    background: var(--second-bg-color);
+    border-radius: 99px;
+}
+
+/* Link Bawah */
+.box-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--main-color);
+    transition: color 0.3s ease;
+}
+.box-link i {
+    font-size: 2.2rem;
+    transition: transform 0.3s ease;
+}
+.services-box:hover .box-link {
+    color: var(--accent-color);
+}
+.services-box:hover .box-link i {
+    transform: translateX(8px);
+}
+
+/* --- Tombol Panah Navigasi --- */
+.service-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 5rem;
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--card-color);
+    width: 6rem;
+    height: 6rem;
+    background: #fff;
     color: var(--main-color);
-    border: 0.2rem solid var(--main-color);
+    border: 1px solid var(--border-color);
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
     cursor: pointer;
     z-index: 10;
-    transition: 0.3s ease;
+    box-shadow: 0 15px 30px rgba(20, 39, 78, 0.08);
+    transition: all 0.3s ease;
 }
-.service-arrow i{
-    font-size: 3rem;
-}
-.service-arrow:hover{
+.service-arrow:hover {
     background: var(--main-color);
-    color: white;
+    color: #fff;
+    border-color: var(--main-color);
+    transform: translateY(-50%) scale(1.1);
 }
-.service-arrow.prev{ left: -6rem; }
-.service-arrow.next{ right: -6rem; }
+.service-arrow.prev { left: -1.5rem; }
+.service-arrow.next { right: -1.5rem; }
+
+/* --- CTA Bawah --- */
+.svc-cta {
+    text-align: center;
+    margin-top: 6rem;
+    font-size: 1.6rem;
+    color: var(--muted-color);
+}
+.svc-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-left: 0.8rem;
+    transition: gap 0.3s ease;
+    font-size: 1.7rem;
+}
+.svc-cta a:hover {
+    gap: 1.2rem; 
+}
+
+/* =========================================================
+   RESPONSIVE (Tablet & Mobile)
+   ========================================================= */
+@media (max-width: 1200px) {
+    .services-box {
+        flex: 0 0 calc((100% - 3.5rem) / 2); /* 2 Kartu per layar */
+        padding: 3rem;
+    }
+    .service-track { gap: 3.5rem; }
+    .services-box h3 { font-size: 2.4rem; }
+    .box-icon { width: 6rem; height: 6rem; font-size: 3rem; }
+}
+
+@media (max-width: 768px) {
+    .services { padding: 10rem 5% 8rem; }
+    .services-wrapper { padding: 0; } 
+    
+    .services-box {
+        flex: 0 0 100%; /* 1 Kartu penuh */
+        padding: 2.5rem 2rem;
+    }
+    .services-header .heading { font-size: 3.5rem; }
+    .services-header .projects-subtitle { font-size: 1.5rem; }
+    
+    .box-icon { width: 5rem; height: 5rem; font-size: 2.5rem; border-radius: 1.2rem; }
+    .box-num { font-size: 4.5rem; }
+    .services-box h3 { font-size: 2.2rem; }
+    .services-box p { font-size: 1.5rem; }
+    
+    /* Panah dipindah ke bawah */
+    .service-arrow {
+        top: auto;
+        bottom: -7rem;
+        transform: none;
+        width: 5rem; height: 5rem;
+        font-size: 2.5rem;
+    }
+    .service-arrow:hover { transform: scale(1.1); }
+    .service-arrow.prev { left: calc(50% - 6rem); }
+    .service-arrow.next { right: calc(50% - 6rem); }
+
+    .svc-cta { margin-top: 9rem; } 
+}
 
 
 /* =========================================================

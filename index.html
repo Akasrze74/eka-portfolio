@@ -279,70 +279,103 @@
     </div>
 
     <section class="services" id="services" aria-labelledby="services-heading">
-        <h2 class="heading" id="services-heading">
-            Areas of <span>Expertise</span>
-        </h2>
-    
+        
+        <div class="services-header">
+            <h2 class="heading" id="services-heading">Areas of <span>Expertise</span></h2>
+            <p class="projects-subtitle">
+                From raw data to a validated solution: the four stages I work through.
+            </p>
+        </div>
+
         <div class="services-wrapper">
-            <button class="service-arrow prev"
-                    id="prevService"
-                    aria-label="Previous service">
-                <i class='bx bx-chevron-left' aria-hidden="true"></i>
+            <!-- Tombol Navigasi Kiri -->
+            <button class="service-arrow prev" id="prevService" aria-label="Previous service">
+                <i class="bx bx-chevron-left" aria-hidden="true"></i>
             </button>
-    
+
+            <!-- Slider Area -->
             <div class="services-slider">
                 <div class="service-track">
+                    
+                    <!-- KARTU 01: Data Analytics -->
                     <div class="services-box">
-                        <i class='bx bx-palette' aria-hidden="true"></i>
-                        <h3>UI/UX &amp; Application Development</h3>
-                        <p>
-                            Designing intuitive interfaces and developing functional applications based on user needs and system requirements.
-                        </p>
-                        <a href="#projects" class="btn">
-                            View Related Projects
+                        <div class="box-top">
+                            <div class="box-icon"><i class="bx bx-bar-chart-alt-2" aria-hidden="true"></i></div>
+                            <span class="box-num">01</span>
+                        </div>
+                        <small class="box-stage">Collect</small>
+                        <h3>Data Analytics &amp; <em>BI</em></h3>
+                        <p>Transforming raw data into actionable insights through data preparation, analysis, visualization, and KPI monitoring.</p>
+                        <ul class="box-tags">
+                            <li>SQL</li><li>Excel</li><li>Power BI</li><li>DAX</li>
+                        </ul>
+                        <a href="#projects" class="box-link" aria-label="View related projects">
+                            View Projects <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                         </a>
                     </div>
 
+                    <!-- KARTU 02: System Analysis -->
                     <div class="services-box">
-                        <i class='bx bx-bar-chart-alt-2' aria-hidden="true"></i>
-                        <h3>Data Analytics &amp; BI</h3>
-                        <p>
-                            Transforming raw data into actionable insights through data preparation, analysis, visualization, and KPI monitoring.
-                        </p>
-                        <a href="#projects" class="btn">
-                            View Related Projects
+                        <div class="box-top">
+                            <div class="box-icon"><i class="bx bx-sitemap" aria-hidden="true"></i></div>
+                            <span class="box-num">02</span>
+                        </div>
+                        <small class="box-stage">Analyze</small>
+                        <h3>Business &amp; System <em>Analysis</em></h3>
+                        <p>Translating business requirements into structured workflows, process models, and system specifications.</p>
+                        <ul class="box-tags">
+                            <li>UML</li><li>BPMN</li><li>Draw.io</li>
+                        </ul>
+                        <a href="#projects" class="box-link" aria-label="View related projects">
+                            View Projects <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                         </a>
                     </div>
-    
+
+                    <!-- KARTU 03: UI/UX -->
                     <div class="services-box">
-                        <i class='bx bx-sitemap' aria-hidden="true"></i>
-                        <h3>Business & System Analysis</h3>
-                        <p>
-                            Translating business requirements into structured workflows, process models, and system specifications.
-                        </p>
-                        <a href="#projects" class="btn">
-                            View Related Projects
+                        <div class="box-top">
+                            <div class="box-icon"><i class="bx bx-palette" aria-hidden="true"></i></div>
+                            <span class="box-num">03</span>
+                        </div>
+                        <small class="box-stage">Build</small>
+                        <h3>UI/UX &amp; App <em>Development</em></h3>
+                        <p>Designing intuitive interfaces and developing functional applications based on user needs and system requirements.</p>
+                        <ul class="box-tags">
+                            <li>Figma</li><li>Flutter</li><li>Java</li>
+                        </ul>
+                        <a href="#projects" class="box-link" aria-label="View related projects">
+                            View Projects <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                         </a>
                     </div>
-    
+
+                    <!-- KARTU 04: QA -->
                     <div class="services-box">
-                        <i class='bx bx-check-shield' aria-hidden="true"></i>
-                        <h3>Software Quality Assurance</h3>
-                        <p>
-                            Evaluating functionality, performance, and security through structured testing and technical documentation.
-                        </p>
-                        <a href="#projects" class="btn">
-                            View Related Projects
+                        <div class="box-top">
+                            <div class="box-icon"><i class="bx bx-check-shield" aria-hidden="true"></i></div>
+                            <span class="box-num">04</span>
+                        </div>
+                        <small class="box-stage">Validate</small>
+                        <h3>Software Quality <em>Assurance</em></h3>
+                        <p>Evaluating functionality, performance, and security through structured testing and technical documentation.</p>
+                        <ul class="box-tags">
+                            <li>JMeter</li><li>OWASP ZAP</li><li>SonarQube</li>
+                        </ul>
+                        <a href="#projects" class="box-link" aria-label="View related projects">
+                            View Projects <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                         </a>
                     </div>
+
                 </div>
             </div>
 
-            <button class="service-arrow next"
-                    id="nextService"
-                    aria-label="Next service">
-                <i class='bx bx-chevron-right' aria-hidden="true"></i>
+            <!-- Tombol Navigasi Kanan -->
+            <button class="service-arrow next" id="nextService" aria-label="Next service">
+                <i class="bx bx-chevron-right" aria-hidden="true"></i>
             </button>
+        </div>
+
+        <div class="svc-cta">
+            <p>Need something specific? <a href="#contact">Let's talk <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a></p>
         </div>
     </section>
 
