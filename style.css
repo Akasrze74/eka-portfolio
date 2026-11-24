@@ -63,10 +63,12 @@
 html{
     font-size: 62.5%;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
 }
 body{
     background: var(--bg-color);
     color: var(--text-color);
+    overscroll-behavior-x: none;
 }
 span{
     color: var(--accent-color);
