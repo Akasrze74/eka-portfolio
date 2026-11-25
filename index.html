@@ -154,8 +154,9 @@
     <section class="about" id="about" aria-labelledby="about-heading">
         
         <!-- Ornamen Background -->
-        <div class="about-bg-grid" aria-hidden="true"></div>
-        <span class="about-watermark" aria-hidden="true">PROFILE</span>
+        <div class="about-bg-grid" aria-hidden="true">
+            <span class="about-watermark">PROFILE</span>
+        </div>
 
         <div class="about-grid">
             
@@ -380,120 +381,104 @@
     </section>
 
     <section class="projects" id="projects" aria-labelledby="projects-heading">
-        <h2 class="heading" id="projects-heading">
-            Selected <span>Projects</span>
-        </h2>
+        
+        <!-- Ornamen Latar Belakang -->
+        <div class="projects-ornaments" aria-hidden="true">
+            <div class="p-orn p-orn-1"></div>
+            <div class="p-orn p-orn-2"></div>
+            <div class="p-orn p-orn-3"></div>
+            <div class="p-bg-grid"></div>
+        </div>
 
-        <p class="projects-subtitle">
-            Exploring data, ensuring software quality,
-            and designing meaningful digital experiences.
-        </p>
+        <!-- Header Section -->
+        <div class="projects-header">
+            <div class="title-wrapper">
+                <span class="title-sub">Selected</span>
+                <h2 class="heading title-main" id="projects-heading">Projects</h2>
+            </div>
+            <p class="projects-subtitle">
+                Exploring data, ensuring software quality, <br>and designing meaningful digital experiences.
+            </p>
+        </div>
 
+        <!-- Grid Container -->
         <div class="projects-container">
 
-            <!-- PROJECT 01: CRM SALES ANALYSIS -->
-            <div class="projects-box">
-                <img src="assets/project-crm.jpg"
-                     alt="CRM Sales Pipeline and Opportunity Analysis Dashboard"
-                     loading="lazy" decoding="async">
+            <!-- PROJECT 01 -->
+            <article class="projects-box">
+                <div class="box-image">
+                    <img src="assets/project-crm.jpg" alt="CRM Sales Pipeline" loading="lazy" decoding="async">
+                </div>
                 <div class="projects-info">
-                    <span class="project-category">
-                        Business Intelligence
-                    </span>
-                    <h4>
-                        CRM Sales Pipeline & Opportunity Analysis
-                    </h4>
-                    <p>
-                        Developed an interactive Power BI dashboard
-                        to analyze CRM sales opportunities, monitor
-                        pipeline performance, and generate business
-                        insights through data visualization and
-                        DAX-based KPIs.
-                    </p>
+                    <span class="project-category">Business Intelligence</span>
+                    <h4>CRM Sales Pipeline & Opportunity</h4>
+                    <p>Developed an interactive Power BI dashboard to analyze CRM sales opportunities, monitor pipeline performance, and generate business insights.</p>
                     <div class="project-tools">
-                        <span>Power BI</span>
-                        <span>DAX</span>
-                        <span>Excel</span>
+                        <span>Power BI</span><span>DAX</span><span>Excel</span>
                     </div>
-                    <a
-                        href="https://drive.google.com/file/d/1T3dt57-0-uI47mW2-9OQ_MjrAdohA7Kv/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="View CRM Sales Analysis Project">
-                        <i class="bx bx-link-external" aria-hidden="true"></i>
+                    <a href="https://drive.google.com/file/d/1T3dt57-0-uI47mW2-9OQ_MjrAdohA7Kv/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View CRM Project">
+                        View Case Study <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                     </a>
                 </div>
-            </div>
+            </article>
 
-
-            <!-- PROJECT 02: LINK-IN-BIO QA -->
-            <div class="projects-box">
-                <img src="assets/project-link.jpg"
-                     alt="Link-in-bio Platform Quality Assurance Project"
-                     loading="lazy" decoding="async">
+            <!-- PROJECT 02 -->
+            <article class="projects-box">
+                <div class="box-image">
+                    <img src="assets/project-link.jpg" alt="Link-in-bio QA" loading="lazy" decoding="async">
+                </div>
                 <div class="projects-info">
-                    <span class="project-category">
-                        Quality Assurance
-                    </span>
-                    <h4>
-                        Link-in-bio Platform - Quality Assurance
-                    </h4>
-                    <p>
-                        Conducted a quality assurance evaluation
-                        of a link-in-bio platform to assess its
-                        functionality, user-facing behavior,
-                        and overall consistency through
-                        structured testing and documentation.
-                    </p>
+                    <span class="project-category">Quality Assurance</span>
+                    <h4>Link-in-bio Platform QA</h4>
+                    <p>Conducted a quality assurance evaluation of a link-in-bio platform to assess its functionality, user-facing behavior, and overall consistency.</p>
                     <div class="project-tools">
-                        <span>Software Testing</span>
-                        <span>QA</span>
-                        <span>Documentation</span>
+                        <span>Software Testing</span><span>QA</span><span>Docs</span>
                     </div>
-                    <a
-                        href="https://www.figma.com/proto/B64SsN9uE8pr8Kolgce4Su?node-id=0-1&t=Hryf6EyOutoTaLJv-6"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="View Link-in-bio QA Project">
-                        <i class="bx bx-link-external" aria-hidden="true"></i>
+                    <a href="https://www.figma.com/proto/B64SsN9uE8pr8Kolgce4Su?node-id=0-1&t=Hryf6EyOutoTaLJv-6" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View QA Project">
+                        View Case Study <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                     </a>
                 </div>
-            </div>
+            </article>
 
-
-            <!-- PROJECT 03: LAUNDRYKU -->
-            <div class="projects-box">
-                <img src="assets/project-uiux.jpg"
-                     alt="Laundryku Mobile Application UI UX Redesign"
-                     loading="lazy" decoding="async">
+            <!-- PROJECT 03 -->
+            <article class="projects-box">
+                <div class="box-image">
+                    <img src="assets/project-uiux.jpg" alt="Laundryku UI/UX" loading="lazy" decoding="async">
+                </div>
                 <div class="projects-info">
-                    <span class="project-category">
-                        UI/UX Design
-                    </span>
-                    <h4>
-                        Laundryku - Mobile Application Redesign
-                    </h4>
-                    <p>
-                        Redesigned a premium laundry service
-                        application with a focus on intuitive
-                        navigation, visual consistency, and
-                        a convenient pickup-and-delivery
-                        experience for customers.
-                    </p>
+                    <span class="project-category">UI/UX Design</span>
+                    <h4>Laundryku - App Redesign</h4>
+                    <p>Redesigned a premium laundry service application with a focus on intuitive navigation, visual consistency, and a convenient experience.</p>
                     <div class="project-tools">
-                        <span>Figma</span>
-                        <span>UI Design</span>
-                        <span>Prototyping</span>
+                        <span>Figma</span><span>UI Design</span><span>Prototyping</span>
                     </div>
-                    <a
-                        href="https://www.figma.com/proto/1zxsva5Q5hV5t8wdQXgQtd?node-id=0-1&t=Hryf6EyOutoTaLJv-6"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="View Laundryku Design Project">
-                        <i class="bx bx-link-external" aria-hidden="true"></i>
+                    <a href="https://www.figma.com/proto/1zxsva5Q5hV5t8wdQXgQtd?node-id=0-1&t=Hryf6EyOutoTaLJv-6" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View UI/UX Project">
+                        View Case Study <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
                     </a>
                 </div>
-            </div>
+            </article>
+        </div>
+        <!-- MORE PROJECTS CTA -->
+        <div class="projects-cta-wrapper">
+            <a href="https://github.com/Akasrze74" target="_blank" rel="noopener noreferrer" class="projects-cta" aria-label="View more projects on Github">
+
+                <!-- Efek Kilau (Shine) -->
+                <div class="cta-shine"></div>
+
+                <div class="cta-content">
+                    <div class="cta-icon">
+                        <i class="bx bxl-github" aria-hidden="true"></i>
+                    </div>
+                    <div class="cta-text">
+                        <span class="cta-label">Want to explore further?</span>
+                        <strong>View All Projects on Github</strong>
+                    </div>
+                </div>
+
+                <div class="cta-arrow">
+                    <i class="bx bx-link-external" aria-hidden="true"></i>
+                </div>
+            </a>
         </div>
     </section>
 
@@ -528,7 +513,7 @@
                     </ul>
                 </li>
 
-                <li class="skill-item" style="--level:3" data-short="BI">
+                <li class="skill-item" style="--level:4" data-short="BI">
                     <div class="skill-head">
                         <i class='bx bx-pie-chart-alt-2' aria-hidden="true"></i>
                         <h3>Business Intelligence</h3>
