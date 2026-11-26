@@ -3363,29 +3363,44 @@ section {
 ========================================================= */
 @media (min-width: 992px) {
 
-    .shape-circle{  --ratio: 1 / 1; --radius: 50%; }
-    .shape-oval{    --ratio: 4 / 5; --radius: 50%; }
-    .shape-arch{    --ratio: 4 / 5; --radius: 50% 50% 3rem 3rem / 38% 38% 3rem 3rem; }
-    .shape-rounded{ --ratio: 4 / 5; --radius: 3rem; }
-    .shape-blob{    --ratio: 4 / 5; --radius: 58% 42% 52% 48% / 50% 58% 42% 50%; }
+    .shape-circle {  
+        --ratio: 1 / 1; 
+        --radius: 50%; 
+    }
+    .shape-oval {    
+        --ratio: 4 / 5; 
+        --radius: 50%; 
+    }
+    .shape-arch {    
+        --ratio: 4 / 5; 
+        --radius: 50% 50% 3rem 3rem / 38% 38% 3rem 3rem; 
+    }
+    .shape-rounded { 
+        --ratio: 4 / 5; 
+        --radius: 3rem; 
+    }
+    .shape-blob {    
+        --ratio: 4 / 5; 
+        --radius: 58% 42% 52% 48% / 50% 58% 42% 50%; 
+    }
 
     /* ----- ABOUT ----- */
-    .about-img{
+    .about-img {
         box-shadow:
             calc(var(--photo-offset) * -1) var(--photo-offset) 0 0 color-mix(in srgb, var(--main-color) 14%, transparent),
             0 2rem 5rem color-mix(in srgb, var(--main-color) 22%, transparent);
     }
-    .orn{
+    .orn {
         display: block;
         position: absolute;
         pointer-events: none;
         z-index: 0;
     }
-    .orn-blob{                         /* cahaya lembut di belakang foto */
+    .orn-blob {                         
         inset: -20%;
         background: radial-gradient(circle, color-mix(in srgb, var(--main-color) 20%, transparent), transparent 68%);
     }
-    .orn-dots{
+    .orn-dots {
         right: -4rem;
         bottom: -3rem;
         width: 12rem;
@@ -3394,7 +3409,7 @@ section {
         background-size: 1.6rem 1.6rem;
         opacity: 0.35;
     }
-    .orn-ring{
+    .orn-ring {
         top: -2.5rem;
         right: -2.5rem;
         width: 9rem;
@@ -3404,7 +3419,7 @@ section {
         opacity: 0.22;
     }
 
-    .float-badge{
+    .float-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.7rem;
@@ -3421,19 +3436,30 @@ section {
         box-shadow: 0 0.8rem 2rem rgba(20, 39, 78, 0.15);
         animation: photo-float 5s ease-in-out infinite;
     }
-    .float-badge::before{
+    .float-badge::before {
         content: "";
         width: 0.8rem;
         height: 0.8rem;
         border-radius: 50%;
         background: var(--gold-color);
     }
-    .badge-1{ top: 10%;   left: -16%; }
-    .badge-2{ top: 46%;   right: -22%; animation-delay: 1.2s; }
-    .badge-3{ bottom: 8%; left: -10%;  animation-delay: 2.4s; }
+    .badge-1 { 
+        top: 10%;   
+        left: -16%; 
+    }
+    .badge-2 { 
+        top: 46%;   
+        right: -22%; 
+        animation-delay: 1.2s; 
+    }
+    .badge-3 { 
+        bottom: 8%; 
+        left: -10%;  
+        animation-delay: 2.4s; 
+    }
 
     /* Pola titik besar di sudut section About */
-    .about::after{
+    .about::after {
         content: "";
         position: absolute;
         top: 9rem;
@@ -3447,9 +3473,13 @@ section {
     }
 }
 
-@keyframes photo-float{
-    0%, 100%{ transform: translateY(0); }
-    50%{      transform: translateY(-1rem); }
+@keyframes photo-float {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% {      
+        transform: translateY(-1rem); 
+    }
 }
 
 
@@ -3458,29 +3488,28 @@ section {
 ========================================================= */
 
 /* ---------- ≤ 1200px: laptop kecil ---------- */
-@media (max-width: 1200px){
-    html{
+@media (max-width: 1200px) {
+    html {
         font-size: 55%;
     }
-    .projects-container{
+    .projects-container {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 2rem;
         padding-bottom: 7rem;
         margin: 0 5rem;
     }
-    .projects-container .projects-box{
+    .projects-container .projects-box {
         height: 40rem;
     }
 }
 
 /* ---------- ≤ 895px: navbar mobile + About bertumpuk ---------- */
-@media (max-width: 895px){
+@media (max-width: 895px) {
 
-    /* Navbar */
-    #menu-icon{
+    #menu-icon {
         display: block;
     }
-    .navbar{
+    .navbar {
         position: absolute;
         top: 100%;
         right: 0;
@@ -3492,26 +3521,24 @@ section {
         border-bottom-left-radius: 2rem;
         display: none;
     }
-    .navbar.active{
+    .navbar.active {
         display: block;
     }
-    .navbar a{
+    .navbar a {
         display: block;
         font-size: 2rem;
         margin: 3rem 0;
     }
 
-    /* Judul section */
     .services h2,
-    .projects .heading{
+    .projects .heading {
         margin-bottom: 3rem;
     }
 
-    /* About: foto di atas, semua konten di tengah */
-    :root{
+    :root {
         --about-photo-width: clamp(220px, 60vw, 280px);
     }
-    .about{
+    .about {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -3520,34 +3547,34 @@ section {
         min-height: auto;
         padding: 10rem 6% 5rem;
     }
-    .about-rectangle{
+    .about-rectangle {
         display: none;
     }
-    .about-content{
+    .about-content {
         flex: none;
         width: 100%;
         max-width: 56rem;
         margin: 0 auto;
     }
-    .about-content .heading{
+    .about-content .heading {
         text-align: center;
     }
-    .about-content .typing-line{
+    .about-content .typing-line {
         justify-content: center;
         font-size: 1.9rem;
     }
-    .about-content p{
+    .about-content p {
         font-size: 1.5rem;
         line-height: 1.8;
         margin: 0 auto 1.4rem;
     }
-    .about-content p:last-of-type{
+    .about-content p:last-of-type {
         margin-bottom: 2rem;
     }
-    .about-content .btn{
+    .about-content .btn {
         margin-top: 1rem;
     }
-    .about-info li{
+    .about-info li {
         text-align: center;
         border-left: none;
         border-top: 0.4rem solid var(--gold-color);
@@ -3555,248 +3582,248 @@ section {
 }
 
 /* ---------- ≤ 650px: Projects satu kolom ---------- */
-@media (max-width: 650px){
-    .skills .heading{
+@media (max-width: 650px) {
+    .skills .heading {
         margin-bottom: 1rem;
     }
-    .skills .projects-subtitle{
+    .skills .projects-subtitle {
         font-size: 1.4rem;
         margin-bottom: 1.8rem;
     }
-    .skills-note{
+    .skills-note {
         margin-bottom: 4rem;
         padding: 1rem 1.3rem;
         font-size: 1.2rem;
     }
-    .skills-note::before{
+    .skills-note::before {
         margin-right: 0.55rem;
         padding: 0.2rem 0.6rem;
         font-size: 1rem;
     }
-    .projects .heading{
+    .projects .heading {
         margin-bottom: 1.5rem;
     }
-    .projects-subtitle{
+    .projects-subtitle {
         font-size: 1.3rem;
         margin-bottom: 3rem;
         padding: 0 1rem;
     }
-    .projects-container{
+    .projects-container {
         grid-template-columns: 1fr;
     }
-    .projects-container .projects-box{
+    .projects-container .projects-box {
         height: 38rem;
         border-radius: 1.5rem;
     }
-    .projects-box .projects-info{
+    .projects-box .projects-info {
         padding: 2rem;
     }
-    .projects-info h4{
+    .projects-info h4 {
         font-size: 2rem;
     }
-    .projects-info p{
+    .projects-info p {
         font-size: 1.3rem;
     }
-    .project-tools span{
+    .project-tools span {
         font-size: 1rem;
     }
 }
 
 /* ---------- ≤ 400px: layar sangat kecil ---------- */
-@media (max-width: 400px){
-    :root{
+@media (max-width: 400px) {
+    :root {
         --home-photo-width:  68vw;
         --about-photo-width: 68vw;
         --photo-ring: 0.6rem;
         --photo-gap:  0.4rem;
     }
-    .about{
+    .about {
         padding: 9rem 5% 4rem;
     }
-    .about-content .typing-line{
+    .about-content .typing-line {
         font-size: 1.7rem;
     }
 }
 
 /* ---------- Laptop kecil (1101-1300px): rapatkan baris kontak ---------- */
-@media (max-width: 1300px){
-    .contact-row{
+@media (max-width: 1300px) {
+    .contact-row {
         gap: 0.8rem;
         padding: 1.1rem 1.2rem;
     }
-    .row-link{
+    .row-link {
         gap: 1.2rem;
     }
-    .row-link i{
+    .row-link i {
         width: 4rem;
         height: 4rem;
         font-size: 2.1rem;
     }
-    .row-text strong{
+    .row-text strong {
         font-size: 1.4rem;
     }
-    .copy-btn{
+    .copy-btn {
         width: 3.6rem;
         height: 3.6rem;
     }
 }
 
 /* ---------- Tablet dan di bawahnya (<= 1100px): satu kolom ---------- */
-@media (max-width: 1100px){
-    .contact{
+@media (max-width: 1100px) {
+    .contact {
         padding: 11rem 5% 7rem;
     }
-    .contact-head{
+    .contact-head {
         margin-bottom: 3.5rem;
     }
-    .contact-layout{
+    .contact-layout {
         grid-template-columns: minmax(0, 1fr);  
         max-width: 72rem;
         gap: 2.5rem;
     }
     .contact-info,
-    .contact-form{
+    .contact-form {
         padding: 3.2rem;
     }
-    .contact-info p{
+    .contact-info p {
         max-width: none;
     }
 }
 
 /* ---------- Mobile (<= 650px) ---------- */
-@media (max-width: 650px){
-    .contact{
+@media (max-width: 650px) {
+    .contact {
         padding: 12rem 2rem 5rem;              
     }
-    .contact::before{
+    .contact::before {
         top: 16rem;
         width: 30rem;
         height: 30rem;
         opacity: 0.25;
     }
-    .contact-head{
+    .contact-head {
         margin-bottom: 3rem;
     }
-    .contact-head .heading{
+    .contact-head .heading {
         font-size: clamp(3.2rem, 9vw, 3.8rem);
         letter-spacing: -0.1rem;
     }
-    .contact-head .projects-subtitle{
+    .contact-head .projects-subtitle {
         font-size: 1.4rem;
     }
-    .contact-layout{
+    .contact-layout {
         gap: 2rem;
     }
 
     /* Panel */
-    .contact-info{
+    .contact-info {
         gap: 2.4rem;
         padding: 3rem 2.2rem;
         border-radius: 2rem 1rem 2rem 1rem;
     }
-    .contact-info h3{
+    .contact-info h3 {
         margin: 1.4rem 0 1rem;
         font-size: clamp(2.4rem, 7vw, 2.8rem);
     }
-    .info-tags{
+    .info-tags {
         gap: 0.6rem;
         margin-top: 1.6rem;
     }
-    .info-tags li{
+    .info-tags li {
         padding: 0.5rem 1.1rem;
         font-size: 1.2rem;
     }
-    .info-bottom{
+    .info-bottom {
         gap: 2.2rem;
     }
-    .row-text small{
+    .row-text small {
         font-size: 1.2rem;
     }
-    .row-text strong{
+    .row-text strong {
         font-size: 1.3rem;
     }
-    .copy-btn{
+    .copy-btn {
         width: max(3.6rem, 44px);               
         height: max(3.6rem, 44px);
     }
-    .contact-social a{
+    .contact-social a {
         width: max(4.2rem, 44px);
         height: max(4.2rem, 44px);
     }
 
     /* Form */
-    .contact-form{
+    .contact-form {
         gap: 1.8rem;
         padding: 2.6rem 2rem;
         border-radius: 1rem 2rem 1rem 2rem;
     }
-    .form-heading h3{
+    .form-heading h3 {
         font-size: 2.4rem;
     }
-    .fp-text{
+    .fp-text {
         flex-wrap: wrap;
         gap: 0.3rem 1rem;
     }
-    .field-row{
+    .field-row {
         grid-template-columns: minmax(0, 1fr);
         gap: 1.8rem;
     }
     .field input,
     .field select,
-    .field textarea{
+    .field textarea {
         padding: 1.4rem;
         font-size: 16px;                         
     }
-    .field select{
+    .field select {
         padding-right: 4rem;
     }
-    .field-message textarea{
+    .field-message textarea {
         min-height: 12rem;
     }
-    .form-footer{
+    .form-footer {
         flex-direction: column;
         align-items: stretch;
         gap: 1.4rem;
     }
-    .form-footer .btn{
+    .form-footer .btn {
         width: 100%;
     }
 }
 
 /* ---------- Layar sangat kecil (<= 400px) ---------- */
-@media (max-width: 400px){
-    .contact{
+@media (max-width: 400px) {
+    .contact {
         padding: 11.5rem 1.4rem 4rem;
     }
-    .contact-info{
+    .contact-info {
         padding: 2.6rem 1.8rem;
     }
-    .contact-form{
+    .contact-form {
         padding: 2.4rem 1.6rem;
     }
-    .row-link{
+    .row-link {
         gap: 1rem;
     }
-    .row-text strong{
+    .row-text strong {
         overflow-wrap: anywhere;                 
     }
-    .contact-social{
+    .contact-social {
         gap: 1rem;
     }
 }
 
 /* ---------- Layar sentuh: matikan efek hover yang "menempel" ---------- */
-@media (hover: none){
-    .contact-social a:hover{
+@media (hover: none) {
+    .contact-social a:hover {
         transform: none;
     }
-    .form-footer .btn:hover i{
+    .form-footer .btn:hover i {
         transform: none;
     }
 }
 
-@media (prefers-reduced-motion: reduce){
-    .contact-status::before{
+@media (prefers-reduced-motion: reduce) {
+    .contact-status::before {
         animation: none;
     }
     .contact-row,
@@ -3806,7 +3833,7 @@ section {
     .field input,
     .field select,
     .field textarea,
-    .form-footer .btn i{
+    .form-footer .btn i {
         transition: none;
     }
 }
@@ -3815,53 +3842,53 @@ section {
 /* ==================================================
    FOOTER RESPONSIVE (besar ke kecil)
 ================================================== */
-@media (max-width: 1100px){
-    .ft-inner{
+@media (max-width: 1100px) {
+    .ft-inner {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 3.6rem 4rem;
         padding: 6rem 0 4rem;
     }
-    .ft-brand{
+    .ft-brand {
         grid-column: 1 / -1;
     }
-    .ft-brand p{
+    .ft-brand p {
         max-width: 56rem;
     }
 }
-@media (max-width: 650px){
-    .ft{
+@media (max-width: 650px) {
+    .ft {
         padding: 0 2rem;
     }
-    .ft-inner{
+    .ft-inner {
         grid-template-columns: minmax(0, 1fr);
         gap: 3.2rem;
         padding: 5rem 0 3.5rem;
     }
-    .ft-nav ul{
+    .ft-nav ul {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1.4rem 2rem;
     }
-    .ft-bottom{
+    .ft-bottom {
         flex-direction: column;
         gap: 1.2rem;
         padding: 2.4rem 0 3rem;
         text-align: center;
     }
 }
-@media (hover: none){
+@media (hover: none) {
     .ft-social a:hover,
     .ft-top:hover,
-    .ft-logo:hover{
+    .ft-logo:hover {
         transform: none;
     }
 }
-@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion: reduce) {
     .ft-logo,
     .ft-social a,
     .ft-nav a,
     .ft-nav a::after,
     .ft-contact a,
-    .ft-top{
+    .ft-top {
         transition: none;
     }
 }
@@ -3869,10 +3896,16 @@ section {
 /* =========================================================
    16. REDUCED MOTION
 ========================================================= */
-@media (prefers-reduced-motion: reduce){
-    .float-badge{ animation: none; }
-    .typing-text::after{ animation: none; }
-    .marquee-content{ animation: none;}
+@media (prefers-reduced-motion: reduce) {
+    .float-badge{ 
+        animation: none; 
+    }
+    .typing-text::after{ 
+        animation: none; 
+    }
+    .marquee-content{ 
+        animation: none;
+    }
 }
 
 /* =========================================================
@@ -3880,15 +3913,15 @@ section {
 ========================================================= */
 .services,
 .projects,
-.skills{
+.skills {
     position: relative;
     overflow: hidden;
-    isolation: isolate;                  /* ornamen z-index:-1 tetap di atas latar section, di bawah isi */
+    isolation: isolate;                  
 }
 .services::before, .services::after,
 .projects::before, .projects::after,
 .skills::before,   .skills::after,
-.about::before{
+.about::before {
     content: "";
     position: absolute;
     z-index: -1;
@@ -3896,7 +3929,7 @@ section {
 }
 
 /* ----- Services: titik kanan atas + cahaya kiri bawah ----- */
-.services::before{
+.services::before {
     top: 5rem;
     right: -3rem;
     width: 36rem;
@@ -3906,7 +3939,7 @@ section {
     -webkit-mask: radial-gradient(ellipse at 100% 0%, #000 15%, transparent 70%);
             mask: radial-gradient(ellipse at 100% 0%, #000 15%, transparent 70%);
 }
-.services::after{
+.services::after {
     left: -14rem;
     bottom: -16rem;
     width: 44rem;
@@ -3915,8 +3948,7 @@ section {
     background: radial-gradient(circle, rgba(var(--accent-rgb), 0.10), transparent 68%);
 }
 
-/* ----- Projects: cincin konsentris kiri atas + garis diagonal kanan bawah ----- */
-.projects::before{
+.projects::before {
     top: -12rem;
     left: -12rem;
     width: 42rem;
@@ -3927,7 +3959,7 @@ section {
         0 0 0 5rem  rgba(var(--accent-rgb), 0.03),
         0 0 0 10rem rgba(var(--accent-rgb), 0.02);
 }
-.projects::after{
+.projects::after {
     right: -4rem;
     bottom: 6rem;
     width: 34rem;
@@ -3938,7 +3970,7 @@ section {
 }
 
 /* ----- Skills: garis kisi samar di tengah + cincin kanan atas ----- */
-.skills::before{
+.skills::before {
     inset: 0;
     background-image:
         linear-gradient(rgba(var(--main-rgb), 0.045) 1px, transparent 1px),
@@ -3947,7 +3979,7 @@ section {
     -webkit-mask: radial-gradient(ellipse at 50% 40%, #000 15%, transparent 72%);
             mask: radial-gradient(ellipse at 50% 40%, #000 15%, transparent 72%);
 }
-.skills::after{
+.skills::after {
     top: -14rem;
     right: -14rem;
     width: 40rem;
@@ -3956,8 +3988,7 @@ section {
     border-radius: 50%;
 }
 
-/* ----- About: cahaya lembut kanan bawah (titik kanan atas sudah ada di desktop) ----- */
-.about::before{
+.about::before {
     right: -12rem;
     bottom: -14rem;
     width: 42rem;
@@ -3966,11 +3997,33 @@ section {
     background: radial-gradient(circle, rgba(var(--accent-rgb), 0.10), transparent 68%);
 }
 
-@media (max-width: 650px){
-    .services::before{ width: 22rem; height: 16rem; }
-    .services::after{  width: 30rem; height: 30rem; }
-    .projects::before{ top: -10rem; left: -10rem; width: 28rem; height: 28rem; }
-    .projects::after{  width: 22rem; height: 18rem; }
-    .skills::after{    top: -10rem; right: -10rem; width: 26rem; height: 26rem; }
-    .about::before{    width: 30rem; height: 30rem; }
+@media (max-width: 650px) {
+    .services::before { 
+        width: 22rem; 
+        height: 16rem; 
+    }
+    .services::after {  
+        width: 30rem; 
+        height: 30rem; 
+    }
+    .projects::before { 
+        top: -10rem; 
+        left: -10rem; 
+        width: 28rem; 
+        height: 28rem; 
+    }
+    .projects::after {  
+        width: 22rem; 
+        height: 18rem; 
+    }
+    .skills::after {    
+        top: -10rem; 
+        right: -10rem; 
+        width: 26rem; 
+        height: 26rem; 
+    }
+    .about::before {    
+        width: 30rem; 
+        height: 30rem; 
+    }
 }
