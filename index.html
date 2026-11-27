@@ -45,31 +45,24 @@
 </head>
 <body>
 
-    <header class="header">
-        <a href="#home" class="logo">
-            Eka <span>Saputra</span>
-        </a>
+<header class="header" id="siteHeader">
+        <a href="#home" class="logo" aria-label="Eka Saputra, back to top">Eka <span>Saputra</span></a>
 
-        <button
-            type="button"
-            class="menu-toggle"
-            id="menu-icon"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            aria-controls="primary-navigation"
-        >
-            <i class="bx bx-menu" aria-hidden="true"></i>
-        </button>
+        <button type="button" class="menu-toogle" id="menu-icon"
+            aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+        <i class="bx bx-menu" aria-hidden="true"></i>
+    </button>
 
-        <nav class="navbar" id="primary-navigation" aria-label="Main Navigation">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <nav class="navbar" id="primary-navigation" aria-label="Main Navigation">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <a href="#home" class="active" aria-current="page">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+</header>
 
     <section class="home" id="home" aria-labelledby="home-heading">
 

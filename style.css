@@ -99,40 +99,48 @@ section {
 /* =========================================================
    3. HEADER & NAVBAR
 ========================================================= */
+html {
+    scroll-padding-top: 9rem;
+}
+
 .header {
     position: fixed;
     top: 2rem;
     left: 50%;
-    transform: translateX(-50%);
+    z-index: 1000;
     width: 92%;
     max-width: 1200px;
-    padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    border-radius: 99px;
-    box-shadow: 
-        0 4px 30px rgba(20, 39, 78, 0.05),
-        inset 0 0 0 1px rgba(20, 39, 78, 0.02);
+    padding: 0.8rem 1.6rem 0.8rem 2.4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1000;
-    transition: top 0.3s ease, background 0.3s ease;
+    background: rgba(255, 255, 255, 0.78);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+            backdrop-filter: blur(14px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 99px;
+    box-shadow: 0 10px 40px rgba(var(--main-rgb), 0.08);
+    transform: translate(-50%, 0);
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+                background 0.3s ease,
+                box-shadow 0.3s ease;
 }
-.header:hover {
-    background: rgba(255, 255, 255, 0.9);
+.header .is-scrolled {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 14px 44px rgba(var(--main-rgb), 0.14);
+}
+.header .is-hidden {
+    transform: translate(-50%, calc(-100% - 3rem));
 }
 
 .logo {
-    font-size: 2.4rem;
-    color: var(--text-color);
-    font-weight: 800;
-    letter-spacing: -0.03em;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-color);
     transition: transform 0.3s ease;
 }
 .logo span {
@@ -142,152 +150,186 @@ section {
     transform: scale(1.02);
 }
 
-/* Navigasi */
 .navbar {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.2rem;
 }
-
 .navbar a {
-    font-size: 1.5rem;
-    color: var(--muted-color);
-    padding: 0.8rem 1.6rem;
-    font-weight: 600;
-    border-radius: 99px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    z-index: 1;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--muted-color);
+    border-radius: 99px;
+    transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.navbar a:hover,
+.navbar a.active {
+    color: var(--main-color);
+}
+.nav-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: var(--w, 0px);
+    height: 100%;
+    background: var(--second-bg-color);
+    box-shadow: inset 0 0 0 1px var(--border-color);
+    border-radius: 99px;
+    opacity: 0;
+    transform: translateX(var(--x, 0px));
+    pointer-events: none;
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2,1),
+                width 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+                opacity 0.25s ease;
+}
+.nav-indicator .is-ready {
+    opacity: 1;
 }
 
-.navbar a:hover {
-    color: var(--main-color);
-    background: var(--second-bg-color);
-}
-.navbar a:active {
-    background: var(--main-color);
+.navbar a.nav-cta {
+    margin-left: 0.6rem;
     color: #fff;
-    box-shadow: 0 4px 15px rgba(20, 39, 78, 0.25);
+    background: var(--main-color);
+    box-shadow: 0 6px 18px rgba(var(--main-rgb), 0.25);
 }
-.menu-toggle {
-    display: none; 
+.navbar a.nav-cta:hover {
+    color: #fff;
+    background: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(var(--accent-rgb), 0.3);
+}
+.navbar a:focus-visible,
+.menu-toogle:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+.menu-toogle {
+    display: none;
+    place-items: center;
+    width: 4.4rem;
+    height: 4.4rem;
     font-size: 2.6rem;
+    line-height: 1;
     color: var(--main-color);
     background: var(--second-bg-color);
-    cursor: pointer;
-    width: 4.4rem;  
-    height: 4.4rem;
     border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease, transform 0.3s ease;
-    z-index: 1001;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
-.menu-toggle:hover {
+.menu-toogle:hover {
     background: var(--border-color);
     transform: scale(1.05);
 }
-
-#menu-icon {
-    background: none;
-    cursor: pointer;
-    line-height: 1;
-}
-.navbar a.active {
-    color: var(--accent-color);
-    border-bottom-color: var(--accent-color);
+.menu-toogle [aria-expanded="true"] {
+    color: #fff;
+    background: var(--main-color);
 }
 
-/* --- Tablet & Mobile (<= 991px) --- */
 @media (max-width: 991px) {
-    .about {
-        padding: 10rem 5% 6rem; 
+    .header {
+        top: 1.5rem;
+        padding: 0.8rem 1.2rem 0.8rem 1.6rem;
     }
-
-    /* Ubah layout grid menjadi satu kolom ke bawah */
-    .about-grid {
-        display: flex;
+    .menu-toogle {
+        display: grid;
+    }
+    .nav-indicator {
+        display: none;
+    }
+    .navbar {
+        position: absolute;
+        top: calc(100% + 1rem);
+        left: 0;
+        right: 0;
         flex-direction: column;
-        gap: 3rem; 
+        align-items: stretch;
+        gap: 0.4rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.97);
+        border: 1px solid var(--border-color);
+        border-radius: 2rem;
+        box-shadow: 0 20px 50px rgba(var(--main-rgb), 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px) scale(0.98);
+        transform-origin: top right;
+        transition: opacity 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+                    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+                    visibility 0.35s;
+    }
+    .navbar.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+    .navbar a {
+        padding: 1.2rem 1.5rem;
+        font-size: 1.6rem;
+        border-radius: 1rem;
+    }
+    .navbar a:hover {
+        background: var(--second-bg-color);
+    }
+    .navbar a.active {
+        color: var(--accent-color);
+        font-weight: 700;
+        background: rgba(var(--accent-rgb), 0.07);
+        box-shadow: inset 4px 0 0 var(--accent-color);
+    }
+    .navbar a.nav-cta {
+        margin: 0.4rem 0 0;
         text-align: center;
+        color: #fff;
+        background: var(--main-color);
+        box-shadow: none;
+    }
+    .navbar a.nav-cta.active {
+        box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.25);
     }
 
-    /* 1. Teks Kiri */
-    .about-col-left {
-        width: 100%;
+    .navbar.is-open a {
+        animation: nav-in 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
     }
-    .about-col-left .heading {
-        font-size: clamp(3.5rem, 8vw, 4.5rem); 
-        margin-bottom: 1.5rem;
+    .navbar.is-open a:nth-of-type(1){ animation-delay: 0.05s; }
+    .navbar.is-open a:nth-of-type(2){ animation-delay: 0.10s; }
+    .navbar.is-open a:nth-of-type(3){ animation-delay: 0.15s; }
+    .navbar.is-open a:nth-of-type(4){ animation-delay: 0.20s; }
+    .navbar.is-open a:nth-of-type(5){ animation-delay: 0.25s; }
+    .navbar.is-open a:nth-of-type(6){ animation-delay: 0.30s; }
+}
+@keyframes nav-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-    .about-desc {
-        margin: 0 auto 2rem;
-        font-size: 1.5rem;
-        max-width: 90%;
+    to {
+        opacity: 1;
+        transform: none;
     }
+}
 
-    /* 2. Foto Tengah (Kecilkan & Hilangkan Frame Raksasa) */
-    .about-col-center {
-        order: -1; 
-        width: 100%;
-        margin-bottom: 2rem;
+@media (hover: none) {
+    .logo:hover,
+    .menu-toogle:hover {
+        transform: none;
     }
-    
-    .core-visual {
-        width: 100%;
-        max-width: 32rem; 
-        margin: 0 auto;
-        aspect-ratio: auto; 
+}
+@media (prefers-reduced-motion: reduce) {
+    .header,
+    .navbar,
+    .nav-indicator,
+    .navbar a,
+    .menu-toogle {
+        transition: none;
     }
-
-    .cutout-img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
-
-    .core-frame {
-        height: 35rem; 
-        border-width: 4px;
-    }
-
-    .core-badge {
-        bottom: -1.5rem; 
-        left: 50%;
-        transform: translateX(-50%);
-        animation: none; 
-        white-space: nowrap;
-    }
-
-    /* 3. Kartu Kanan */
-    .about-col-right {
-        width: 100%;
-        max-width: 50rem;
-        margin: 0 auto;
-    }
-    .info-card {
-        text-align: left;
-    }
-
-    /* 4. Statistik Dibuat Menyamping (Horizontal) */
-    .about-stats {
-        display: flex;
-        justify-content: center; 
-        flex-wrap: wrap;
-        gap: 2rem;
-        border-top: none;
-        padding-top: 0;
-        margin-bottom: 2rem;
-    }
-    .stat-box {
-        flex: 1;
-        min-width: 10rem; 
-        text-align: center;
-    }
-    .stat-box h3 {
-        font-size: 3rem; 
-    }
-    .stat-box p {
-        font-size: 1.1rem;
+    .navbar.is-open a {
+        animation: none;
     }
 }
 
